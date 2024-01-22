@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox fx:id="background" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/welcome.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.MainController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="602.0" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="main" fitHeight="540.0" fitWidth="1179.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+               <image>
+                  <Image url="@../../assets/other/bg.jpg" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+            <HBox fx:id="start" alignment="CENTER" prefHeight="179.0" prefWidth="1080.0" spacing="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to SPlatnet3 for PC">
+                     <font>
+                        <Font name="Splatoon2" size="45.0" />
+                     </font>
+                  </Text>
+                  <Button mnemonicParsing="false" onMouseClicked="#startApplication" prefHeight="124.0" prefWidth="183.0" text="Start">
+                     <font>
+                        <Font name="Splatoon2" size="45.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

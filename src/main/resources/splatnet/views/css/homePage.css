@@ -1,3 +1,7 @@
+.button {
+    -fx-background-color: transparent;
+}
+
 #menu, #friends {
     -fx-background-color: #b4b4b4;
 }
@@ -6,6 +10,63 @@
     -fx-background-color: #1b1b1b;
 }
 
-#homeButton, #scheduleButton, #historyButton, #salmonButton, #settingButton {
+#homeButton, #homeButton .vbox,
+#scheduleButton, #scheduleButton .vbox,
+#historyButton, #historyButton .vbox,
+#salmonButton, #salmonButton .vbox,
+#settingButton, #settingButton .vbox {
+    -fx-background-color: #b4b4b4;
+}
+
+#homeButton:hover, #scheduleButton:hover, #historyButton:hover, #salmonButton:hover, #settingButton:hover {
+    -fx-background-color: #949494;
+    -fx-cursor: hand;
+}
+
+.scroll-pane .scroll-bar {
     -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.scroll-pane .scroll-bar:vertical,
+.scroll-pane .scroll-bar:horizontal,
+/* Remove thumb and arrows from both vertical and horizontal scroll bars */
+.scroll-pane .scroll-bar .thumb,
+.scroll-pane .scroll-bar .increment-button,
+.scroll-pane .scroll-bar .decrement-button,
+/* Remove thumb and arrows from vertical scroll bar only */
+.scroll-pane .scroll-bar:vertical .thumb,
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button,
+.scroll-pane .scroll-bar:horizontal .thumb,
+.scroll-pane .scroll-bar:horizontal .increment-button,
+.scroll-pane .scroll-bar:horizontal .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+/* Make arrows transparent for both vertical and horizontal scroll bars */
+.scroll-pane .scroll-bar .increment-arrow,
+.scroll-pane .scroll-bar .decrement-arrow,
+/* Make arrows transparent for vertical scroll bar only */
+.scroll-pane .scroll-bar:vertical .increment-arrow,
+.scroll-pane .scroll-bar:vertical .decrement-arrow,
+/* Make arrows transparent for horizontal scroll bar only */
+.scroll-pane .scroll-bar:horizontal .increment-arrow,
+.scroll-pane .scroll-bar:horizontal .decrement-arrow {
+    -fx-opacity: 0;
+}
+
+
+.scroll-pane .corner {
+    -fx-background-color: transparent;
+}
+
+
+
+#friendList, #anchorScroll{
+    -fx-background-color: #b4b4b4;
 }
