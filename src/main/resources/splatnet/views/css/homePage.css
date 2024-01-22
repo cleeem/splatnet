@@ -1,0 +1,11 @@
+#menu, #friends {
+    -fx-background-color: #b4b4b4;
+}
+
+#mainFrame {
+    -fx-background-color: #1b1b1b;
+}
+
+#homeButton, #scheduleButton, #historyButton, #salmonButton, #settingButton {
+    -fx-background-color: transparent;
+}

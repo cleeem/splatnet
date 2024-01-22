@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.HelloController">
+   <children>
+      <HBox prefHeight="720.0" prefWidth="1080.0">
+         <children>
+            <VBox fx:id="menu" alignment="CENTER" prefHeight="720.0" prefWidth="100.0" spacing="15.0" stylesheets="@../css/homePage.css">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <Button fx:id="homeButton" mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="92.8" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/icons/squid.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+                           <font>
+                              <Font name="Splatoon2" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <Button fx:id="scheduleButton" mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="92.8" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/icons/calendar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule">
+                           <font>
+                              <Font name="Splatoon2" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <Button fx:id="historyButton" mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="92.8" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/icons/turf.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="History">
+                           <font>
+                              <Font name="Splatoon2" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <Button fx:id="salmonButton" mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="92.8" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/icons/sr-modified.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salmon Run">
+                           <font>
+                              <Font name="Splatoon2" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="80.0" prefWidth="80.0">
+                     <children>
+                        <Button fx:id="settingButton" mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="92.8" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../assets/icons/setting.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+                           <font>
+                              <Font name="Splatoon2" size="20.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox fx:id="mainFrame" minHeight="720.0" minWidth="780.0" stylesheets="@../css/homePage.css" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="friends" prefHeight="720.0" prefWidth="200.0" stylesheets="@../css/homePage.css" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
