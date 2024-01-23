@@ -4,6 +4,9 @@ module splatnet {
     requires javafx.graphics;
     requires javafx.base;
 
+    requires com.google.gson;
+    requires org.jsoup;
+
     opens splatnet to javafx.fxml;
     exports splatnet;
     exports splatnet.controllers;
