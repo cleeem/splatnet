@@ -96,8 +96,6 @@ public class UtilitaryS3S {
         // check if config file exists
         if (!setup()) {
             System.out.println("config file not found");
-//            System.out.println("initializing...");
-//            init();
             throw new RuntimeException("config file not found");
         }
 

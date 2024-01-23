@@ -2,10 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -130,20 +128,23 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="mainFrame" minHeight="720.0" minWidth="780.0" stylesheets="@../css/homePage.css" HBox.hgrow="ALWAYS" />
-      <VBox fx:id="friends" alignment="CENTER" prefHeight="720.0" prefWidth="200.0" stylesheets="@../css/homePage.css" HBox.hgrow="NEVER">
+      <VBox fx:id="mainFrame" alignment="CENTER" minHeight="720.0" minWidth="780.0" stylesheets="@../css/homePage.css" HBox.hgrow="ALWAYS">
          <children>
-            <ScrollPane fx:id="friendList" prefHeight="360.0" prefWidth="200.0">
-               <content>
-                  <AnchorPane fx:id="anchorScroll" minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="200.0">
-                     <children>
-                        <VBox prefHeight="360.0" prefWidth="200.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
-            <VBox fx:id="stats" prefHeight="360.0" prefWidth="100.0" />
-         </children>
-      </VBox>
+            <HBox alignment="CENTER" prefHeight="288.0" prefWidth="980.0">
+               <children>
+                  <HBox fx:id="bannerHolder" prefHeight="255.0" prefWidth="668.0">
+                     <HBox.margin>
+                        <Insets top="50.0" />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="488.0" prefWidth="980.0">
+               <children>
+                  <HBox fx:id="stuffHolder" alignment="CENTER" prefHeight="317.0" prefWidth="980.0" />
+                  <HBox fx:id="powerHolder" alignment="CENTER" prefHeight="295.0" prefWidth="980.0" spacing="50.0" />
+               </children>
+            </VBox>
+         </children></VBox>
    </children>
 </HBox>

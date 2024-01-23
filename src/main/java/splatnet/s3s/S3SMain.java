@@ -2,9 +2,12 @@ package splatnet.s3s;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import splatnet.s3s.classes.Game;
 import com.google.gson.*;
+import splatnet.s3s.classes.Friend;
+import splatnet.s3s.classes.Game;
+import splatnet.s3s.classes.Player;
 
 public class S3SMain {
 
@@ -17,6 +20,8 @@ public class S3SMain {
         String key = "LatestBattleHistoriesQuery";
 
         ArrayList<String> data = Exploitation.parseVsHistory(UtilitaryS3S.gtoken, key, 50);
+
+        System.out.println(data.get(0));
 
         writeToFile(key, data);
 
@@ -33,6 +38,14 @@ public class S3SMain {
         writeToFile(key, data);
 
         return gameList(data);
+    }
+
+    public static HashMap<String, String> fetchXPowers() {
+        UtilitaryS3S.checkTokens();
+
+        HashMap<String, String> data = Exploitation.getXPowers(UtilitaryS3S.gtoken);
+
+        return data;
     }
 
     public static ArrayList<Game> fetchXBattles() {
@@ -83,13 +96,23 @@ public class S3SMain {
         return gameList(data);
     }
 
-    public static void fetchFriendList() {
+    public static ArrayList<Friend> fetchFriendList() {
         UtilitaryS3S.checkTokens();
 
         JsonArray friendList = Exploitation.fetchFriendList(UtilitaryS3S.gtoken);
 
-        System.out.println(friendList.get(9));
+        return toFriends(friendList);
 
+    }
+
+    private static ArrayList<Friend> toFriends(JsonArray friendList) {
+        ArrayList<Friend> friends = new ArrayList<>();
+
+        for (JsonElement friendData : friendList) {
+            friends.add(new Friend(friendData.getAsJsonObject()));
+        }
+
+        return friends;
     }
 
     private static ArrayList<Game> gameList(ArrayList<String> data) {
@@ -103,6 +126,9 @@ public class S3SMain {
     }
 
     private static void writeToFile(String key, ArrayList<String> data) {
+        if (true) {
+            return;
+        }
 
         String completePath = PATH_TO_DATA_FILES + key + ".json";
 
@@ -133,10 +159,17 @@ public class S3SMain {
 
     }
 
-    public static void main(String[] args) {
-        UtilitaryS3S.init(null);
+    public static Player fetchMyLastGameData() {
+        UtilitaryS3S.checkTokens();
 
-        fetchLattestBattles();
+        return Exploitation.historyQuery(UtilitaryS3S.gtoken);
+
+    }
+
+    public static void main(String[] args) {
+//        fetchMyLastGameData();
+        UtilitaryS3S.checkTokens();
+
     }
 
 }
