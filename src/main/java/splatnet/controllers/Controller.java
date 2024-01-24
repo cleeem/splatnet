@@ -14,7 +14,7 @@ public class Controller {
     public void loadNewFxml(String name) throws IOException {
         name = name.replace(".fxml", "");
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(RELATIVE_FXML_PATH + name + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(RELATIVE_FXML_PATH + name + ".fxml"));
         Stage stage = Main.getPrimaryStage();
         Parent root = fxmlLoader.load();
         stage.getScene().setRoot(root);

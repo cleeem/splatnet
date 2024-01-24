@@ -166,10 +166,9 @@ public class S3SMain {
 
     }
 
-    public static void main(String[] args) {
-//        fetchMyLastGameData();
-        UtilitaryS3S.checkTokens();
-
+    public static void createTokens(String input, String authCode) {
+        UtilitaryS3S.init(input, authCode);
     }
+
 
 }

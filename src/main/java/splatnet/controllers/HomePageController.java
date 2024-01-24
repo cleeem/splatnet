@@ -3,14 +3,19 @@ package splatnet.controllers;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import splatnet.Main;
 import splatnet.s3s.S3SMain;
 import splatnet.s3s.classes.Friend;
@@ -46,7 +51,7 @@ public class HomePageController {
     public HBox powerHolder;
 
     @FXML
-    public HBox bannerHolder;
+    public Pane bannerHolder;
 
 
 
@@ -55,7 +60,8 @@ public class HomePageController {
 
         System.out.println("HomePageController initialized");
 
-//         use a thread to fetch last game data and another to call fetchXPowers
+
+        // use a thread to fetch last game data and another to call fetchXPowers
         Thread fetchLastGameData = new Thread(() -> {
             myLastGamePlayer = S3SMain.fetchMyLastGameData();
             Platform.runLater(this::displayLastGameInfos);
@@ -70,6 +76,7 @@ public class HomePageController {
         System.out.println("Starting fetchXPowersData thread");
         fetchXPowersData.start();
 
+        // wait for the threads to finish
 
     }
 
@@ -132,7 +139,37 @@ public class HomePageController {
         ImageView banner = new ImageView(new Image(bannerUrl));
         banner.setFitHeight(200);
         banner.setFitWidth(668);
+
+        Label quoteLabel = new Label(myLastGamePlayer.getQuote());
+        quoteLabel.setStyle("-fx-text-fill: #FFFFFF");
+
+        // place the quote in the upper left corner of the banner
+        quoteLabel.setLayoutX(15);
+        quoteLabel.setLayoutY(15);
+        quoteLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
+
+        Label nameLabel = new Label(myLastGamePlayer.getName());
+        nameLabel.setStyle("-fx-text-fill: #FFFFFF; -fx-font-size: 20px");
+
+        // place the name in center
+        nameLabel.setLayoutX(bannerHolder.getWidth() / 2 - nameLabel.getWidth() / 2);
+        nameLabel.setLayoutY(bannerHolder.getHeight() / 2 - nameLabel.getHeight() / 2);
+        nameLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
+
+
+        Label idLabel = new Label(myLastGamePlayer.getNameId());
+        idLabel.setStyle("-fx-text-fill: #FFFFFF");
+
+        // place the id in the lower left corner of the banner
+        idLabel.setLayoutX(15);
+        idLabel.setLayoutY(bannerHolder.getHeight() - 15);
+        idLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
+
+        bannerHolder.getChildren().clear();
         bannerHolder.getChildren().add(banner);
+        bannerHolder.getChildren().add(quoteLabel);
+        bannerHolder.getChildren().add(nameLabel);
+        bannerHolder.getChildren().add(idLabel);
 
     }
 

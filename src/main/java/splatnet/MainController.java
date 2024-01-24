@@ -20,9 +20,12 @@ public class MainController extends Controller {
     public void initialize() {
         System.out.println("MainController initialized");
         try {
+            UtilitaryS3S.setup();
             UtilitaryS3S.checkTokens();
+
             needToLogin = false;
         } catch (Exception e) {
+            System.out.println(e);
             // config error so we redirect to the config page
             needToLogin = true;
         }

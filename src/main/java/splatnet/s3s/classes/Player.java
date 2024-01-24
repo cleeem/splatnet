@@ -7,6 +7,8 @@ public class Player {
 
     private String id;
 
+    private String nameId;
+
     private String name;
 
     private String quote;
@@ -51,6 +53,8 @@ public class Player {
     public Player(JsonObject jsonData) {
 
         name = jsonData.get("name").getAsString();
+
+        nameId = jsonData.get("nameId").getAsString();
 
         if (jsonData.has("byname")) {
             quote = jsonData.get("byname").getAsString();
@@ -154,5 +158,9 @@ public class Player {
 
     public JsonObject getShoesGear() {
         return shoesGear;
+    }
+
+    public String getNameId() {
+        return nameId;
     }
 }

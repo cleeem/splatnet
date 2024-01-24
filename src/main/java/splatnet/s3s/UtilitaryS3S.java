@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UtilitaryS3S {
 
@@ -32,43 +34,29 @@ public class UtilitaryS3S {
 
     private final static String CONFIG_PATH = System.getProperty("user.dir") + "/config.txt";
 
-    public static void init(String userInput) {
+    public static void init(String userInput, String authCodeVerifier) {
 
         setup();
-        createSessionToken(userInput);
+        createSessionToken(userInput, authCodeVerifier);
 
     }
 
-    private static void createSessionToken(String userInput) {
-        ArrayList<String> data = Iksm.getConnectionUrl(Iksm.getNsoappVersion(), APP_USER_AGENT);
+    private static void createSessionToken(String userInput, String authCodeVerifier) {
 
-        String url = data.get(0);
-        String authCodeVerifier = data.get(1);
+        String url;
 
-        if (userInput == null || userInput.isEmpty()) {
-
-            Scanner scanner = new Scanner(System.in);
-
-            boolean inputValid = false;
-            do {
-                System.out.println("Please enter the code you got from the website:");
-                System.out.print(url);
-                System.out.println();
-
-                userInput = scanner.nextLine();
-                if (userInput.length() < 50) {
-                    System.out.println("Invalid code");
-                } else {
-                    inputValid = true;
-                }
-
-            } while (!inputValid);
+        // session_token_code = re.search('de=(.*)&', use_account_url)
+        // use regex to get session token code
+        Pattern pattern = Pattern.compile("de=(.*)&");
+        Matcher matcher = pattern.matcher(userInput);
+        String sessionTokenCode = null;
+        if (matcher.find()) {
+            sessionTokenCode = matcher.group(1);
         } else {
-            userInput = userInput.trim();
+            throw new RuntimeException("Session token code not found");
         }
 
-
-        String sessionToken = Iksm.getSessionToken(userInput, authCodeVerifier);
+        String sessionToken = Iksm.getSessionToken(sessionTokenCode, authCodeVerifier);
 
         ArrayList<String> token = Iksm.getGtoken(getfGenUrl(), sessionToken, Iksm.getNsoappVersion());
 
@@ -94,25 +82,23 @@ public class UtilitaryS3S {
     public static void checkTokens() {
 
         // check if config file exists
-        if (!setup()) {
-            System.out.println("config file not found");
-            throw new RuntimeException("config file not found");
-        }
-
-        try {
+//        try {
             Exploitation.test(gtoken);
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.println("gtoken expired");
-            if (setup()) {
-                writeConfig(Iksm.getTokens(sessionToken));
-            } else {
-//                init(null);
-                throw new RuntimeException("GTOKEN EXPIRED and session token invalid");
-            }
-        }
-
-        System.out.println("gtoken valid");
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            System.exit(0);
+//
+//            System.out.println("gtoken expired");
+//
+//            if (setup()) {
+//                // gtoken is just expired, we can get a new one with the session token
+//                HashMap<String, String> tokens = Iksm.getTokens(sessionToken);
+//                writeConfig(tokens);
+//            } else {
+//                // we need to re-enter the session token because config file might have been altered
+//                throw new RuntimeException("GTOKEN EXPIRED and session token invalid");
+//            }
+//        }
 
     }
 
@@ -122,7 +108,6 @@ public class UtilitaryS3S {
         // CONFIG.TXT CREATION
         try {
             File configFile = new File(CONFIG_PATH);
-
 
             JsonElement fileData;
             JsonObject returnData = null;
@@ -136,6 +121,23 @@ public class UtilitaryS3S {
                 reader = new FileReader(configFile);
                 fileData = JsonParser.parseReader(reader);
                 returnData = fileData.getAsJsonObject();
+
+                // set global variables
+                int accLocLength = returnData.get("acc_loc").getAsString().length();
+
+                if (!returnData.get("acc_loc").getAsString().isEmpty()) {
+                    userLang = returnData.get("acc_loc").getAsString().substring(0, 5);
+                }
+                if (accLocLength > 2) {
+                    userCountry = returnData.get("acc_loc").getAsString().substring(accLocLength - 2);
+                }
+                gtoken = returnData.get("gtoken").getAsString();
+                bulletToken = returnData.get("bullettoken").getAsString();
+                sessionToken = returnData.get("session_token").getAsString();
+                fGenUrl = returnData.get("f_gen").getAsString();
+
+                setupComplete = true;
+                return setupComplete;
 
             } else {
                 // create config file
@@ -155,33 +157,20 @@ public class UtilitaryS3S {
                 writer.write(configData.toJson(returnData));
                 writer.close();
 
-            }
+                userLang = "";
+                userCountry = "";
+                gtoken = "";
+                bulletToken = "";
+                sessionToken = "";
+                fGenUrl = "https://api.imink.app/f";
 
-            // set global variables
-            int accLocLength = returnData.get("acc_loc").getAsString().length();
+                return setupComplete;
 
-            if (!returnData.get("acc_loc").getAsString().isEmpty()) {
-                userLang = returnData.get("acc_loc").getAsString().substring(0, 5);
             }
-            if (accLocLength > 2) {
-                userCountry = returnData.get("acc_loc").getAsString().substring(accLocLength - 2);
-            }
-            gtoken = returnData.get("gtoken").getAsString();
-            bulletToken = returnData.get("bullettoken").getAsString();
-            sessionToken = returnData.get("session_token").getAsString();
-            fGenUrl = returnData.get("f_gen").getAsString();
-
-            if (gtoken.isEmpty() || bulletToken.isEmpty() || sessionToken.isEmpty() || fGenUrl.isEmpty()) {
-                return false;
-            }
-
-            setupComplete = true;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        return setupComplete;
     }
 
     /**

@@ -107,7 +107,7 @@ public class Iksm {
 
             } catch (Exception e) {
                 // could not connect to network
-                System.exit(1);
+//                System.exit(1);
             }
 
             if (home == null || home.statusCode() != 200) {
@@ -224,7 +224,7 @@ public class Iksm {
             sha256Digest = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException e) {
             System.out.println("SHA-256 not supported");
-            System.exit(1);
+//            System.exit(1);
         }
         // hash the verifier
         sha256Digest.update(authCodeVerifier.getBytes(StandardCharsets.UTF_8));
@@ -260,7 +260,7 @@ public class Iksm {
                 parameters.append("&").append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
                 System.out.println("UTF-8 not supported");
-                System.exit(1);
+//                System.exit(1);
             }
         }
 
@@ -398,7 +398,7 @@ public class Iksm {
             System.out.println("Not a valid authorization request. Please delete config.txt and try again.");
             System.out.println("Error from Nintendo (in api/token step):");
             System.out.println(idResponse);
-            System.exit(1);
+//            System.exit(1);
         }
 
         url = "https://api.accounts.nintendo.com/2.0.0/users/me";
@@ -420,7 +420,7 @@ public class Iksm {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Got non-JSON response from Nintendo (in users/me step). Please try again.");
-            System.exit(1);
+//            System.exit(1);
         }
 
         System.out.println("user info: " + userInfo);
@@ -495,12 +495,12 @@ public class Iksm {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Got non-JSON response from Nintendo (in Account/Login step). Please try again.");
-            System.exit(1);
+//            System.exit(1);
         }
 
         if (splatoonToken == null) {
             System.out.println("Erreur lors de la récupération du token d'accès");
-            System.exit(1);
+//            System.exit(1);
         }
 
         System.out.println("splatoonToken: \n" + splatoonToken);
@@ -589,7 +589,7 @@ public class Iksm {
 
         if (webServiceToken == null) {
             System.out.println("Got non-JSON response from Nintendo (in Game/GetWebServiceToken step). Please try again.");
-            System.exit(1);
+//            System.exit(1);
         } else {
             webServiceTokenString = webServiceToken.get("result").getAsJsonObject().get("accessToken").getAsString();
         }
@@ -654,7 +654,7 @@ public class Iksm {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Got non-JSON response from SplatNet 3 (in bullet_tokens step). Please try again.");
-            System.exit(1);
+//            System.exit(1);
         }
 
 
