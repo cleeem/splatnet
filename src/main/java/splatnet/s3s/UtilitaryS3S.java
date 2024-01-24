@@ -82,23 +82,17 @@ public class UtilitaryS3S {
     public static void checkTokens() {
 
         // check if config file exists
-//        try {
+        try {
             Exploitation.test(gtoken);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            System.exit(0);
-//
-//            System.out.println("gtoken expired");
-//
-//            if (setup()) {
-//                // gtoken is just expired, we can get a new one with the session token
-//                HashMap<String, String> tokens = Iksm.getTokens(sessionToken);
-//                writeConfig(tokens);
-//            } else {
-//                // we need to re-enter the session token because config file might have been altered
-//                throw new RuntimeException("GTOKEN EXPIRED and session token invalid");
-//            }
-//        }
+        } catch (Exception e) {
+
+            if (e.getMessage().contains("Status=401")) {
+                throw new RuntimeException("gtoken expired");
+            } else {
+                throw new RuntimeException("internet error");
+            }
+
+        }
 
     }
 

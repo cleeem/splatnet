@@ -129,7 +129,7 @@
             </VBox>
          </children>
       </VBox>
-      <VBox fx:id="mainFrame" alignment="CENTER" minHeight="720.0" minWidth="780.0" stylesheets="@../css/homePage.css" HBox.hgrow="ALWAYS">
+      <VBox fx:id="mainFrame" alignment="CENTER" minHeight="720.0" minWidth="780.0" spacing="15.0" stylesheets="@../css/homePage.css" HBox.hgrow="ALWAYS">
          <children>
             <HBox alignment="CENTER" prefHeight="288.0" prefWidth="980.0">
                <children>
@@ -138,7 +138,7 @@
                         <Insets top="50.0" />
                      </HBox.margin>
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="303.0" layoutY="135.0">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="304.0" layoutY="152.0">
                            <image>
                               <Image url="@../../assets/other/loading.gif" />
                            </image>
@@ -149,10 +149,14 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="488.0" prefWidth="980.0">
                <children>
-                  <HBox fx:id="stuffHolder" alignment="CENTER" prefHeight="317.0" prefWidth="980.0" spacing="50.0">
+                  <HBox fx:id="stuffHolder" alignment="CENTER" prefHeight="317.0" prefWidth="980.0" spacing="25.0">
                      <children>
-                        <VBox fx:id="weaponHolder" prefHeight="225.0" prefWidth="150.0" />
-                        <HBox fx:id="gearHolder" prefHeight="200.0" prefWidth="600.0" />
+                        <VBox fx:id="weaponHolder" prefHeight="215.0" prefWidth="150.0" style="-fx-background-color: #111111; -fx-background-radius: 15; -fx-border-radius: 15;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <HBox fx:id="gearHolder" alignment="CENTER" prefHeight="200.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: #111111; -fx-background-radius: 15; -fx-border-radius: 15;" />
                      </children></HBox>
                   <HBox fx:id="powerHolder" alignment="CENTER" prefHeight="295.0" prefWidth="980.0" spacing="50.0" />
                </children>

@@ -21,8 +21,6 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseVsHistory(UtilitaryS3S.gtoken, key, 50);
 
-        System.out.println(data.get(0));
-
         writeToFile(key, data);
 
         return gameList(data);

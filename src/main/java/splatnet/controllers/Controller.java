@@ -15,9 +15,15 @@ public class Controller {
         name = name.replace(".fxml", "");
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(RELATIVE_FXML_PATH + name + ".fxml"));
-        Stage stage = Main.getPrimaryStage();
         Parent root = fxmlLoader.load();
-        stage.getScene().setRoot(root);
+        Stage stage = Main.getPrimaryStage();
+        if (stage == null) {
+            stage = new Stage();
+            stage.getScene().setRoot(root);
+            stage.show();
+        } else {
+            stage.getScene().setRoot(root);
+        }
 
     }
 

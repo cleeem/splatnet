@@ -6,26 +6,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" spacing="25.0" style="-fx-background-color: b4b4b4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.LoginController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" spacing="20.0" style="-fx-background-color: b4b4b4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.LoginController">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please naviguate to the link bellow" textAlignment="CENTER" wrappingWidth="378.13671493530273">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please naviguate to the link bellow by clicking on the button" textAlignment="CENTER" wrappingWidth="560.5367393493652">
          <font>
             <Font name="Splatoon2" size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Right clic on the button &quot;select&quot;" textAlignment="CENTER" wrappingWidth="312.53673934936523">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Right clic on the button &quot;select this account&quot;" textAlignment="CENTER" wrappingWidth="454.9367027282715">
          <font>
             <Font name="Splatoon2" size="20.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Copy the url adress and paste it in the text input" textAlignment="CENTER" wrappingWidth="407.73669052124023">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Copy the url adress and paste it in the text input" textAlignment="CENTER" wrappingWidth="508.53673934936523">
          <font>
             <Font name="Splatoon2" size="20.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" onMouseClicked="#openInBrowser" text="Open in browser" />
-      <TextField fx:id="textInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="400.0" />
-      <Button mnemonicParsing="false" onMouseClicked="#confirm" text="Validate" />
+      <Button mnemonicParsing="false" onMouseClicked="#openInBrowser" prefHeight="35.0" prefWidth="160.0" text="Open in browser">
+         <font>
+            <Font name="Splatoon2" size="20.0" />
+         </font></Button>
+      <TextField fx:id="textInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="526.0" />
+      <Button mnemonicParsing="false" onMouseClicked="#confirm" prefHeight="35.0" prefWidth="160.0" text="Confirm">
+         <font>
+            <Font name="Splatoon2" size="20.0" />
+         </font></Button>
    </children>
 </VBox>

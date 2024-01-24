@@ -9,6 +9,7 @@ import splatnet.s3s.S3SMain;
 import splatnet.s3s.UtilitaryS3S;
 
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -22,30 +23,38 @@ public class MainController extends Controller {
         try {
             UtilitaryS3S.setup();
             UtilitaryS3S.checkTokens();
-
+            // no error so we don't need to login
             needToLogin = false;
-        } catch (Exception e) {
-            System.out.println(e);
-            // config error so we redirect to the config page
-            needToLogin = true;
+            System.out.println("No need to login");
+        } catch (RuntimeException e) {
+
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+                System.out.println("generated new tokens");
+                needToLogin = false;
+            } else if (e.getMessage().equals("internet error")) {
+                try {
+                    System.out.println("loading internet error");
+                    loadNewFxml("internetError");
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            } else {
+                needToLogin = true;
+                System.out.println("Need to login");
+
+            }
+
         }
     }
 
     public void startApplication() throws IOException {
         System.out.println("Start button clicked");
-//        try {
-            if (needToLogin) {
-                System.out.println("Need to login");
-                loadNewFxml("config");
-            } else {
-                System.out.println("No need to login");
-                loadNewFxml("homePage");
-            }
-//        } catch (Exception e) {
-//            System.out.println("Error while loading new fxml");
-//            System.out.println(e);
-//
-//        }
+        if (needToLogin) {
+            loadNewFxml("config");
+        } else {
+            loadNewFxml("homePage");
+        }
 
 
     }
