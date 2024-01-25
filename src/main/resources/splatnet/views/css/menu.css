@@ -1,0 +1,20 @@
+.button {
+    -fx-background-color: transparent;
+}
+
+#homeButton, #homeButton .vbox,
+#scheduleButton, #scheduleButton .vbox,
+#historyButton, #historyButton .vbox,
+#salmonButton, #salmonButton .vbox,
+#settingButton, #settingButton .vbox {
+    -fx-background-color: #b4b4b4;
+}
+
+#homeButton:hover, #scheduleButton:hover, #historyButton:hover, #salmonButton:hover, #settingButton:hover {
+    -fx-background-color: #848484;
+    -fx-cursor: hand;
+}
+
+#menu {
+    -fx-background-color: #b4b4b4;
+}

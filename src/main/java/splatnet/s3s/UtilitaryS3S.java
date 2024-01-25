@@ -3,6 +3,7 @@ package splatnet.s3s;
 import com.google.gson.*;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,8 +87,12 @@ public class UtilitaryS3S {
             Exploitation.test(gtoken);
         } catch (Exception e) {
 
+            System.out.println(e);
+
             if (e.getMessage().contains("Status=401")) {
                 throw new RuntimeException("gtoken expired");
+            } else if (e.getMessage().contains("Status=400")) {
+                throw new RuntimeException("config file error");
             } else {
                 throw new RuntimeException("internet error");
             }
@@ -239,5 +244,30 @@ public class UtilitaryS3S {
 
     public static String getfGenUrl() {
         return fGenUrl;
+    }
+
+    public static void downloadImage(String objectUrl, String objectName, String imageType) throws IOException {
+
+        File objectFile = new File("src/main/resources/splatnet/assets/"
+                                            + imageType + "/" + objectName + ".png");
+
+        if (objectFile.exists()) {
+            return;
+        } else {
+            objectFile.createNewFile();
+        }
+
+        InputStream in = new URL(objectUrl).openStream();
+        OutputStream out = new FileOutputStream(objectFile);
+
+        byte[] buffer = new byte[2048];
+        int length;
+
+        while ((length = in.read(buffer)) != -1) {
+            out.write(buffer, 0, length);
+        }
+
+        in.close();
+        out.close();
     }
 }

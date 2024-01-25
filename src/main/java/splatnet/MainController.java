@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class MainController extends Controller {
 
-    private boolean needToLogin = true;
+    private int needToLogin = 0;
 
     @FXML
     public void initialize() {
@@ -24,23 +24,19 @@ public class MainController extends Controller {
             UtilitaryS3S.setup();
             UtilitaryS3S.checkTokens();
             // no error so we don't need to login
-            needToLogin = false;
+            needToLogin = 1;
             System.out.println("No need to login");
         } catch (RuntimeException e) {
 
             if (e.getMessage().equals("gtoken expired")) {
                 UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
                 System.out.println("generated new tokens");
-                needToLogin = false;
+                needToLogin = 1;
             } else if (e.getMessage().equals("internet error")) {
-                try {
-                    System.out.println("loading internet error");
-                    loadNewFxml("internetError");
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
+                needToLogin = 2;
+                System.out.println("internet error");
             } else {
-                needToLogin = true;
+                needToLogin = 0;
                 System.out.println("Need to login");
 
             }
@@ -50,10 +46,12 @@ public class MainController extends Controller {
 
     public void startApplication() throws IOException {
         System.out.println("Start button clicked");
-        if (needToLogin) {
+        if (needToLogin == 0) {
             loadNewFxml("config");
-        } else {
+        } else if (needToLogin == 1) {
             loadNewFxml("homePage");
+        } else if (needToLogin == 2) {
+            loadNewFxml("internetError");
         }
 
 

@@ -2,30 +2,11 @@
     -fx-background-color: transparent;
 }
 
-#menu {
-    -fx-background-color: #b4b4b4;
-}
-
-#friends {
-    -fx-background-color: #272c33;
-}
 
 #mainFrame {
     -fx-background-color: #292e35;
 }
 
-#homeButton, #homeButton .vbox,
-#scheduleButton, #scheduleButton .vbox,
-#historyButton, #historyButton .vbox,
-#salmonButton, #salmonButton .vbox,
-#settingButton, #settingButton .vbox {
-    -fx-background-color: #b4b4b4;
-}
-
-#homeButton:hover, #scheduleButton:hover, #historyButton:hover, #salmonButton:hover, #settingButton:hover {
-    -fx-background-color: #b4b4b4;
-    -fx-cursor: hand;
-}
 
 #powerHolder .vbox .text {
     -fx-text-fill: #FFFFFF;

@@ -1,166 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <HBox prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.HomePageController">
    <children>
-      <VBox fx:id="menu" alignment="CENTER" prefHeight="720.0" prefWidth="100.0" spacing="35.0" stylesheets="@../css/homePage.css" HBox.hgrow="NEVER">
-         <HBox.margin>
-            <Insets />
-         </HBox.margin>
-         <children>
-            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-               <children>
-                  <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onHomeButtonClick" prefHeight="65.0" prefWidth="65.0">
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-                           <children>
-                              <ImageView fitHeight="69.6" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/icons/squid.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
-                                 <font>
-                                    <Font name="Splatoon2" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-               <children>
-                  <Button fx:id="scheduleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onScheduleButtonClick" prefHeight="65.0" prefWidth="65.0">
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/icons/calendar.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule">
-                                 <font>
-                                    <Font name="Splatoon2" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-               <children>
-                  <Button fx:id="historyButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onHistoryButtonClick" prefHeight="65.0" prefWidth="65.0">
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-                           <children>
-                              <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/icons/turf.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="History">
-                                 <font>
-                                    <Font name="Splatoon2" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-               <children>
-                  <Button fx:id="salmonButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onSalmonButtonClick" prefHeight="65.0" prefWidth="65.0">
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-                           <children>
-                              <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/icons/sr-modified.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salmon Run">
-                                 <font>
-                                    <Font name="Splatoon2" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-               <children>
-                  <Button fx:id="settingButton" mnemonicParsing="false" onMouseClicked="#onSettingButtonClick">
-                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
-                           <children>
-                              <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/icons/setting.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
-                                 <font>
-                                    <Font name="Splatoon2" size="15.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </VBox>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
+      <fx:include source="menu.fxml" />
       <VBox fx:id="mainFrame" alignment="CENTER" minHeight="720.0" minWidth="780.0" spacing="15.0" stylesheets="@../css/homePage.css" HBox.hgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER" prefHeight="288.0" prefWidth="980.0">
+            <HBox alignment="BOTTOM_CENTER" prefHeight="584.0" prefWidth="980.0">
                <children>
-                  <Pane fx:id="bannerHolder" prefHeight="200.0" prefWidth="668.0">
-                     <HBox.margin>
-                        <Insets top="50.0" />
-                     </HBox.margin>
+                  <VBox fx:id="background" alignment="CENTER" prefHeight="435.0" prefWidth="718.0" spacing="10.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="304.0" layoutY="152.0">
-                           <image>
-                              <Image url="@../../assets/other/loading.gif" />
-                           </image>
-                        </ImageView>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="328.0" prefWidth="718.0">
+                           <children>
+                              <VBox fx:id="bannerHolder" alignment="TOP_CENTER" pickOnBounds="false" prefHeight="200.0" prefWidth="668.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../assets/other/loading.gif" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="225.0" prefWidth="718.0" spacing="25.0">
+                           <children>
+                              <VBox fx:id="weaponHolder" alignment="CENTER" prefHeight="225.0" prefWidth="150.0" />
+                              <HBox fx:id="gearHolder" alignment="CENTER" prefHeight="225.0" prefWidth="450.0" />
+                           </children>
+                        </HBox>
                      </children>
-                  </Pane>
+                     <padding>
+                        <Insets bottom="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
                </children>
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="488.0" prefWidth="980.0">
-               <children>
-                  <HBox fx:id="stuffHolder" alignment="CENTER" prefHeight="317.0" prefWidth="980.0" spacing="25.0">
-                     <children>
-                        <VBox fx:id="weaponHolder" prefHeight="215.0" prefWidth="150.0" style="-fx-background-color: #111111; -fx-background-radius: 15; -fx-border-radius: 15;">
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <HBox fx:id="gearHolder" alignment="CENTER" prefHeight="200.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: #111111; -fx-background-radius: 15; -fx-border-radius: 15;" />
-                     </children></HBox>
-                  <HBox fx:id="powerHolder" alignment="CENTER" prefHeight="295.0" prefWidth="980.0" spacing="50.0" />
-               </children>
-            </VBox>
-         </children></VBox>
+            <HBox fx:id="powerHolder" alignment="CENTER" prefHeight="295.0" prefWidth="980.0" spacing="50.0" />
+         </children>
+      </VBox>
    </children>
 </HBox>

@@ -11,7 +11,7 @@ import splatnet.s3s.classes.Player;
 
 public class S3SMain {
 
-    private static final String PATH_TO_DATA_FILES = "src/s3s/data/";
+    private static final String PATH_TO_DATA_FILES = "src/main/java/splatnet/s3s/data/";
 
     public static ArrayList<Game> fetchLattestBattles() {
 
@@ -124,10 +124,6 @@ public class S3SMain {
     }
 
     private static void writeToFile(String key, ArrayList<String> data) {
-        if (true) {
-            return;
-        }
-
         String completePath = PATH_TO_DATA_FILES + key + ".json";
 
         File file = new File(completePath);
@@ -168,5 +164,99 @@ public class S3SMain {
         UtilitaryS3S.init(input, authCode);
     }
 
+
+    public static void downloadBanner(JsonObject bannerObject) {
+        String bannerUrl = bannerObject.get("image").getAsJsonObject().get("url").getAsString();
+        String bannerName = bannerObject.get("id").getAsString();
+
+        try {
+            UtilitaryS3S.downloadImage(bannerUrl, bannerName, "banners");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+    }
+
+
+    /**
+     * download the image of the weapon
+     *
+     * @param weapon
+     */
+    public static void downloadWeapon(JsonObject weapon, String type) {
+
+        if (!weapon.has("image2d") || weapon.get("image2d").isJsonNull()) {
+            return;
+        }
+        String weaponUrl = weapon.get("image2d").getAsJsonObject().get("url").getAsString();
+        String weaponName = weapon.get("id").getAsString();
+
+        try {
+            UtilitaryS3S.downloadImage(weaponUrl, weaponName, type);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+    }
+
+
+    public static void downloadGear(JsonObject gear, String type) {
+
+        String idKey;
+        switch (type) {
+            case "head":
+                idKey = "headGearId";
+                break;
+            case "clothes":
+                idKey = "clothingGearId";
+                break;
+            case "shoes":
+                idKey = "shoesGearId";
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+
+        type = "gears/" + type;
+
+        String gearUrl = gear.get("image").getAsJsonObject().get("url").getAsString();
+        String gearName = gear.get(idKey).getAsString();
+
+        try {
+            UtilitaryS3S.downloadImage(gearUrl, gearName, type);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        UtilitaryS3S.setup();
+        UtilitaryS3S.checkTokens();
+
+        String key = "WeaponRecordQuery";
+        String data = Exploitation.customQuery(
+                UtilitaryS3S.gtoken,
+                key,
+                null,
+                null
+        );
+
+        ArrayList<String> dataArrayList = new ArrayList<>();
+        dataArrayList.add(data);
+
+//        writeToFile(key, dataArrayList);
+        JsonObject dataObject = JsonParser.parseString(data).getAsJsonObject().getAsJsonObject("data");
+
+        JsonArray weaponsArray = dataObject.getAsJsonObject("weaponRecords").getAsJsonArray("nodes");
+
+
+        for (JsonElement weaponElement : weaponsArray) {
+            JsonObject weaponObject = weaponElement.getAsJsonObject();
+            downloadWeapon(weaponObject, "weapons");
+        }
+
+
+    }
 
 }

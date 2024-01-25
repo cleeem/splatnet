@@ -14,9 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import splatnet.Main;
 import splatnet.models.Storage;
@@ -26,6 +24,7 @@ import splatnet.s3s.classes.Game;
 import splatnet.s3s.classes.Player;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,32 +35,22 @@ public class HomePageController extends Controller {
 
     private HashMap<String, String> xPowers;
 
-    @FXML
-    public Button homeButton;
 
-    @FXML
-    public Button scheduleButton;
-
-    @FXML
-    public Button historyButton;
-
-    @FXML
-    public Button salmonButton;
-
-    @FXML
-    public Button settingButton;
 
     @FXML
     public HBox powerHolder;
 
     @FXML
-    public Pane bannerHolder;
+    public VBox bannerHolder;
 
     @FXML
     public VBox weaponHolder;
 
     @FXML
     public HBox gearHolder;
+
+    @FXML
+    public VBox background;
 
 
     @FXML
@@ -89,7 +78,6 @@ public class HomePageController extends Controller {
 
         storage.setPlayerData(myLastGamePlayer);
         storage.setxPowers(xPowers);
-
 
     }
 
@@ -150,9 +138,18 @@ public class HomePageController extends Controller {
 
         System.out.println("Displaying last game infos");
 
-        String bannerUrl = myLastGamePlayer.getBannerUrl();
+        JsonObject bannerObject = myLastGamePlayer.getBanner();
 
-        ImageView banner = new ImageView(new Image(bannerUrl));
+        String bannerID = bannerObject.get("id").getAsString();
+
+        File bannerFile = new File("src/main/resources/splatnet/assets/banners/" + bannerID + ".png");
+
+        if (!bannerFile.exists()) {
+            System.out.println("Banner file doesn't exist, downloading it");
+            S3SMain.downloadBanner(bannerObject);
+        }
+
+        ImageView banner = new ImageView(bannerFile.toURI().toString());
         banner.setFitHeight(200);
         banner.setFitWidth(668);
 
@@ -160,32 +157,53 @@ public class HomePageController extends Controller {
         quoteLabel.setStyle("-fx-text-fill: #FFFFFF");
 
         // place the quote in the upper left corner of the banner
-        quoteLabel.setLayoutX(15);
-        quoteLabel.setLayoutY(0);
+        HBox quoteHolder = new HBox();
+        quoteHolder.setAlignment(Pos.TOP_LEFT);
+        quoteHolder.setStyle("-fx-padding: 0 0 0 20");
         quoteLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
 
         Label nameLabel = new Label(myLastGamePlayer.getName());
         nameLabel.setStyle("-fx-text-fill: #FFFFFF");
 
         // place the name in center
-        nameLabel.setLayoutX(bannerHolder.getWidth() / 2 - 55);
-        nameLabel.setLayoutY(bannerHolder.getHeight() / 2 - 35);
-        nameLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 30));
+        HBox nameHolder = new HBox();
+        nameHolder.setAlignment(Pos.CENTER);
+        nameLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 50));
 
 
         Label idLabel = new Label("#" + myLastGamePlayer.getNameId());
         idLabel.setStyle("-fx-text-fill: #FFFFFF");
 
         // place the id in the lower left corner of the banner
-        idLabel.setLayoutX(15);
-        idLabel.setLayoutY(bannerHolder.getHeight() / 2 + 45);
+        HBox idHolder = new HBox();
+        idHolder.setAlignment(Pos.TOP_LEFT);
+        idHolder.setStyle("-fx-padding: 0 0 0 20");
         idLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
 
         bannerHolder.getChildren().clear();
-        bannerHolder.getChildren().add(banner);
-        bannerHolder.getChildren().add(quoteLabel);
-        bannerHolder.getChildren().add(nameLabel);
-        bannerHolder.getChildren().add(idLabel);
+
+        // no repeat
+        BackgroundImage test = new BackgroundImage(
+                new Image(bannerFile.toURI().toString()),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                null
+//                new BackgroundSize(668, 200, false, false, false, false)
+        );
+
+        bannerHolder.setBackground(new Background(test));
+
+        quoteHolder.getChildren().add(quoteLabel);
+        nameHolder.getChildren().add(nameLabel);
+        idHolder.getChildren().add(idLabel);
+
+        bannerHolder.getChildren().add(quoteHolder);
+        bannerHolder.getChildren().add(nameHolder);
+        bannerHolder.getChildren().add(idHolder);
+
+        background.setStyle("-fx-background-color: #2c2c2c");
+
 
     }
 
@@ -292,26 +310,53 @@ public class HomePageController extends Controller {
 
         JsonObject weaponData = myLastGamePlayer.getWeapon();
 
+        String mainWeaponId = weaponData.get("id").getAsString();
         String mainWeaponUrl = weaponData.get("image").getAsJsonObject()
                                          .get("url").getAsString();
 
+        File mainWeaponFile = new File("src/main/resources/splatnet/assets/weapons/" + mainWeaponId + ".png");
+
+        if (!mainWeaponFile.exists()) {
+            System.out.println("Main weapon file doesn't exist, downloading it");
+            S3SMain.downloadWeapon(weaponData, "weapons");
+        }
+
+        String specialWeaponId = weaponData.get("specialWeapon").getAsJsonObject()
+                                            .get("id").getAsString();
         String specialWeaponUrl = weaponData.get("specialWeapon").getAsJsonObject()
                                             .get("image").getAsJsonObject()
                                             .get("url").getAsString();
 
+        File specialWeaponFile = new File("src/main/resources/splatnet/assets/specials/" + specialWeaponId + ".png");
+
+        if (!specialWeaponFile.exists()) {
+            System.out.println("Special weapon file doesn't exist, downloading it");
+            S3SMain.downloadWeapon(weaponData.get("specialWeapon").getAsJsonObject(), "specials");
+        }
+
+        String subWeaponId = weaponData.get("subWeapon").getAsJsonObject()
+                                       .get("id").getAsString();
         String subWeaponUrl = weaponData.getAsJsonObject("subWeapon")
                                         .getAsJsonObject("image")
                                         .get("url").getAsString();
 
-        ImageView weaponImage = new ImageView(new Image(mainWeaponUrl));
+        File subWeaponFile = new File("src/main/resources/splatnet/assets/subs/" + subWeaponId + ".png");
+
+        if (!subWeaponFile.exists()) {
+            System.out.println("Sub weapon file doesn't exist, downloading it");
+            S3SMain.downloadWeapon(weaponData.get("subWeapon").getAsJsonObject(), "subs");
+        }
+
+
+        ImageView weaponImage = new ImageView(mainWeaponFile.toURI().toString());
         weaponImage.setFitHeight(150);
         weaponImage.setFitWidth(150);
 
-        ImageView specialWeaponImage = new ImageView(new Image(specialWeaponUrl));
+        ImageView specialWeaponImage = new ImageView(specialWeaponFile.toURI().toString());
         specialWeaponImage.setFitHeight(75);
         specialWeaponImage.setFitWidth(75);
 
-        ImageView subWeaponImage = new ImageView(new Image(subWeaponUrl));
+        ImageView subWeaponImage = new ImageView(subWeaponFile.toURI().toString());
         subWeaponImage.setFitHeight(75);
         subWeaponImage.setFitWidth(75);
 
@@ -325,38 +370,6 @@ public class HomePageController extends Controller {
 
     }
 
-    @FXML
-    public void onHomeButtonClick(Event event) {
-        System.out.println("Home button clicked");
-        System.out.println(event);
 
-    }
-
-    @FXML
-    public void onScheduleButtonClick() {
-        System.out.println("Schedule button clicked");
-    }
-
-    @FXML
-    public void onHistoryButtonClick() {
-        System.out.println("History button clicked");
-
-        try {
-            loadNewFxml("historyPage");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    @FXML
-    public void onSalmonButtonClick() {
-        System.out.println("Salmon button clicked");
-    }
-
-    @FXML
-    public void onSettingButtonClick() {
-        System.out.println("Setting button clicked");
-    }
 
 }

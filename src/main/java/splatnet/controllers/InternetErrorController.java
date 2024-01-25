@@ -12,8 +12,8 @@ public class InternetErrorController extends Controller {
     public void exitAll() {
 
         // close the main stage
-//        Stage main = Main.getPrimaryStage();
-//        main.close();
+        Stage main = Main.getPrimaryStage();
+        main.close();
 
     }
 

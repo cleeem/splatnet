@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="menu" alignment="CENTER" prefHeight="720.0" prefWidth="100.0" spacing="35.0" stylesheets="@../css/menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.MenuController">
+   <children>
+      <VBox fx:id="homeButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onHomeButtonClick" prefHeight="65.0" prefWidth="65.0">
+               <graphic>
+                  <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+                     <children>
+                        <ImageView fitHeight="69.6" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/icons/squid.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+                           <font>
+                              <Font name="Splatoon2" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox fx:id="scheduleButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onScheduleButtonClick" prefHeight="65.0" prefWidth="65.0">
+               <graphic>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/icons/calendar.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule">
+                           <font>
+                              <Font name="Splatoon2" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox fx:id="historyButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onHistoryButtonClick" prefHeight="65.0" prefWidth="65.0">
+               <graphic>
+                  <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+                     <children>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/icons/turf.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="History">
+                           <font>
+                              <Font name="Splatoon2" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox fx:id="salmonButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+         <children>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onSalmonButtonClick" prefHeight="65.0" prefWidth="65.0">
+               <graphic>
+                  <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+                     <children>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/icons/sr-modified.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salmon Run">
+                           <font>
+                              <Font name="Splatoon2" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <VBox fx:id="settingButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#onSettingButtonClick">
+               <graphic>
+                  <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
+                     <children>
+                        <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../assets/icons/setting.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+                           <font>
+                              <Font name="Splatoon2" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</VBox>

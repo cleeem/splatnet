@@ -20,7 +20,7 @@ public class Player {
      */
     private String species;
 
-    private String bannerUrl;
+    private JsonObject banner;
 
     private JsonObject namePlate;
 
@@ -67,7 +67,7 @@ public class Player {
         }
 
 
-        bannerUrl = jsonData.getAsJsonObject("nameplate").getAsJsonObject("background").getAsJsonObject("image").get("url").getAsString();
+        banner = jsonData.getAsJsonObject("nameplate").getAsJsonObject("background");
 
         namePlate = jsonData.get("nameplate").getAsJsonObject();
 
@@ -116,8 +116,8 @@ public class Player {
         return species;
     }
 
-    public String getBannerUrl() {
-        return bannerUrl;
+    public JsonObject getBanner() {
+        return banner;
     }
 
     public JsonObject getNamePlate() {
