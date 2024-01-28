@@ -15,7 +15,13 @@ public class S3SMain {
 
     public static ArrayList<Game> fetchLattestBattles() {
 
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         String key = "LatestBattleHistoriesQuery";
 
@@ -27,8 +33,13 @@ public class S3SMain {
     }
 
     public static ArrayList<Game> fetchChallengeBattles() {
-        UtilitaryS3S.checkTokens();
-
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
         String key = "EventBattleHistoriesQuery";
 
         ArrayList<String> data = Exploitation.parseBattlesHistory(UtilitaryS3S.gtoken, key, 50);
@@ -39,7 +50,13 @@ public class S3SMain {
     }
 
     public static HashMap<String, String> fetchXPowers() {
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         HashMap<String, String> data = Exploitation.getXPowers(UtilitaryS3S.gtoken);
 
@@ -47,7 +64,13 @@ public class S3SMain {
     }
 
     public static ArrayList<Game> fetchXBattles() {
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         String key = "XBattleHistoriesQuery";
 
@@ -59,7 +82,13 @@ public class S3SMain {
     }
 
     public static ArrayList<Game> fetchPrivateBattles() {
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         String key = "PrivateBattleHistoriesQuery";
 
@@ -71,7 +100,13 @@ public class S3SMain {
     }
 
     public static ArrayList<Game> fetchAnarchyBattles() {
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         String key = "BankaraBattleHistoriesQuery";
 
@@ -83,7 +118,13 @@ public class S3SMain {
     }
 
     public static ArrayList<Game> fetchTurfWarBattles() {
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         String key = "RegularBattleHistoriesQuery";
 
@@ -95,7 +136,13 @@ public class S3SMain {
     }
 
     public static ArrayList<Friend> fetchFriendList() {
-        UtilitaryS3S.checkTokens();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
 
         JsonArray friendList = Exploitation.fetchFriendList(UtilitaryS3S.gtoken);
 
@@ -185,10 +232,19 @@ public class S3SMain {
      */
     public static void downloadWeapon(JsonObject weapon, String type) {
 
-        if (!weapon.has("image2d") || weapon.get("image2d").isJsonNull()) {
+        if (type.equals("weapons") && (!weapon.has("image2d") || weapon.get("image2d").isJsonNull())) {
+            System.out.println("no image for " + weapon.get("name").getAsString());
             return;
         }
-        String weaponUrl = weapon.get("image2d").getAsJsonObject().get("url").getAsString();
+        String imageType;
+
+        if (type.equals("weapons")) {
+            imageType = "image2d";
+        } else {
+            imageType = "image";
+        }
+
+        String weaponUrl = weapon.get(imageType).getAsJsonObject().get("url").getAsString();
         String weaponName = weapon.get("id").getAsString();
 
         try {
@@ -253,7 +309,8 @@ public class S3SMain {
 
         for (JsonElement weaponElement : weaponsArray) {
             JsonObject weaponObject = weaponElement.getAsJsonObject();
-            downloadWeapon(weaponObject, "weapons");
+            downloadWeapon(weaponObject.getAsJsonObject("subWeapon"), "subs");
+            downloadWeapon(weaponObject.getAsJsonObject("specialWeapon"), "specials");
         }
 
 

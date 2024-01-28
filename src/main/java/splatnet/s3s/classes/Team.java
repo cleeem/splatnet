@@ -63,4 +63,23 @@ public class Team {
 
     }
 
+    public JsonObject getColor() {
+        return color;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
 }

@@ -12,7 +12,7 @@ public class Storage {
 
     private static Storage instance = new Storage();
 
-    private Player playerData;
+    private Player playerData = null;
 
     private ArrayList<Game> games = new ArrayList<>();
 

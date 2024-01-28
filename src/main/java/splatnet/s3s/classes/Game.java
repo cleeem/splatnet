@@ -82,6 +82,13 @@ public class Game {
 
 
         status = jsonData.get("judgement").getAsString();
+        if (status.equals("EXEMPTED_LOSE")) {
+            status = "DRAW";
+        } else if (status.equals("DEEMED_LOSE")) {
+            status = "LOSE";
+        }
+
+
         vsStage = jsonData.get("vsStage").getAsJsonObject().get("name").getAsString();
         if (jsonData.has("xPower") && !jsonData.get("xPower").isJsonNull()) {
             xPower = jsonData.get("xMatch").getAsJsonObject().get("lastXPower").getAsString();

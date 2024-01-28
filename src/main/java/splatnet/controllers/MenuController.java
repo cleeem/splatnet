@@ -11,7 +11,11 @@ public class MenuController extends Controller {
     @FXML
     public void onHomeButtonClick(Event event) {
         System.out.println("Home button clicked");
-        System.out.println(event);
+        try {
+            loadNewFxml("homePage");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

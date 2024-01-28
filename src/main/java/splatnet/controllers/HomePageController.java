@@ -15,6 +15,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import splatnet.Main;
 import splatnet.models.Storage;
@@ -34,8 +35,6 @@ public class HomePageController extends Controller {
     private Player myLastGamePlayer;
 
     private HashMap<String, String> xPowers;
-
-
 
     @FXML
     public HBox powerHolder;
@@ -58,7 +57,10 @@ public class HomePageController extends Controller {
 
         System.out.println("HomePageController initialized");
 
+        fetchData();
+    }
 
+    private void fetchData() {
         // use a thread to fetch last game data and another to call fetchXPowers
         Thread fetchLastGameData = new Thread(() -> {
             myLastGamePlayer = S3SMain.fetchMyLastGameData();
@@ -75,12 +77,9 @@ public class HomePageController extends Controller {
         fetchXPowersData.start();
 
         Storage storage = Storage.getInstance();
-
         storage.setPlayerData(myLastGamePlayer);
         storage.setxPowers(xPowers);
-
     }
-
     private void displayXPowers() {
 
         VBox zonesVBox = new VBox();
@@ -160,7 +159,7 @@ public class HomePageController extends Controller {
         HBox quoteHolder = new HBox();
         quoteHolder.setAlignment(Pos.TOP_LEFT);
         quoteHolder.setStyle("-fx-padding: 0 0 0 20");
-        quoteLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
+        quoteLabel.setFont(Font.font("Splatoon2", 20));
 
         Label nameLabel = new Label(myLastGamePlayer.getName());
         nameLabel.setStyle("-fx-text-fill: #FFFFFF");
@@ -311,8 +310,6 @@ public class HomePageController extends Controller {
         JsonObject weaponData = myLastGamePlayer.getWeapon();
 
         String mainWeaponId = weaponData.get("id").getAsString();
-        String mainWeaponUrl = weaponData.get("image").getAsJsonObject()
-                                         .get("url").getAsString();
 
         File mainWeaponFile = new File("src/main/resources/splatnet/assets/weapons/" + mainWeaponId + ".png");
 
@@ -323,29 +320,13 @@ public class HomePageController extends Controller {
 
         String specialWeaponId = weaponData.get("specialWeapon").getAsJsonObject()
                                             .get("id").getAsString();
-        String specialWeaponUrl = weaponData.get("specialWeapon").getAsJsonObject()
-                                            .get("image").getAsJsonObject()
-                                            .get("url").getAsString();
 
         File specialWeaponFile = new File("src/main/resources/splatnet/assets/specials/" + specialWeaponId + ".png");
 
-        if (!specialWeaponFile.exists()) {
-            System.out.println("Special weapon file doesn't exist, downloading it");
-            S3SMain.downloadWeapon(weaponData.get("specialWeapon").getAsJsonObject(), "specials");
-        }
-
         String subWeaponId = weaponData.get("subWeapon").getAsJsonObject()
                                        .get("id").getAsString();
-        String subWeaponUrl = weaponData.getAsJsonObject("subWeapon")
-                                        .getAsJsonObject("image")
-                                        .get("url").getAsString();
 
         File subWeaponFile = new File("src/main/resources/splatnet/assets/subs/" + subWeaponId + ".png");
-
-        if (!subWeaponFile.exists()) {
-            System.out.println("Sub weapon file doesn't exist, downloading it");
-            S3SMain.downloadWeapon(weaponData.get("subWeapon").getAsJsonObject(), "subs");
-        }
 
 
         ImageView weaponImage = new ImageView(mainWeaponFile.toURI().toString());

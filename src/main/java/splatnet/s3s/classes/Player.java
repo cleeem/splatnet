@@ -7,6 +7,8 @@ public class Player {
 
     private String id;
 
+    private boolean isMyself;
+
     private String nameId;
 
     private String name;
@@ -51,6 +53,14 @@ public class Player {
     }
 
     public Player(JsonObject jsonData) {
+
+        if (jsonData.has("isMyself") && !jsonData.get("isMyself").isJsonNull()) {
+            isMyself = jsonData.get("isMyself").getAsBoolean();
+        }
+
+        if (jsonData.has("id") && !jsonData.get("id").isJsonNull()) {
+            id = jsonData.get("id").getAsString();
+        }
 
         name = jsonData.get("name").getAsString();
 
@@ -99,6 +109,8 @@ public class Player {
     public String getId() {
         return id;
     }
+
+    public boolean isMyself() {return isMyself;}
 
     public String getName() {
         return name;

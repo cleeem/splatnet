@@ -90,10 +90,13 @@ public class UtilitaryS3S {
             System.out.println(e);
 
             if (e.getMessage().contains("Status=401")) {
+                // gtoken expired
                 throw new RuntimeException("gtoken expired");
             } else if (e.getMessage().contains("Status=400")) {
+                // config file is invalid
                 throw new RuntimeException("config file error");
             } else {
+                // internet error
                 throw new RuntimeException("internet error");
             }
 
