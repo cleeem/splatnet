@@ -73,7 +73,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#refresh" prefHeight="96.0" prefWidth="96.0">
+                        <Button fx:id="buttonRefresh" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#refresh" prefHeight="96.0" prefWidth="96.0">
                            <graphic>
                               <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

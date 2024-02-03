@@ -217,7 +217,7 @@ public class S3SMain {
         String bannerName = bannerObject.get("id").getAsString();
 
         try {
-            UtilitaryS3S.downloadImage(bannerUrl, bannerName, "banners");
+            UtilitaryS3S.downloadSmallImage(bannerUrl, bannerName, "banners");
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -248,7 +248,7 @@ public class S3SMain {
         String weaponName = weapon.get("id").getAsString();
 
         try {
-            UtilitaryS3S.downloadImage(weaponUrl, weaponName, type);
+            UtilitaryS3S.downloadSmallImage(weaponUrl, weaponName, type);
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -279,7 +279,7 @@ public class S3SMain {
         String gearName = gear.get(idKey).getAsString();
 
         try {
-            UtilitaryS3S.downloadImage(gearUrl, gearName, type);
+            UtilitaryS3S.downloadSmallImage(gearUrl, gearName, type);
         } catch (IOException e) {
             System.out.println(e);
         }

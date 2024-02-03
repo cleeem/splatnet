@@ -2,8 +2,12 @@
     -fx-background-color: transparent;
 }
 
-.button:hover {
+#buttonAll:hover, #buttonAnarchy:hover,
+#buttonTurf:hover, #buttonX:hover,
+#buttonPrivate:hover, #buttonChallenge:hover,
+#buttonRefresh:hover {
     -fx-background-color: #AAAAAA;
+    -fx-cursor: hand;
 }
 
 #matchList {

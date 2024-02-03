@@ -14,6 +14,8 @@ public class Storage {
 
     private Player playerData = null;
 
+    private Game selectedGame = null;
+
     private ArrayList<Game> games = new ArrayList<>();
 
     private ArrayList<Game> latestGames = new ArrayList<>();
@@ -80,13 +82,13 @@ public class Storage {
         return playerData;
     }
 
+    public Game getSelectedGame() {return selectedGame;}
+
     public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
 
-    public void setLatestGames(ArrayList<Game> latestGames) {
-        this.latestGames = latestGames;
-    }
+    public void setLatestGames(ArrayList<Game> latestGames) {this.latestGames = latestGames;}
 
     public void setChallengeGames(ArrayList<Game> challengeGames) {
         this.challengeGames = challengeGames;
@@ -119,4 +121,6 @@ public class Storage {
     public void setPlayerData(Player playerData) {
         this.playerData = playerData;
     }
+
+    public void setSelectedGame(Game game) {this.selectedGame = game;}
 }

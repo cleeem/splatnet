@@ -30,7 +30,7 @@ public class Game {
      */
     private String status;
 
-    private String vsStage;
+    private JsonObject vsStage;
 
     /**
      * only used when the game is an X game
@@ -89,7 +89,7 @@ public class Game {
         }
 
 
-        vsStage = jsonData.get("vsStage").getAsJsonObject().get("name").getAsString();
+        vsStage = jsonData.get("vsStage").getAsJsonObject();
         if (jsonData.has("xPower") && !jsonData.get("xPower").isJsonNull()) {
             xPower = jsonData.get("xMatch").getAsJsonObject().get("lastXPower").getAsString();
         }
@@ -130,7 +130,7 @@ public class Game {
         return status;
     }
 
-    public String getVsStage() {
+    public JsonObject getVsStage() {
         return vsStage;
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
 import splatnet.s3s.classes.Game;
@@ -17,10 +18,15 @@ import splatnet.s3s.classes.Player;
 import splatnet.s3s.classes.Team;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HistoryController extends Controller {
+
+    private boolean showingGames = false;
+
+    private Stage stage;
 
     @FXML
     public VBox matchList;
@@ -220,9 +226,36 @@ public class HistoryController extends Controller {
     private void displayGames(ArrayList<Game> games) {
         matchList.getChildren().clear();
         for (Game game : games) {
-            matchList.getChildren().add(getMatchDisplay(game));
+            HBox gameDisplay = getMatchDisplay(game);
+
+            gameDisplay.setOnMouseClicked(event -> {
+                try {
+                    openMatch(game);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
+            matchList.getChildren().add(gameDisplay);
         }
 
+    }
+
+    private void openMatch(Game game) {
+        if (showingGames) {
+            stage.close();
+            showingGames = false;
+        }
+        Storage storage = Storage.getInstance();
+        storage.setSelectedGame(game);
+        try {
+            stage = newWindowLoad("match");
+            stage.show();
+            showingGames = true;
+        } catch (IOException e) {
+            showingGames = false;
+            throw new RuntimeException(e);
+        }
     }
 
     private HBox getMatchDisplay(Game game) {
@@ -243,7 +276,7 @@ public class HistoryController extends Controller {
         if (mode == null) {
             System.out.println(game.getVsMode());
             System.out.println("mode is null");
-            return null;
+            return matchDisplay;
         }
 
         File modeIcon = new File("src/main/resources/splatnet/assets/battles/" + mode + ".png");

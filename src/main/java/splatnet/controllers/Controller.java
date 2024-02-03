@@ -35,7 +35,17 @@ public class Controller {
     }
 
 
+    public Stage newWindowLoad(String name) throws IOException {
+        name = name.replace(".fxml", "");
 
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(RELATIVE_FXML_PATH + name + ".fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+//        stage.show();
+        return stage;
+    }
 
 
 }

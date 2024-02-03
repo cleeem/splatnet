@@ -21,7 +21,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("views/fxml/welcome.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, WIDTH, HEIGHT);
-        stage.setTitle("Hello!");
+        stage.setTitle("Splatnet 3");
         stage.setScene(scene);
 
         primaryStage = stage;
