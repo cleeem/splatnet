@@ -3,7 +3,6 @@ module splatnet {
     requires javafx.fxml;
     requires javafx.graphics;
     requires javafx.base;
-    requires javafx.web;
     requires java.desktop;
 
     requires com.google.gson;

@@ -40,7 +40,7 @@ public class MatchController extends Controller {
     private void displayHeaderInfos(Game game) {
         String stageUrl = game.getVsStage().getAsJsonObject("image").get("url").getAsString();
         String stageId = game.getVsStage().get("id").getAsString();
-        File stageFile = new File("src/main/resources/splatnet/assets/maps/" + stageUrl + ".png");
+        File stageFile = new File("src/main/resources/splatnet/assets/maps/" + stageId + ".png");
 
         if (!stageFile.exists()) {
             try {
@@ -50,9 +50,11 @@ public class MatchController extends Controller {
             }
         }
 
-        ImageView stageImage = new ImageView(new Image(stageFile.toURI().toString()));
+        Image stageImage = new Image(stageFile.toURI().toString());
 
-        header.getChildren().add(stageImage);
+        ImageView stageImageView = new ImageView(stageImage);
+
+        header.getChildren().add(stageImageView);
 
     }
 
