@@ -1,0 +1,251 @@
+{
+   "data":{
+      "gearPowers":{
+         "nodes":[
+            {
+               "__typename":"GearPower",
+               "gearPowerId":-1,
+               "name":"Unknown",
+               "image":{
+                "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91_0.png?Expires=1736467200\u0026Signature=DBTnSP4Z3c0GjIzyWXEAAQPrp6t-ryaO7RV5xftATwxFGJZIZh0VQMHlhtecOgtw-fW53c0e92AIIqp4H4-nFHLRO0NObTWyXzTlzJERiq2K0zTfCAWsHliln2dK9pZ-10eh2MVz0Kzg0yGUoNcgSnZB0Sm-tIoAjd6eXZ0F6tovR8vhDCFKsOQ2xfLfRn2~TleW1W-maIkVhctU5IXzKUpLSnQzFmsf4KN7h2c-yCF1c7E9JffpJubA2wc8ze6YAbnNwUun4AsvP~VJT5VifFB9m~tJI7Ak~Xd3XKEA5R80MJAN~~ppiNRDRfYHwQFF6h1yrywdKryU9434boOLTQ__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":0,
+               "name":"Ink Saver (Main)",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/5c98cc37d2ce56291a7e430459dc9c44d53ca98b8426c5192f4a53e6dd6e4293_0.png?Expires=1736467200\u0026Signature=dbrzAU7QWIUCSQTnaWLxNkQ7R3PJ0iSu1tD9YFf0b7q7rq3w50wMX-47-Zw97ZuudVipLeckAnfTg~eg7D0TSdFeg~6sH3iWxdgB7dSHD6JYVZqsFKujAr8tzp8e4nlpPHRmesO~6bQUXS7wWl5n3OIJDU8xgeeDWzeU7dEQbXCbFjNdFyh~55zf9p1epDmHtN1uWdi5UIXoGos9EqxApv9DtJ8hpHnJsNjOn0PPayKdZdo80ENB8-T5cxicwbwMvsShcLEJtAPAhsznyIsHvaGykzi7QHF2PzfflBUsuUqiArqLw-3Qd4cehDZBz0Z~O9Y1dXum8LjGKHfrn1dC9g__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":1,
+               "name":"Ink Saver (Sub)",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/11293d8fe7cfb82d55629c058a447f67968fc449fd52e7dd53f7f162fa4672e3_0.png?Expires=1736467200\u0026Signature=GEk3DjbXOFjd3-Tx4fGU7Xcr4NFkdDvToCc8YLZaTJLOW2tbZZOVI9tw0tirS0vQm44w5fyYtsfWQIbYh5Bestsv-Wp6Sgg8GzRY~K5z5Ht~YQkKBPE8LRm4P6AcoEWuQcdxqh0TAwgLCZTf~sZdYH-PyYt3p6GCQTWTCBb1jDsI5YOgFC4t6CKjJHEA2qpvyRyLRr5dqRMj5jKgXJUB4E3ZoZkOa9t8SGp32DShg-n5Oe2tmwq-gCREj9beMHlIgoOx2haoUb9KfUhlTDpX4Sp2ulOAVVagC8Lsj7a7fh3EyotrTZhrrW4bOq3zvmrrMBMaxjXQL7d~gyJ7PZJBHw__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":2,
+               "name":"Ink Recovery Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/29b845ea895b931bfaf895e0161aeb47166cbf05f94f04601769c885d019073b_0.png?Expires=1736467200\u0026Signature=lgZl8eBBQgmzmB9sTkC2p3pIaXLy0NdksmlE~ypaUvkU0XZyv3k84Svk34mvwHCoO7KIZsnUzGpa0tw4MkS9UXZD1pniUnQii7pi2jmL-3446qQab-XV6axUr9GYdA9HuzjY8bmXnO52X8A7j-fxFx8-irOXRcazqFsOFOwOXlsw6cUMFShTk6nEyqXjowgePXViiM~5F610ABk2REkZA03MtWfbMnzbXuL95erXQW4CCxtErexaOc8zw8do-lQjws69W81q~qUrprUiYSULZqHMvli~NNSw-eXsHJIl3X1x7xO5CbTA5rxVbaiiYqDIJYl~-edsvP0kRxQ4KO9BHw__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":3,
+               "name":"Run Speed Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/3b6c56c57a6d8024f9c7d6e259ffa2e2be4bdf958653b834e524ffcbf1e6808e_0.png?Expires=1736467200\u0026Signature=FKPqIRo2KML5HJktEqE16gj9ZYCorRx6Hk881I9nPcSWVxvuH-eJIwEJH5Q6~16tg8Q4ZgEaCPfr-6gmMgEfhX8IFyC2RhdWsZdIP6oAe~zCIx-Dd8S2jwf67CUbfJ0y9240Mid26-9JkPTJ3yX542nTJMNYZ1bDePaT57CmCOxrHcI3ggl6B-lM4v1I897WFKIUhR9iJiVZW63Wfvp-f7Nkjuy86GEgqu1IM7jhJhlfhANX8hYFsGmycBXeps3pgf2jTO5mqEwswvT9iwCKMz7E73a2bslZpWMkkdXq3713EgrD6eLsSYE4rESkeQSzD2qOgbK9Xvp7Gs9h5vi1Gw__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":4,
+               "name":"Swim Speed Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/087ffffe40c28a40a39dc4a577c235f4cc375540c79dfa8ede1d8b63a063f261_0.png?Expires=1736467200\u0026Signature=V1bmdvjjf6CqvFXvyHKirD-~J0KZGVofB87s2kUfZS9KYxuOpBxvGrSMr~B8SdF0fqn3PLpRnmF0dk0PnzKowB1AuQlH5JIsrMt~aTINeunVvzgsXjFE20r9xoxXYM7sKTTsyn-DElb8F2fAc1YYlU8P6iyeQaCI1E1E8V7grpIHd4f10ZVw4CllJVUQyom8mwxdF55Y0A1AgI8Wcly8jVkezyzr8viNm-QShQm5RJSlCPvqtDrxdiub3R~HkmRTQ4qIrY9GRBD4DvfF-bHDVJF8APcKhFgb2aXM-Ga2JJ8nzgUQmeEkj70TZGKhB7lmColQW3GmzKueGvejBsu-XQ__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":5,
+               "name":"Special Charge Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/e8668a2af7259be74814a9e453528a3e9773435a34177617a45bbf79ad0feb17_0.png?Expires=1736467200\u0026Signature=kN4yReKcYxkab1rhLxVcAQ3q~f80WuLAuEHc3y0NwT8Zv5Mmgx1h-4O88yIq7ZqB6N5MhpXp1ZyS05wbJcvvQFi1lXu-W8NLftpyjUG64eKuRpJ~11GWwF4ZE~KYIFnGlu6dxSbnntVtI12HG3LeVk3m0T-6DjqEN3Q5gh1y~LsPxrQVSNmY1mxpkXG45aoRLrClOJK024X24MfCG3Bgq1GLuN7O09qOI9eW9Dig9w8FNUi9DicLVxtDhYh69oszWtijsHmG6wu0xev6-R9Ax9QFVeVeRDXCzN57~ZgxCj3U-cuxiqlJZ60h9WKXrzmrRN0LvLDJ-2LJz5oOmO1SYA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":6,
+               "name":"Special Saver",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/e3154ab67494df2793b72eabf912104c21fbca71e540230597222e766756b3e4_0.png?Expires=1736467200\u0026Signature=WWe~j3LuUdQfJQEU5MCFztJhgBMpg5EPAQr2Yn-vtrWoYdzFAiQ8vYCzaZEb41WhjNhBbWm8c9dIkjkjx18BkcopuqlM5LkcKTvPVA9R4FzTA5uRf2YtYTlm2um-MhBpW8E6QW4~q~d7kuTGa6jtCm5j9zZZluTpihwTqfvhVjPUHjQMFjDl08Tbiv9I~L0gnLZwq9uyfcSnOCG4EscO0EAKKkyHVbbjWUpKRPZ3MS7bAB4~zVVGUURI-gzCa9cJG-rNzZYN1KTdETmP8GUoXQn9NVCme3lEhHkcnEG2vtKwhcKl7dq134IMqOoDS2x78nBFFFMGMaYzZ~FVXq72Pg__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":7,
+               "name":"Special Power Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/fba267bd56f536253a6bcce1e919d8a48c2b793c1b554ac968af8d2068b22cab_0.png?Expires=1736467200\u0026Signature=XXERki1DiYjJhpei682C81gdlSIoFshL8rj4CNN2VYk9qHfJ78o6wdhlL74DLmdxZHfOroSYdlF6rhwhhPllj0Qw89oRxyGrr3fNq80YRBhvZutz~zq1u01Fv7eGs8qvkqY~EaCrmPiFJgVpb2VkY3BbVUGlL-J1uc5FcxKMERiJRNT8BGtSuo~hgaat7ZDtT6uxyGnX9BejGoIX81BxJaWY6DPx8DHiIEy-35paU~zTVl0qf2snPwy~~UmO4FMrYYuY8QPbeOAKDVCa475-zfqQ8nqfYXgP1Yy8-cLlwhrnvF~IwIA1fv~vdSoaU2CYi6GaYiS8ISBL-OOJnQnZAw__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":8,
+               "name":"Quick Respawn",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/aaa9b7e95a61bfd869aaa9beb836c74f9b8d4e5d4186768a27d6e443c64f33ce_0.png?Expires=1736467200\u0026Signature=U~D47ucDbTjJGZC24NH0IfFcwkTI~neFJV-Hjv4xDNFpEhgB80HUQjVZN33ZiFTJOJf-YbGbStL4Nx6Xu9-BIyH2C4EprutGBBp06kJXrBBalizsp3YhUY9NuBerg3uJlXulwNJGfURZmVZNPA6my8pIvoED6C3g8dxbD54nOGfUHXQGZeTVGjr-3tZDh209tzO~7jn2K8fxL5aTrrDzx19E6-s3gHVdog9URYZ1R0vHFgK3C4jZq3voCnr4wNcwgI9NzJwHrCqoHf~ZNfylThiJ0~LRnp4n88CyNF0tnRqtWvlNa41dkbzYKPDXe0ihyO5hNMH0JmHvtNkFVFVMvA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":9,
+               "name":"Quick Super Jump",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/138820ed46d68bdf2d7a21fb3f74621d8fc8c2a7cb6abe8d7c1a3d7c465108a7_0.png?Expires=1736467200\u0026Signature=mJtBRjRaStqy0fiRcjdti6SUTPrBndLpXhWsKDOUhifgrUXMTF9vng0taKomZRpX9qtG~sa~O11Oo1tLL~hda7zzV9vi6vkXWn3S8yPZaomAKcdD6DZddohwKA~VjWJi5TNK2I3KRVB4BetDuyata6bwCN~98uXleOp3GDXgKAPhn9foKj29ZR3oF0JTaqmZ8rHa6gWjawP8MtN7x1aiCvihj1plm3RIZKC0RAVWR2ZHdSbz65zR9~w0dER40598d2h1NHCgztSglwkNAUMbTA0SgrfpP2Gyep9HYRYW84qkoZMbGPWAraUjwgimTaAA-ZhwxdNDzXNP4~Sbf1uhbQ__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":10,
+               "name":"Sub Power Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/9df9825e470e00727aa1009c4418cf0ace58e1e529dab9a7c1787309bb25f327_0.png?Expires=1736467200\u0026Signature=mx0AWcwycsDS9hZR-D-sLwkGF1iDSvkVBRA87dpwdhYxgviXjBrRv5RD3kti-nCdp30x2AjEmf~NQIJ9xgOaKiFygsRVxUqMYHJlFsNPP~x3zruRfPB4R~XRn7ZZCvSJjYG7-uDq7~UzrGmm2ePoiptrQlxAU3p7eaEsb0d3Y1hmBZNWakllnQBCFTWiO-Ar9zEWHwRVPF6Rg4zPIL-QdX7MOrnYQvZrkaN1w4uhCrbRuoSpQsllnRhkuCIduSiDJgq48NKN-pD9-IYgg7zDKuDAIwSQnKqxBLsX5eUaBNnoZHGzqnvZfwl9gY7t8z3zP80f4AB8S0M9iJSTVeUNXA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":11,
+               "name":"Ink Resistance Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/db36f7e89194ed642f53465abfa449669031a66d7538135c703d3f7d41f99c0d_0.png?Expires=1736467200\u0026Signature=qmcjx8lp1mbxX42VIrEa6Gm2XovF6UagDO6yScbOpa7k9vbd69ES56-8FvxCvg5eDExEsSz~PohKsPiMl8QvOkKHns7b-rVwNQ58Fh0S3LB71w6pSmiXgzHgAh3xPcL6SXSkTCW7Q4c9kzHAOfj7PhYFuwV9JFwes81UvBUL0A7Lw~CNbPri-jD5Oe-LXpvyiGQrWncN5bGhlSOd9mZCALTXVzAh7eM8h8O7uSPxQraRn2YLgEOtzkUh841KeUnJpsrI3wXGRQWBDy4kmnTuLkCIgmv4wx~AAndmHWZQ3ru6jPUe~Sf3-8Zz55GW9igUah1-DToTTUh-zKHzIB0axA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":12,
+               "name":"Sub Resistance Up",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/664489b24e668ef1937bfc9a80a8cf9cf4927b1e16481fa48e7faee42122996d_0.png?Expires=1736467200\u0026Signature=NK-Nvkm0Z3TEiGd-RPecoRopUNAixTmSLyQ~msM7J6qmZGs2nMh6B4~1fJGQm5BkXHOFoHSmTOkE3-NGkyim-oKih4Nygd7qLtQvio7g2PFPPB8W1znqyNG1Xv46bpWpCDtf9dlx2cMfWIoq5lC~n5sFnoeGzL9cRhC7Td0JS6oHgD2kX~uFVPss0mnJwwjJc~5-Dw2BYrYidt0~zsMMwU2ALw85Z~ExLMuPxvXdhH7vzi0TDiOtgm23Q-jx1pkz-yB45TZnoMjoNyIXXJMcAJzeEqRIc1Y8IS3G7Og2eG7ZXIIGejQzlLebLZ7z2AoJTWXR-Wvp8HD2vXykRyKBoQ__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":13,
+               "name":"Intensify Action",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/1a0c78a1714c5abababd7ffcba258c723fefade1f92684aa5f0ff7784cc467d0_0.png?Expires=1736467200\u0026Signature=Yha9cdyQvplC80joE3luqOxFJhq3hxNIm~LZpjyQxwqbB9DgaQbvhF3~6kmMJmh6yhPZMISqTL~5W~SlSfJwWf1ZxZWz2NzzcVPtVKDX91j7YkNtVAx1V3vDvBM5YoyAvT0hjp0o~W~ILfi7dZEGfQ1TYNZ5p~uaWhwZP1eq56tRZYkIZa3zaqCrq6rNJ0BwBNiL4Xc42svf~XNXaKOWJQYk~ngwTzu1Ev2T8IduXfxuCOSDdp1GtK5i1dJmnPLO7SiU3xDFe4NhYscAxqYF8MVk5emsbBomidmm5wgzoUevZ8ax5uDk43CdpKjWERZm28vaKv~dlrKgdbIfmYNxow__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":100,
+               "name":"Opening Gambit",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/85d97cd3d5890b80e020a554167e69b5acfa86e96d6e075b5776e6a8562d3d4a_0.png?Expires=1736467200\u0026Signature=kay35XgT~dGN-8D~Ow4L9gOL1KqLAv24f6bSX1Hu285hisItWrSKyRaAmpSUOCCnjsJl1XjntqgxcdaQo2uRWVTs9B7QykCM8VMUQmSj5ev5iQIVBNXcb0MkcDAY8UwiZIJOUAhZzzLiYQk-Un0p-TSfZ6SovycIrfy2Dyv7x2LzqSQPsx~UMm9oEYi4UZg~S~qfNe9-SQsf6X~c764dnV-OO7qAffrc77JVhi-LrSwW9tRVAOSwqeRb5cIwKOdXqNQ3aYnk1ACc2Kxj5CpSpuxl6-83afPCltWGCQeGVf4Xgvqx~SRV536JoWZGfDV2wxyzR0QyOookjdU2Pg7nTg__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":101,
+               "name":"Last-Ditch Effort",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/d514787f65831c5121f68b8d96338412a0d261e39e522638488b24895e97eb88_0.png?Expires=1736467200\u0026Signature=uEfTCeIY7tVIYFUQcTRoAxOcodIYzn4ZjgexnnqJIKUmT0JbEVXHvnElNu-XKjWxxynB4YgRs2w9FUxoRXXFfi6ZsCFVuYpdgaJ93QOLKj-QgS6QTmTTegV5GazBuOzC04FlNTHu1PP43tX0bC2WGpq9ns-WX1NzjDsck7QQSZzZOAv4G0S30-DaP1XU4IcWTIWlMn71VbQVKjENiUb2xI9rdJzMPhKZFDBJlKpcL1kXeMPRTk0lNWvcjnpugfyxATIZ23lI7qIHoqXavW3NLHi0FJyag~b4gG1p3y2CBRpN1aNHHnsRZqWNsZIjF8E77aV9Fuq0efTkZnlS1HkCcA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":102,
+               "name":"Tenacity",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/aa5b599075c3c1d27eff696aeded9f1e1ddf7ae3d720268e520b260db5600d60_0.png?Expires=1736467200\u0026Signature=hn3kqCtF0dkq2RpQuSKNIo2ou3g18nTRsi4RkSC~zAKFLv0eEeRJ3c8qhvDI5gb8yU4PDx~hZbSrXSmPyXtjkxtkuqOD1mUal8aUDcCTY1m8vQ6L61g6ioesTScSfQQOEewkBH7R-Q1iZ5iuTRKkIpCE~jgNjRzr~byyBlyJQGxdBd7N08h876NH-EFg8tcRyn3O6mGbIT7gCFcAS~vdv-wMC0pCQmea8xdlfw7Bzos~~cNfalJTEZu6IA1krWOxRj5QQDtbz7swloYlGjZkvX256R9ZleStJ32xCC1rG68-gL8Ch04A7FBF-661naZjKEP7eWQMWWazeezL66vZcQ__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":103,
+               "name":"Comeback",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/748c101d23261aee8404c573a947ffc7e116a8da588c7371c40c4f2af6a05a19_0.png?Expires=1736467200\u0026Signature=ui6UdGIWHvP2zBfYvbaFeAYQ~fAHmEoTccAmiHNY3VbQekHnBGX54J0kdxvysVBGtozI6REDKPVDLN07qsee~l5iF8uaN0hjzDb1NRTVhs4M9DmaFhw2kFrFo2zUpbTk2tuR~y13os4hhWoQbZHayND1Uda6GJPmWhNj2l4am6YrFwpbImWzUqm5iZmH50gWVM2F5e6kY-Q7ciE0QuruqVlavFaDYAXFo-cZ1IGH2uTtiqnz2L~aG2NLXX8WEGrkD-hapXV8DMgA~3uhs8K1OxkjI4ZXSDq7kfvPiA7hDHNlZNamUwvvNVxNg63qTMRjcgVK1p8FeMSlLnIigbJKWg__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":104,
+               "name":"Ninja Squid",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/2c0ef71abfb3efe0e67ab981fc9cd46efddcaf93e6e20da96980079f8509d05d_0.png?Expires=1736467200\u0026Signature=FuTz~i9CY8AJB362XhP2W62PUeaKrbrrQ2m5sg~OHPhZvfQhc0EC2FWwo0Qaa0xyrGgK66q5gn0FeaFeQEUlC1yRHFlhyON2PUsKs5ehjVlaBpMb-JO3qO0cYXU7rvjWSjj9YNDXvcKbKkW3gUtQiWf-SOKMq-WXwKlwBT3LVrUh-M2CkXga3zjYYRdPr7LLaDGGrHd89G7zUCViVbABqbz2CvqcptxYFhEXxqGuRsKLRt5N0u9dFIJO~ZUnALxj6cOp3bRel4XzehmE2KsMI1LDulqzg3SZCZKf1K4dLn3HyHg265Kg2o5kx0szaopCYyl9e5jukvuLHxF9iV-mOg__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":105,
+               "name":"Haunt",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/de15cad48e5f23d147449c70ee4e2973118959a1a115401561e90fc65b53311b_0.png?Expires=1736467200\u0026Signature=KboqOjW9BuHxWc2hSA6y13ITbXgTcvFut0Q1xyhQ~3~Bf7FcwVYyKl9EnIFGaalw~U8~GcEgHifQEoL1Wu-IDDsagpFXvHFOiV2-1dYThoV9JnYzB4iWWDudJ9s9qFhZpr1pGusGIfYwHn8XdfRqAiegxKhWKmTRCeVNQRabbSIW4sBYE7XOZ5D5f19R4d7TXxUUja2-pQNxY26~VEecdE8lbOcLNZxj5J46dYE-RS-1sUl37tOYMyd4KCgB8P61CTxXSA8tm3cnCAZSkGv-Mc0EOLZC4q70mhbnJPLXVqqYluohrJB3fDbwk0XtytCgyZ-b-8WOp4GUoBQNiCE~2w__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":106,
+               "name":"Thermal Ink",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/56816a7181e663b5fedce6315eb0ad538e0aadc257b46a630fcfcc4a16155941_0.png?Expires=1736467200\u0026Signature=KR0IAzYDblU6HXMSxkh~fUcplL4PXMRaVWSeXOqub5DYIKs8PLxMX~B-qJtMg5lAPb0dD1wWhRW6rYPJjTax8Gf~BSrz5pvZVuzbL9Pceaq226qdMDYZAYS83h4tFJLVMkl-WiyKYrrO2YzZmAq6zW3~OLMh-qGrsyr1P8VGHkSP-mkgSBRRra3QX8oGdsB7~69Ua55p6qQauadSJ3fjbFQJR-R-cfQ6xEwE3cRBisPyBWasST-mOyG6~mFAqFOWQW4emSJAW9OC4Ydh0YsOT8w0-HqeADsaZw1KS-AjaNU8krv4Z--f1wChHOTIYVZKZ8BuF5hwSajkM68xjX3TIA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":107,
+               "name":"Respawn Punisher",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/de0d92f7dfed6c76772653d6858e7b67dd1c83be31bd2324c7939105180f5b71_0.png?Expires=1736467200\u0026Signature=QS~yss2UMMPeIkd8PB4W9n~5VyOuNEwazkwMvOcs0n~R9PXD~Ov0DAsVj6-Ut0ps3P3efmcft1~XVmIZzcbmdCJwVdHvatkTBEcnt8kuGOisQWLOEJtnAw-pzXnPzPD6T59Zh3hnTe1R6AmJSnr2O-KTr7VHY3MIdO4DcDZnI8MbcJ3IlnGwfK-IQpvaspn1tNi5WpCg0c5GYEXZ9N3jgHb63UVX4l8DC0M9CxSE1ZDn-HMB5MZUu9bhJrI1JLaR3PwUXXo-NtEmKHv-EIjc64kKI0Jypk5IKFG6kvI38AUl6QWIr3f9fFkpLYI49i7J72EBfP5suhaBTV1GEImSmw__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":108,
+               "name":"Ability Doubler",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/0d6607b6334e1e84279e482c1b54659e31d30486ef0576156ee0974d8d569dbc_0.png?Expires=1736467200\u0026Signature=uL~-YkBviWHD3Zfl0cnxcQAzVxC5vgRNKyQKBSANPAIsIE3ZdSV7easRG0egC6~ATXowLT3MZ2-2O6Tnsgulgb-PeHBlF5MvTtpYGZLkneGVzCWUFViMTh00GMfSP5HDBjrQE2Psrdt9XDvuK3381cyfEkp8T2ucMbALLVUbUu9tUbLaF3ii2sqX8iFyv9DIRQDTvF3xHRKcsgr5DYsol4EdMG3Y06oMWQIsjB~6R9Y7dYPPfxgXt5vCTYJr4vZ-0nmI-mCPT18SdJeY-ytwGQB134UtiWO~lW5YL3gUE69-7gPvuM2xrXxiWL2xqSkrDc78nQZcp4FOKaXd1JupLA__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":0.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":109,
+               "name":"Stealth Jump",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/f9c21eacf6dbc1d06edbe498962f8ed766ab43cb1d63806f3731bf57411ae7b6_0.png?Expires=1736467200\u0026Signature=sJie3bTBg-5fhARN2Vasip~80A4oClSglwFjxhUf0pdtegoG3M1j1DB5w~Kquz5DCimtqCDBMlEq7GTZ2tR0Hg~3pn2OrrTWFHlaX2kQkebAYv7qPEIQSIn3nTzqZmO3HBuWYAve3BvVwDj-7a8CiKW1obQyS7uDHq3uHQ-bCciGBDy8cNBVOWuoqhp0XTKpAm~T7RQX2pcovwaEFLLenNMWLk79HM65Zzdo08Sd4CPTtMTUn6fHPufhbB10lGLKtpqfMXoyGgOMeLrf1sKiH~ZKBmY42oAj2Vo7XQqB~gph~4bOAtDYuU~v~rIjWIx1sRVFaJ9-Nk1nAdpSEy5K8w__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":110,
+               "name":"Object Shredder",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/9d982dc1a7a8a427d74df0edcebcc13383c325c96e75af17b9cdb6f4e8dafb24_0.png?Expires=1736467200\u0026Signature=QqB1ogcczcYRXst~4ese0F7AH8-fVo0EB-KLn5mdEi8pdInSIyX6P3GXcy3Xa1a5sMA-i-8oWnJ2lzUbqkbdQZagsEXcLzDdcMmNv4-Yus0OMMNWwbEhgCM2xn8cnp8pSzmZfj~JGnJLWkaOabEkl9U2UVayM0SKmorauq7y7P1lbYZLFEQRmDWTY1x1g2Cv2UUbXdTUnW3vRljcbYYApgWyjfOVLm-hITbXS11s6L4TbUordCPuIL~G16HByWHH6cXKKTsfuvQx66UXQdp0fkTP5dPthLdY9w4CiT7aaVj9OUNsspTPgJlojNSjoDN6Osywnr15ALJYTAE3XKJqcQ__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            },
+            {
+               "__typename":"GearPower",
+               "gearPowerId":111,
+               "name":"Drop Roller",
+               "image":{
+                  "url":"https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/skill_img/18f03a68ee64da0a2e4e40d6fc19de2e9af3569bb6762551037fd22cf07b7d2d_0.png?Expires=1736467200\u0026Signature=itpsETEYSwjHupUzHAPjCnelcpPT7BL459TEPZViDERTlF3rFjsJWeMQ1TrwmTVv1m5qd2ks3D6dudi6YmoKChC~ChDHY5ypU9dg5mgOidmxd74xyGdUiev01DDc8BAe5nY1HClNWzgaO0pIBqfrIHTXbyy9QMofNIPvNmtlbMuH6kGGFwttTI~5fLwMVqCh4RGglh-BGrA1hzV9FXLaFc13T6YlbuVXRmE1zeRyVMvYd7pWA6vStNmwAnUu-eERJ02seQxvWsTY5c0eaA8yxufmGQeh3y~PzURFM0YNmxVegmdyNbDZNSllOjuMJ6H7KqXfh32cJH2Cr7nxjUagIw__\u0026Key-Pair-Id=KNBS2THMRC385"
+               },
+               "power":1.0
+            }
+         ]
+      }
+   }
+}

@@ -1,33 +1,24 @@
 package splatnet.controllers;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
-import splatnet.s3s.classes.Friend;
-import splatnet.s3s.classes.Game;
-import splatnet.s3s.classes.Player;
+import splatnet.s3s.classes.game.Player;
+import splatnet.s3s.classes.misc.Ability;
+import splatnet.s3s.classes.misc.Stuff;
+import splatnet.s3s.classes.weapons.MainWeapon;
 
 
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HomePageController extends Controller {
@@ -208,30 +199,25 @@ public class HomePageController extends Controller {
 
     private void displayStuffs() {
 
-        JsonObject headGear = myLastGamePlayer.getHeadGear();
-        JsonObject clothes = myLastGamePlayer.getClothingGear();
-        JsonObject shoes = myLastGamePlayer.getShoesGear();
+        Stuff headGear = myLastGamePlayer.getHeadGear();
+        Stuff clothes = myLastGamePlayer.getClothingGear();
+        Stuff shoes = myLastGamePlayer.getShoesGear();
 
         VBox headGearVBox = new VBox();
         headGearVBox.setAlignment(Pos.CENTER);
         HBox headGearHBox = new HBox();
         headGearHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView headGearImage = new ImageView(new Image(headGear.get("image").getAsJsonObject()
-                                                                  .get("url").getAsString()));
+        ImageView headGearImage = new ImageView(new Image(headGear.getImage().toURI().toString()));
         headGearImage.setFitHeight(128);
         headGearImage.setFitWidth(128);
 
-        ImageView headGearMain = new ImageView(new Image(headGear.get("primaryGearPower").getAsJsonObject()
-                                                                          .get("image").getAsJsonObject()
-                                                                          .get("url").getAsString()));
+        ImageView headGearMain = new ImageView(new Image(headGear.getMainAbility().getImage().toURI().toString()));
         headGearMain.setFitHeight(60);
         headGearMain.setFitWidth(60);
         headGearHBox.getChildren().add(headGearMain);
 
-        for (JsonElement sub : headGear.get("additionalGearPowers").getAsJsonArray()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getAsJsonObject()
-                                                                    .get("image").getAsJsonObject()
-                                                                    .get("url").getAsString()));
+        for (Ability sub : headGear.getSubAbilities()) {
+            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             headGearHBox.getChildren().add(subAbilityImage);
@@ -245,22 +231,17 @@ public class HomePageController extends Controller {
         clothesVBox.setAlignment(Pos.CENTER);
         HBox clothesHBox = new HBox();
         clothesHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView clothesImage = new ImageView(new Image(clothes.get("image").getAsJsonObject()
-                                                                  .get("url").getAsString()));
+        ImageView clothesImage = new ImageView(new Image(clothes.getImage().toURI().toString()));
         clothesImage.setFitHeight(128);
         clothesImage.setFitWidth(128);
 
-        ImageView clothesGearMain = new ImageView(new Image(clothes.get("primaryGearPower").getAsJsonObject()
-                                                                           .get("image").getAsJsonObject()
-                                                                           .get("url").getAsString()));
+        ImageView clothesGearMain = new ImageView(new Image(clothes.getMainAbility().getImage().toURI().toString()));
         clothesGearMain.setFitHeight(60);
         clothesGearMain.setFitWidth(60);
         clothesHBox.getChildren().add(clothesGearMain);
 
-        for (JsonElement sub : clothes.get("additionalGearPowers").getAsJsonArray()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getAsJsonObject()
-                                                                    .get("image").getAsJsonObject()
-                                                                    .get("url").getAsString()));
+        for (Ability sub : clothes.getSubAbilities()) {
+            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             clothesHBox.getChildren().add(subAbilityImage);
@@ -274,22 +255,17 @@ public class HomePageController extends Controller {
         shoesVBox.setAlignment(Pos.CENTER);
         HBox shoesHBox = new HBox();
         shoesHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView shoesImage = new ImageView(new Image(shoes.get("image").getAsJsonObject()
-                                                                  .get("url").getAsString()));
+        ImageView shoesImage = new ImageView(new Image(shoes.getImage().toURI().toString()));
         shoesImage.setFitHeight(128);
         shoesImage.setFitWidth(128);
 
-        ImageView shoesGearMain = new ImageView(new Image(shoes.get("primaryGearPower").getAsJsonObject()
-                                                                           .get("image").getAsJsonObject()
-                                                                           .get("url").getAsString()));
+        ImageView shoesGearMain = new ImageView(new Image(shoes.getMainAbility().getImage().toURI().toString()));
         shoesGearMain.setFitHeight(60);
         shoesGearMain.setFitWidth(60);
         shoesHBox.getChildren().add(shoesGearMain);
 
-        for (JsonElement sub : shoes.get("additionalGearPowers").getAsJsonArray()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getAsJsonObject()
-                                                                    .get("image").getAsJsonObject()
-                                                                    .get("url").getAsString()));
+        for (Ability sub : shoes.getSubAbilities()) {
+            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             shoesHBox.getChildren().add(subAbilityImage);
@@ -307,27 +283,13 @@ public class HomePageController extends Controller {
 
     private void displayWeapon() {
 
-        JsonObject weaponData = myLastGamePlayer.getWeapon();
+        MainWeapon weaponData = myLastGamePlayer.getWeapon();
 
-        String mainWeaponId = weaponData.get("id").getAsString();
+        File mainWeaponFile = weaponData.getImage();
 
-        File mainWeaponFile = new File("src/main/resources/splatnet/assets/weapons/" + mainWeaponId + ".png");
+        File subWeaponFile = weaponData.getSubWeapon().getImage();
 
-        if (!mainWeaponFile.exists()) {
-            System.out.println("Main weapon file doesn't exist, downloading it");
-            S3SMain.downloadWeapon(weaponData, "weapons");
-        }
-
-        String specialWeaponId = weaponData.get("specialWeapon").getAsJsonObject()
-                                            .get("id").getAsString();
-
-        File specialWeaponFile = new File("src/main/resources/splatnet/assets/specials/" + specialWeaponId + ".png");
-
-        String subWeaponId = weaponData.get("subWeapon").getAsJsonObject()
-                                       .get("id").getAsString();
-
-        File subWeaponFile = new File("src/main/resources/splatnet/assets/subs/" + subWeaponId + ".png");
-
+        File specialWeaponFile = weaponData.getSpecialWeapon().getImage();
 
         ImageView weaponImage = new ImageView(mainWeaponFile.toURI().toString());
         weaponImage.setFitHeight(150);

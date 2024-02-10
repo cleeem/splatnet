@@ -93,7 +93,7 @@
                <children>
                   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="713.0" prefWidth="980.0" style="-fx-background-color: #292e35;" HBox.hgrow="ALWAYS">
                     <content>
-                        <VBox id="matchList" fx:id="matchList" alignment="TOP_CENTER" minHeight="650.0" minWidth="980.0" spacing="10.0">
+                        <VBox id="matchList" fx:id="matchList" alignment="TOP_CENTER" minWidth="980.0" prefHeight="850.0" prefWidth="980.0" spacing="10.0" style="-fx-background-color: #292e35;">
                            <padding>
                               <Insets top="50.0" />
                            </padding>

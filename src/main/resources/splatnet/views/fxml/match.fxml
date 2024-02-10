@@ -3,15 +3,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #292e35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.MatchController">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="740.0" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: #292e35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.MatchController">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
          <children>
-            <HBox fx:id="header" alignment="CENTER" prefHeight="250.0" prefWidth="1080.0" />
+            <HBox alignment="CENTER" prefHeight="250.0" prefWidth="1080.0">
+               <children>
+                  <VBox fx:id="modeContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS" />
+                  <VBox fx:id="stageContainer" alignment="CENTER" prefHeight="150.0" prefWidth="650.0" spacing="20.0" HBox.hgrow="NEVER" />
+                  <VBox fx:id="infosContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+               </children></HBox>
             <HBox alignment="CENTER" prefHeight="600.0" prefWidth="1080.0">
                <children>
-                  <VBox fx:id="test" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                  <VBox fx:id="myTeamBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+                  <VBox fx:id="ennemyTeamBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children>

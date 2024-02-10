@@ -13,13 +13,13 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
-import splatnet.s3s.classes.Game;
-import splatnet.s3s.classes.Player;
-import splatnet.s3s.classes.Team;
+import splatnet.s3s.classes.game.Game;
+import splatnet.s3s.classes.game.Player;
+import splatnet.s3s.classes.game.Team;
+import splatnet.s3s.classes.weapons.MainWeapon;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HistoryController extends Controller {
@@ -285,17 +285,17 @@ public class HistoryController extends Controller {
         modeIconView.setFitHeight(64);
         modeIconView.setFitWidth(64);
 
-        String weaponId = null;
+        MainWeapon weapon = null;
         Storage storage = Storage.getInstance();
         for (Player player : myTeam.getPlayers()) {
             if (player.isMyself()) {
                 if (storage.getPlayerData() == null) {
                     storage.setPlayerData(player);
                 }
-                weaponId = player.getWeapon().get("id").getAsString();
+                weapon = player.getWeapon();
             }
         }
-        File weaponIcon = new File("src/main/resources/splatnet/assets/weapons/" + weaponId + ".png");
+        File weaponIcon = weapon.getImage();
         ImageView weaponIconView = new ImageView(weaponIcon.toURI().toString());
         weaponIconView.setFitHeight(64);
         weaponIconView.setFitWidth(64);

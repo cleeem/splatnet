@@ -249,12 +249,15 @@ public class UtilitaryS3S {
 
     public static void downloadSmallImage(String objectUrl, String objectName, String imageType) throws IOException {
 
+        objectName = objectName.replace("\\", "").replace("/", "");
+
         File objectFile = new File("src/main/resources/splatnet/assets/"
                                             + imageType + "/" + objectName + ".png");
 
         if (objectFile.exists()) {
             return;
         } else {
+            System.out.println("Creating file: " + objectFile.getAbsolutePath());
             objectFile.createNewFile();
         }
 

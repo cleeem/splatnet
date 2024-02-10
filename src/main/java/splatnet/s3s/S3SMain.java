@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.google.gson.*;
-import splatnet.s3s.classes.Friend;
-import splatnet.s3s.classes.Game;
-import splatnet.s3s.classes.Player;
+import splatnet.s3s.classes.misc.Friend;
+import splatnet.s3s.classes.game.Game;
+import splatnet.s3s.classes.game.Player;
 
 public class S3SMain {
 
@@ -58,9 +58,7 @@ public class S3SMain {
             }
         }
 
-        HashMap<String, String> data = Exploitation.getXPowers(UtilitaryS3S.gtoken);
-
-        return data;
+        return Exploitation.getXPowers(UtilitaryS3S.gtoken);
     }
 
     public static ArrayList<Game> fetchXBattles() {
@@ -225,95 +223,24 @@ public class S3SMain {
     }
 
 
-    /**
-     * download the image of the weapon
-     *
-     * @param weapon
-     */
-    public static void downloadWeapon(JsonObject weapon, String type) {
-
-        if (type.equals("weapons") && (!weapon.has("image2d") || weapon.get("image2d").isJsonNull())) {
-            System.out.println("no image for " + weapon.get("name").getAsString());
-            return;
-        }
-        String imageType;
-
-        if (type.equals("weapons")) {
-            imageType = "image2d";
-        } else {
-            imageType = "image";
-        }
-
-        String weaponUrl = weapon.get(imageType).getAsJsonObject().get("url").getAsString();
-        String weaponName = weapon.get("id").getAsString();
-
-        try {
-            UtilitaryS3S.downloadSmallImage(weaponUrl, weaponName, type);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-    }
-
-
-    public static void downloadGear(JsonObject gear, String type) {
-
-        String idKey;
-        switch (type) {
-            case "head":
-                idKey = "headGearId";
-                break;
-            case "clothes":
-                idKey = "clothingGearId";
-                break;
-            case "shoes":
-                idKey = "shoesGearId";
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + type);
-        }
-
-        type = "gears/" + type;
-
-        String gearUrl = gear.get("image").getAsJsonObject().get("url").getAsString();
-        String gearName = gear.get(idKey).getAsString();
-
-        try {
-            UtilitaryS3S.downloadSmallImage(gearUrl, gearName, type);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-    }
-
 
     public static void main(String[] args) {
         UtilitaryS3S.setup();
+        try {
+            UtilitaryS3S.checkTokens();
+        } catch (RuntimeException e) {
+            if (e.getMessage().equals("gtoken expired")) {
+                UtilitaryS3S.writeConfig(Iksm.getTokens(UtilitaryS3S.sessionToken));
+            }
+        }
         UtilitaryS3S.checkTokens();
 
-        String key = "WeaponRecordQuery";
+        String key = "myOutfitCommonDataEquipmentsQuery";
         String data = Exploitation.customQuery(
                 UtilitaryS3S.gtoken,
                 key,
                 null,
                 null
         );
-
-        ArrayList<String> dataArrayList = new ArrayList<>();
-        dataArrayList.add(data);
-
-//        writeToFile(key, dataArrayList);
-        JsonObject dataObject = JsonParser.parseString(data).getAsJsonObject().getAsJsonObject("data");
-
-        JsonArray weaponsArray = dataObject.getAsJsonObject("weaponRecords").getAsJsonArray("nodes");
-
-
-        for (JsonElement weaponElement : weaponsArray) {
-            JsonObject weaponObject = weaponElement.getAsJsonObject();
-            downloadWeapon(weaponObject.getAsJsonObject("subWeapon"), "subs");
-            downloadWeapon(weaponObject.getAsJsonObject("specialWeapon"), "specials");
-        }
-
-
     }
-
 }

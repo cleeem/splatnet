@@ -1,10 +1,20 @@
 package splatnet.models;
 
-import splatnet.s3s.classes.Friend;
-import splatnet.s3s.classes.Game;
-import splatnet.s3s.classes.Player;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import splatnet.s3s.UtilitaryS3S;
+import splatnet.s3s.classes.game.Game;
+import splatnet.s3s.classes.game.Player;
+import splatnet.s3s.classes.misc.Ability;
+import splatnet.s3s.classes.misc.Brand;
+import splatnet.s3s.classes.misc.Friend;
 
-import java.lang.reflect.Array;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -36,7 +46,99 @@ public class Storage {
 
     private ArrayList<Friend> friendList = new ArrayList<>();
 
-    private Storage() {}
+    private ArrayList<Ability> abilities = new ArrayList<>();
+
+    private ArrayList<Brand> brands = new ArrayList<>();
+
+    private Storage() {
+
+        File file = new File("src/main/resources/splatnet/data/abilities.json");
+
+        // file data is json type
+        if (file.exists()) {
+            try {
+                FileReader fileReader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String line;
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                fileReader.close();
+                JsonObject obj = JsonParser.parseString(result).getAsJsonObject();
+
+                JsonArray nodes = obj.getAsJsonObject("data")
+                                     .getAsJsonObject("gearPowers")
+                                     .getAsJsonArray("nodes");
+
+                for (JsonElement node : nodes) {
+                    String id = node.getAsJsonObject().get("gearPowerId").getAsString();
+
+                    String url = node.getAsJsonObject().get("image").getAsJsonObject().get("url").getAsString();
+
+                    try {
+                        UtilitaryS3S.downloadSmallImage(url, id, "abilities");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Ability ability = new Ability(node.getAsJsonObject());
+                    abilities.add(ability);
+                    Ability.addAbility(ability);
+
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        file = new File("src/main/resources/splatnet/data/brands.json");
+
+        // file data is json type
+        if (file.exists()) {
+            try {
+                FileReader fileReader = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String line;
+                String result = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                bufferedReader.close();
+                fileReader.close();
+                JsonObject obj = JsonParser.parseString(result).getAsJsonObject();
+
+                JsonArray nodes = obj.getAsJsonObject("data")
+                                     .getAsJsonObject("brands")
+                                     .getAsJsonArray("nodes");
+
+                for (JsonElement node : nodes) {
+                    String id = node.getAsJsonObject().get("id").getAsString();
+
+                    String url = node.getAsJsonObject().get("image").getAsJsonObject().get("url").getAsString();
+
+                    try {
+                        UtilitaryS3S.downloadSmallImage(url, id, "brands");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Brand brand = new Brand(node.getAsJsonObject());
+                    brands.add(brand);
+                    Brand.addBrand(brand);
+
+                }
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 
     public static Storage getInstance() {
         return instance;

@@ -1,17 +1,12 @@
 package splatnet;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import org.jsoup.Jsoup;
 import splatnet.controllers.Controller;
+import splatnet.models.Storage;
 import splatnet.s3s.Iksm;
-import splatnet.s3s.S3SMain;
 import splatnet.s3s.UtilitaryS3S;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class MainController extends Controller {
 
@@ -45,6 +40,7 @@ public class MainController extends Controller {
     }
 
     public void startApplication() throws IOException {
+        Storage storage = Storage.getInstance();
         System.out.println("Start button clicked");
         if (needToLogin == 0) {
             loadNewFxml("config");
