@@ -1,6 +1,7 @@
 package splatnet.controllers;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,20 +13,24 @@ import splatnet.s3s.classes.game.Game;
 import splatnet.s3s.classes.game.Player;
 import splatnet.s3s.classes.game.Team;
 import javafx.scene.control.Label;
+import splatnet.s3s.classes.misc.Ability;
+import splatnet.s3s.classes.misc.Stuff;
 
 import java.io.File;
 import java.io.IOException;
 
 public class MatchController extends Controller {
 
+    private static final Font SPLATOON2_FONT = new Font("Splatoon2", 18);
+
     private static final int LARGE_IMAGE_SIZE = 100;
+    private static final int PRIMARY_ABILITY_IMAGE_SIZE = 35;
+    private static final int SUB_IMAGE_SIZE = 25;
 
-    private static final int MEDIUM_IMAGE_SIZE = 75;
+    private static final int MAIN_WEAPON_IMAGE_SIZE = 80;
 
-    private static final int SMALL_IMAGE_SIZE = 50;
+    private static final int SUB_WEAPON_IMAGE_SIZE = 40;
 
-    private static final int PRIMARY_SUB_IMAGE_SIZE = 35;
-    private static final int SUB_IMAGE_SIZE = 20;
 
     @FXML
     public VBox modeContainer;
@@ -37,10 +42,10 @@ public class MatchController extends Controller {
     public VBox infosContainer;
 
     @FXML
-    public VBox myTeamBox;
+    public GridPane myTeamBox;
 
     @FXML
-    public VBox ennemyTeamBox;
+    public GridPane ennemyTeamBox;
 
     @FXML
     public void initialize() {
@@ -67,7 +72,7 @@ public class MatchController extends Controller {
         modeImageView.setFitWidth(LARGE_IMAGE_SIZE);
 
         Label modeLabel = new Label(game.getVsRule());
-        modeLabel.setFont(new Font("Splatoon2", 20));
+        modeLabel.setFont(SPLATOON2_FONT);
         modeLabel.setStyle("-fx-text-fill: white;");
 
         modeContainer.getChildren().add(modeImageView);
@@ -94,9 +99,10 @@ public class MatchController extends Controller {
         // so we get date and time separately
         String date = game.getPlayedTime().split("T")[0];
         String time = game.getPlayedTime().split("T")[1].split("\\.")[0];
+        time = time.substring(0, time.length() - 1);
 
         Label dateLabel = new Label(date + " " + time);
-        dateLabel.setFont(new Font("Splatoon2", 20));
+        dateLabel.setFont(SPLATOON2_FONT);
         dateLabel.setStyle("-fx-text-fill: white;");
 
         stageContainer.getChildren().add(dateLabel);
@@ -145,46 +151,142 @@ public class MatchController extends Controller {
         } else {
             scoresLabel = new Label(myTeamScore + " - " + ennemyTeamScore);
         }
-        scoresLabel.setFont(new Font("Splatoon2", 20));
+        scoresLabel.setFont(SPLATOON2_FONT);
         scoresLabel.setStyle("-fx-text-fill: white;");
         infosContainer.getChildren().add(scoresLabel);
 
     }
 
     private void displayMyTeam(Team myTeam) {
+        int row = 0;
+        int column = 0;
         for (Player player : myTeam.getPlayers()) {
-            myTeamBox.getChildren().add(displayPlayer(player));
+            myTeamBox.add(displayPlayer(player), column, row);
+            column++;
+            if (column == 2) {
+                column = 0;
+                row++;
+            }
         }
     }
 
     private void displayEnnemyTeam(Team ennemy) {
+        int row = 0;
+        int column = 0;
+        for (Player player : ennemy.getPlayers()) {
+            ennemyTeamBox.add(displayPlayer(player), column, row);
+            column++;
+            if (column == 2) {
+                column = 0;
+                row++;
+            }
+        }
     }
 
     private VBox displayPlayer(Player player) {
 
-        VBox playerBox = new VBox();
+        VBox container = new VBox();
+        container.setAlignment(Pos.CENTER);
+        container.setPadding(new Insets(10, 10, 10, 10));
+
+        GridPane playerBox = new GridPane();
         playerBox.setAlignment(Pos.CENTER);
+        playerBox.setHgap(10);
+        playerBox.setVgap(10);
+        playerBox.setStyle("-fx-background-color: #2c2b2b;");
 
         Label playerName = new Label(player.getName());
-        playerName.setFont(new Font("Splatoon2", 20));
+        playerName.setFont(SPLATOON2_FONT);
         playerName.setStyle("-fx-text-fill: white;");
 
         Label paintLabel = new Label(player.getPaint() + "p");
-        paintLabel.setFont(new Font("Splatoon2", 20));
+        paintLabel.setFont(SPLATOON2_FONT);
         paintLabel.setStyle("-fx-text-fill: white;");
 
-        playerBox.getChildren().add(playerName);
-        playerBox.getChildren().add(paintLabel);
-        playerBox.getChildren().add(displayStuffs(player));
-        playerBox.getChildren().add(displayWeapon(player));
+        Label kdaLabel = new Label(
+                player.getKills() + "(" + player.getAssists() + ")/"
+                 + player.getDeath() + "/"
+                 + player.getSpecial()
+        );
+        kdaLabel.setFont(SPLATOON2_FONT);
+        kdaLabel.setStyle("-fx-text-fill: white;");
 
-        return playerBox;
+        VBox statsBox = new VBox();
+        statsBox.getChildren().add(playerName);
+        statsBox.getChildren().add(paintLabel);
+        statsBox.getChildren().add(kdaLabel);
+
+        VBox weaponHolder = displayWeapon(player);
+        VBox gearHolder = displayStuffs(player);
+
+        // the display should be stats and weapon on the first row
+        // and gear on the second row
+        playerBox.add(statsBox, 0, 0);
+        playerBox.add(weaponHolder, 1, 0);
+        playerBox.add(gearHolder, 0, 1, 2, 1);
+
+        container.getChildren().add(playerBox);
+
+        return container;
 
     }
 
-    private HBox displayStuffs(Player player) {
+    private VBox displayStuffs(Player player) {
 
-        HBox gearHolder = new HBox();
+        VBox gearHolder = new VBox();
+        gearHolder.setAlignment(Pos.CENTER);
+
+        HBox headGearHolder = new HBox();
+        headGearHolder.setAlignment(Pos.BOTTOM_CENTER);
+        File primaryAbilityFile = player.getHeadGear().getMainAbility().getImage();
+        ImageView primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
+        primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
+        headGearHolder.getChildren().add(primaryAbilityImageView);
+
+        for (Ability ability : player.getHeadGear().getSubAbilities()) {
+            File subAbilityFile = ability.getImage();
+            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
+            subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
+            headGearHolder.getChildren().add(subAbilityImageView);
+        }
+
+        HBox clothesHolder = new HBox();
+        clothesHolder.setAlignment(Pos.BOTTOM_CENTER);
+        primaryAbilityFile = player.getClothingGear().getMainAbility().getImage();
+        primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
+        primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
+        clothesHolder.getChildren().add(primaryAbilityImageView);
+
+        for (Ability ability : player.getClothingGear().getSubAbilities()) {
+            File subAbilityFile = ability.getImage();
+            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
+            subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
+            clothesHolder.getChildren().add(subAbilityImageView);
+        }
+
+        HBox shoesHolder = new HBox();
+        shoesHolder.setAlignment(Pos.BOTTOM_CENTER);
+        primaryAbilityFile = player.getShoesGear().getMainAbility().getImage();
+        primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
+        primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
+        shoesHolder.getChildren().add(primaryAbilityImageView);
+
+        for (Ability ability : player.getShoesGear().getSubAbilities()) {
+            File subAbilityFile = ability.getImage();
+            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
+            subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
+            shoesHolder.getChildren().add(subAbilityImageView);
+        }
+
+        gearHolder.getChildren().add(headGearHolder);
+        gearHolder.getChildren().add(clothesHolder);
+        gearHolder.getChildren().add(shoesHolder);
 
         return gearHolder;
     }
@@ -193,6 +295,29 @@ public class MatchController extends Controller {
 
         VBox weaponHolder = new VBox();
 
+        File mainWeaponFile = player.getWeapon().getImage();
+        File subWeaponFile = player.getWeapon().getSubWeapon().getImage();
+        File specialWeaponFile = player.getWeapon().getSpecialWeapon().getImage();
+
+        ImageView mainWeaponImageView = new ImageView(new Image(mainWeaponFile.toURI().toString()));
+        mainWeaponImageView.setFitHeight(MAIN_WEAPON_IMAGE_SIZE);
+        mainWeaponImageView.setFitWidth(MAIN_WEAPON_IMAGE_SIZE);
+
+        ImageView subWeaponImageView = new ImageView(new Image(subWeaponFile.toURI().toString()));
+        subWeaponImageView.setFitHeight(SUB_WEAPON_IMAGE_SIZE);
+        subWeaponImageView.setFitWidth(SUB_WEAPON_IMAGE_SIZE);
+
+        ImageView specialWeaponImageView = new ImageView(new Image(specialWeaponFile.toURI().toString()));
+        specialWeaponImageView.setFitHeight(SUB_WEAPON_IMAGE_SIZE);
+        specialWeaponImageView.setFitWidth(SUB_WEAPON_IMAGE_SIZE);
+
+        weaponHolder.getChildren().add(mainWeaponImageView);
+
+        HBox subSpecialHolder = new HBox();
+        subSpecialHolder.getChildren().add(subWeaponImageView);
+        subSpecialHolder.getChildren().add(specialWeaponImageView);
+
+        weaponHolder.getChildren().add(subSpecialHolder);
 
         return weaponHolder;
     }

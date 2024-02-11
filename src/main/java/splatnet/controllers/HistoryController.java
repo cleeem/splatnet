@@ -309,7 +309,7 @@ public class HistoryController extends Controller {
         }
 
         Label gameStatus = new Label(game.getStatus());
-        String textColor = null;
+        String textColor;
         if (game.getStatus().equals("WIN")) {
             textColor = "#a40840";
         } else if (game.getStatus().equals("LOSE")) {

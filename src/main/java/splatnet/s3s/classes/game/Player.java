@@ -84,11 +84,11 @@ public class Player {
         namePlate = jsonData.get("nameplate").getAsJsonObject();
 
         JsonObject results;
-        if (jsonData.has("results") && !jsonData.get("results").isJsonNull()) {
-            results = jsonData.get("results").getAsJsonObject();
-            kills = results.get("kills").getAsInt();
-            death = results.get("deaths").getAsInt();
-            assists = results.get("assists").getAsInt();
+        if (jsonData.has("result") && !jsonData.get("result").isJsonNull()) {
+            results = jsonData.get("result").getAsJsonObject();
+            kills = results.get("kill").getAsInt();
+            death = results.get("death").getAsInt();
+            assists = results.get("assist").getAsInt();
             special = results.get("special").getAsInt();
         }
 
