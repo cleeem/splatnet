@@ -50,7 +50,7 @@
                            <graphic>
                               <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../assets/battles/x.png" />
+                                    <Image url="@../../assets/battles/xBattles.png" />
                                  </image>
                               </ImageView>
                            </graphic>

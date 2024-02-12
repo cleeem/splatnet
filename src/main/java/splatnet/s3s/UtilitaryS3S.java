@@ -1,6 +1,7 @@
 package splatnet.s3s;
 
 import com.google.gson.*;
+import splatnet.Main;
 
 import java.io.*;
 import java.net.URL;
@@ -10,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UtilitaryS3S {
+
+    private static final String ASSETS_URL = Main.class.getResource("assets/").getPath();
 
     public static final String A_VERSION = "0.6.0";
 
@@ -249,15 +252,14 @@ public class UtilitaryS3S {
 
     public static void downloadSmallImage(String objectUrl, String objectName, String imageType) throws IOException {
 
+
         objectName = objectName.replace("\\", "").replace("/", "");
 
-        File objectFile = new File("src/main/resources/splatnet/assets/"
-                                            + imageType + "/" + objectName + ".png");
+        File objectFile = new File(ASSETS_URL + imageType + "/" + objectName + ".png");
 
         if (objectFile.exists()) {
             return;
         } else {
-            System.out.println("Creating file: " + objectFile.getAbsolutePath());
             objectFile.createNewFile();
         }
 
@@ -277,8 +279,9 @@ public class UtilitaryS3S {
 
     public static void downloadLargeImage(String objectUrl, String objectName, String imageType) throws IOException {
 
-        File objectFile = new File("src/main/resources/splatnet/assets/"
-                + imageType + "/" + objectName + ".png");
+        objectName = objectName.replace("\\", "").replace("/", "");
+
+        File objectFile = new File(ASSETS_URL + imageType + "/" + objectName + ".png");
 
         if (objectFile.exists()) {
             return;

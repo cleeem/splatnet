@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Game;
@@ -18,9 +19,13 @@ import splatnet.s3s.classes.misc.Stuff;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class MatchController extends Controller {
 
+    private static final String ASSETS_URL = "assets/";
     private static final Font SPLATOON2_FONT = new Font("Splatoon2", 18);
 
     private static final int LARGE_IMAGE_SIZE = 100;
@@ -66,7 +71,7 @@ public class MatchController extends Controller {
     private void displayHeaderInfos(Game game) {
 
         // affichage du mode
-        File modeFile = new File("src/main/resources/splatnet/assets/modes/" + "S3_icon_" + game.getVsRule().replace(" ", "_") + ".png");
+        File modeFile = new File(ASSETS_URL + "modes/" + "S3_icon_" + game.getVsRule().replace(" ", "_") + ".png");
         ImageView modeImageView = new ImageView(new Image(modeFile.toURI().toString()));
         modeImageView.setFitHeight(LARGE_IMAGE_SIZE);
         modeImageView.setFitWidth(LARGE_IMAGE_SIZE);
@@ -81,15 +86,38 @@ public class MatchController extends Controller {
         // affichage de la map
         String stageUrl = game.getVsStage().getAsJsonObject("image").get("url").getAsString();
         String stageId = game.getVsStage().get("id").getAsString();
-        File stageFile = new File("src/main/resources/splatnet/assets/maps/" + stageId + ".png");
+        String filePath = ASSETS_URL + "maps/" + stageId + ".png";
 
-        if (!stageFile.exists()) {
+        File stageFile = null;
+        InputStream inputStream = Main.class.getResourceAsStream(filePath);
+        if (inputStream == null) {
             try {
-                UtilitaryS3S.downloadLargeImage(stageUrl, stageId, "maps");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                // Si la ressource n'est pas trouvée, téléchargez-la
+                UtilitaryS3S.downloadSmallImage(stageUrl, stageId, "maps/");
+                inputStream = Main.class.getResourceAsStream(filePath);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
+        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
+        try {
+            stageFile = File.createTempFile(stageId, ".png");
+            // Copiez les données du flux d'entrée vers le fichier temporaire
+            Files.copy(inputStream, stageFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermez le flux d'entrée
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
         ImageView stageImageView = new ImageView(new Image(stageFile.toURI().toString()));
         stageImageView.setFitWidth(650);
         stageImageView.setFitHeight(100);

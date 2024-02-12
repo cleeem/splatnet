@@ -64,9 +64,6 @@ public class Game {
             jsonData = jsonData.get("vsHistoryDetail").getAsJsonObject();
         }
 
-//        System.out.println(jsonData);
-//        System.exit(0);
-
         id = jsonData.get("id").getAsString();
         vsRule = jsonData.get("vsRule").getAsJsonObject().get("name").getAsString();
         vsMode = jsonData.get("vsMode").getAsJsonObject().get("mode").getAsString();
@@ -93,7 +90,7 @@ public class Game {
         if (jsonData.has("xPower") && !jsonData.get("xPower").isJsonNull()) {
             xPower = jsonData.get("xMatch").getAsJsonObject().get("lastXPower").getAsString();
         }
-        // TODO anarchyInfos
+
         duration = jsonData.get("duration").getAsInt();
         playedTime = jsonData.get("playedTime").getAsString();
         awards = jsonData.get("awards").getAsJsonArray();

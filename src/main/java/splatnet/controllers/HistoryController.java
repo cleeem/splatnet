@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
 import splatnet.s3s.classes.game.Game;
@@ -20,9 +21,14 @@ import splatnet.s3s.classes.weapons.MainWeapon;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 public class HistoryController extends Controller {
+
+    private static final String ASSETS_URL = "assets/";
 
     private boolean showingGames = false;
 
@@ -212,7 +218,30 @@ public class HistoryController extends Controller {
     @FXML
     public void refresh() {
         matchList.getChildren().clear();
-        File loading = new File("src/main/resources/splatnet/assets/other/loading.gif");
+
+        String filePath = ASSETS_URL + "other/loading.gif";
+        File loading = null;
+
+        InputStream inputStream = Main.class.getResourceAsStream(filePath);
+
+        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
+        try {
+            loading = File.createTempFile("loading", ".png");
+            // Copiez les données du flux d'entrée vers le fichier temporaire
+            Files.copy(inputStream, loading.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermez le flux d'entrée
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         ImageView loadingView = new ImageView(loading.toURI().toString());
         loadingView.setFitHeight(100);
         loadingView.setFitWidth(100);
@@ -273,13 +302,39 @@ public class HistoryController extends Controller {
 
         String mode = getMode(game.getVsMode());
 
+        if (mode.equals("x")) {
+            mode = "xBattles";
+        }
+
         if (mode == null) {
             System.out.println(game.getVsMode());
             System.out.println("mode is null");
             return matchDisplay;
         }
 
-        File modeIcon = new File("src/main/resources/splatnet/assets/battles/" + mode + ".png");
+        String filePath = ASSETS_URL + "battles/" + mode + ".png";
+        File modeIcon = null;
+
+        InputStream inputStream = Main.class.getResourceAsStream(filePath);
+
+        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
+        try {
+            modeIcon = File.createTempFile(mode, ".png");
+            // Copiez les données du flux d'entrée vers le fichier temporaire
+            Files.copy(inputStream, modeIcon.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermez le flux d'entrée
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         ImageView modeIconView = new ImageView(modeIcon.toURI().toString());
 
         modeIconView.setFitHeight(64);

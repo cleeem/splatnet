@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
+import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Player;
 import splatnet.s3s.classes.misc.Ability;
 import splatnet.s3s.classes.misc.Stuff;
@@ -19,9 +20,15 @@ import splatnet.s3s.classes.weapons.MainWeapon;
 
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 
 public class HomePageController extends Controller {
+
+    private static final String BANNER_URL = "assets/banners/";
 
     private Player myLastGamePlayer;
 
@@ -132,12 +139,38 @@ public class HomePageController extends Controller {
 
         String bannerID = bannerObject.get("id").getAsString();
 
-        File bannerFile = new File("src/main/resources/splatnet/assets/banners/" + bannerID + ".png");
+        String filePath = BANNER_URL + bannerID + ".png";
 
-        if (!bannerFile.exists()) {
-            System.out.println("Banner file doesn't exist, downloading it");
-            S3SMain.downloadBanner(bannerObject);
+        InputStream inputStream = Main.class.getResourceAsStream(filePath);
+
+        File bannerFile = null;
+        if (inputStream == null) {
+            try {
+                // Si la ressource n'est pas trouvée, téléchargez-la
+                S3SMain.downloadBanner(bannerObject);
+                inputStream = Main.class.getResourceAsStream(filePath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
+        try {
+             bannerFile = File.createTempFile(bannerID, ".png");
+            // Copiez les données du flux d'entrée vers le fichier temporaire
+            Files.copy(inputStream, bannerFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermez le flux d'entrée
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
         ImageView banner = new ImageView(bannerFile.toURI().toString());
         banner.setFitHeight(200);

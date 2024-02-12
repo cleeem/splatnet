@@ -1,9 +1,7 @@
 package splatnet.models;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Game;
 import splatnet.s3s.classes.game.Player;
@@ -11,14 +9,16 @@ import splatnet.s3s.classes.misc.Ability;
 import splatnet.s3s.classes.misc.Brand;
 import splatnet.s3s.classes.misc.Friend;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Storage {
+
+    private static final String DATA_URL = "data/";
 
     private static Storage instance = new Storage();
 
@@ -52,90 +52,68 @@ public class Storage {
 
     private Storage() {
 
-        File file = new File("src/main/resources/splatnet/data/abilities.json");
+        // Chemin vers le fichier JSON
+        String filePath = DATA_URL + "abilities.json";
 
-        // file data is json type
-        if (file.exists()) {
-            try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String line;
-                String result = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                }
-                bufferedReader.close();
-                fileReader.close();
-                JsonObject obj = JsonParser.parseString(result).getAsJsonObject();
+        try {
+            // Obtenez un flux d'entrée vers la ressource JSON
+            InputStream inputStream = Main.class.getResourceAsStream(filePath);
 
-                JsonArray nodes = obj.getAsJsonObject("data")
+            if (inputStream != null) {
+                // Lecture du contenu du fichier JSON à l'aide d'un InputStreamReader
+                InputStreamReader reader = new InputStreamReader(inputStream);
+                // Analyse de la chaîne JSON en un objet JsonObject
+                JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
+
+                JsonArray nodes = jsonObject.getAsJsonObject("data")
                                      .getAsJsonObject("gearPowers")
                                      .getAsJsonArray("nodes");
 
                 for (JsonElement node : nodes) {
-                    String id = node.getAsJsonObject().get("gearPowerId").getAsString();
-
-                    String url = node.getAsJsonObject().get("image").getAsJsonObject().get("url").getAsString();
-
-                    try {
-                        UtilitaryS3S.downloadSmallImage(url, id, "abilities");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
                     Ability ability = new Ability(node.getAsJsonObject());
                     abilities.add(ability);
                     Ability.addAbility(ability);
 
                 }
 
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                // N'oubliez pas de fermer le flux
+                reader.close();
+            } else {
+                System.err.println("Le fichier JSON n'a pas été trouvé dans les ressources.");
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        file = new File("src/main/resources/splatnet/data/brands.json");
+        filePath = DATA_URL + "brands.json";
 
-        // file data is json type
-        if (file.exists()) {
-            try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String line;
-                String result = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                }
-                bufferedReader.close();
-                fileReader.close();
-                JsonObject obj = JsonParser.parseString(result).getAsJsonObject();
+        try {
+            // Obtenez un flux d'entrée vers la ressource JSON
+            InputStream inputStream = Main.class.getResourceAsStream(filePath);
 
-                JsonArray nodes = obj.getAsJsonObject("data")
+            if (inputStream != null) {
+                // Lecture du contenu du fichier JSON à l'aide d'un InputStreamReader
+                InputStreamReader reader = new InputStreamReader(inputStream);
+                // Analyse de la chaîne JSON en un objet JsonObject
+                JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
+
+                JsonArray nodes = jsonObject.getAsJsonObject("data")
                                      .getAsJsonObject("brands")
                                      .getAsJsonArray("nodes");
 
                 for (JsonElement node : nodes) {
-                    String id = node.getAsJsonObject().get("id").getAsString();
-
-                    String url = node.getAsJsonObject().get("image").getAsJsonObject().get("url").getAsString();
-
-                    try {
-                        UtilitaryS3S.downloadSmallImage(url, id, "brands");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
                     Brand brand = new Brand(node.getAsJsonObject());
                     brands.add(brand);
                     Brand.addBrand(brand);
-
                 }
 
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                // N'oubliez pas de fermer le flux
+                reader.close();
+            } else {
+                System.err.println("Le fichier JSON n'a pas été trouvé dans les ressources.");
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

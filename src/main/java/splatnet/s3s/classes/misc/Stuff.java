@@ -2,11 +2,18 @@ package splatnet.s3s.classes.misc;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 public class Stuff {
+
+    private static final String GEAR_URL = "assets/gears/";
 
     private String type;
 
@@ -41,6 +48,7 @@ public class Stuff {
     }
 
     public Stuff(JsonObject data) {
+
         this.type = data.get("__isGear").getAsString();
         this.name = data.get("name").getAsString().replace("\\", "").replace("/", "");
 
@@ -88,15 +96,38 @@ public class Stuff {
         }
 
         for (int i = subAbilitiesData.size(); i < 3; i++) {
-            this.subAbilities[i] = Ability.getAbilityById(112);
+            this.subAbilities[i] = Ability.getAbilityByName("Unknown");
         }
 
         String type = this.type.equals("HeadGear") ? "head" : this.type.equals("ClothingGear") ? "clothes" : "shoes";
-        this.image = new File("src/main/resources/splatnet/assets/gears/" + type + "/" + this.name + ".png");
-        if (!this.image.exists()) {
+        // Chemin relatif à la racine du JAR
+        String imagePath = GEAR_URL + type + "/" + this.name + ".png";
+        // Obtenez un flux d'entrée vers la ressource
+        InputStream inputStream = Main.class.getResourceAsStream(imagePath);
+
+        if (inputStream == null) {
             try {
+                // Si la ressource n'est pas trouvée, téléchargez-la
                 UtilitaryS3S.downloadSmallImage(this.imageURL, this.name, "gears/" + type);
+                inputStream = Main.class.getResourceAsStream(imagePath);
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
+        try {
+            this.image = File.createTempFile(this.name, ".png");
+            // Copiez les données du flux d'entrée vers le fichier temporaire
+            Files.copy(inputStream, this.image.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermez le flux d'entrée
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
