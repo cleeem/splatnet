@@ -46,7 +46,7 @@ public class Stage implements Comparable<Stage> {
         this.name = data.get("name").getAsString();
         this.imageURL = data.getAsJsonObject("image").get("url").getAsString();
 
-        String path = String.valueOf(Main.class.getResource("assets/abilities/" + this.name + ".png"));
+        String path = String.valueOf(Main.class.getResource("assets/maps/" + this.id + ".png"));
         if (path.equals("null")) {
             try {
                 UtilitaryS3S.downloadImage(this.imageURL, this.id, "maps");

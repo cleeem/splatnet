@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.ArrayList;
 
 public class NamePlate {
@@ -21,7 +22,12 @@ public class NamePlate {
         JsonArray badges = data.getAsJsonArray("badges");
         for (JsonElement badge : badges) {
             if (!badge.isJsonNull()) {
-                this.badges.add(new Badge(badge.getAsJsonObject()));
+                Badge bdg = Badge.findBadge(badge.getAsJsonObject().get("id").getAsString());
+                if (bdg == null) {
+                    this.badges.add(new Badge(badge.getAsJsonObject()));
+                } else {
+                    this.badges.add(bdg);
+                }
             } else {
                 this.badges.add(null);
             }

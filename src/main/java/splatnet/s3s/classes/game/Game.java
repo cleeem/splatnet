@@ -90,7 +90,12 @@ public class Game {
         }
 
 
-        vsStage = new Stage(jsonData.get("vsStage").getAsJsonObject());
+        vsStage = Stage.findStage(jsonData.get("vsStage").getAsJsonObject().get("id").getAsString());
+
+        if (vsStage == null) {
+            vsStage = new Stage(jsonData.get("vsStage").getAsJsonObject());
+        }
+
         if (jsonData.has("xPower") && !jsonData.get("xPower").isJsonNull()) {
             xPower = jsonData.get("xMatch").getAsJsonObject().get("lastXPower").getAsString();
         }
