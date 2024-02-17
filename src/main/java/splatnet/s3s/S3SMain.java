@@ -27,7 +27,7 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseVsHistory(UtilitaryS3S.gtoken, key, 50);
 
-        writeToFile(key, data);
+//        writeToFile(key, data);
 
         return gameList(data);
     }
@@ -44,7 +44,7 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseBattlesHistory(UtilitaryS3S.gtoken, key, 50);
 
-        writeToFile(key, data);
+//        writeToFile(key, data);
 
         return gameList(data);
     }
@@ -74,7 +74,7 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseBattlesHistory(UtilitaryS3S.gtoken, key, 50);
 
-        writeToFile(key, data);
+//        writeToFile(key, data);
 
         return gameList(data);
     }
@@ -92,7 +92,7 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseBattlesHistory(UtilitaryS3S.gtoken, key, 50);
 
-        writeToFile(key, data);
+//        writeToFile(key, data);
 
         return gameList(data);
     }
@@ -110,7 +110,7 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseBattlesHistory(UtilitaryS3S.gtoken, key, 50);
 
-        writeToFile(key, data);
+//        writeToFile(key, data);
 
         return gameList(data);
     }
@@ -128,7 +128,7 @@ public class S3SMain {
 
         ArrayList<String> data = Exploitation.parseBattlesHistory(UtilitaryS3S.gtoken, key, 50);
 
-        writeToFile(key, data);
+//        writeToFile(key, data);
 
         return gameList(data);
     }
@@ -215,7 +215,7 @@ public class S3SMain {
         String bannerName = bannerObject.get("id").getAsString();
 
         try {
-            UtilitaryS3S.downloadSmallImage(bannerUrl, bannerName, "banners");
+            UtilitaryS3S.downloadImage(bannerUrl, bannerName, "banners");
         } catch (IOException e) {
             System.out.println(e);
         }

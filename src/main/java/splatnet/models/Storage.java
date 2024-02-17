@@ -4,6 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Game;
 import splatnet.s3s.classes.game.Player;
@@ -11,10 +12,9 @@ import splatnet.s3s.classes.misc.Ability;
 import splatnet.s3s.classes.misc.Brand;
 import splatnet.s3s.classes.misc.Friend;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -52,90 +52,40 @@ public class Storage {
 
     private Storage() {
 
-        File file = new File("src/main/resources/splatnet/data/abilities.json");
+        // load abilities.json from resources in the data folder
+        // we use getResourceAsStream to get the file as a stream
+        // then we use the JsonParser to parse the stream into a JsonArray
 
-        // file data is json type
-        if (file.exists()) {
-            try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String line;
-                String result = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                }
-                bufferedReader.close();
-                fileReader.close();
-                JsonObject obj = JsonParser.parseString(result).getAsJsonObject();
+        try {
+            InputStream abilitiesStream = Main.class.getResourceAsStream("data/abilities.json");
+            JsonArray abilitiesArray = new JsonParser().parse(new InputStreamReader(abilitiesStream))
+                    .getAsJsonObject()
+                    .getAsJsonObject("data")
+                    .getAsJsonObject("gearPowers")
+                    .getAsJsonArray("nodes");
 
-                JsonArray nodes = obj.getAsJsonObject("data")
-                                     .getAsJsonObject("gearPowers")
-                                     .getAsJsonArray("nodes");
-
-                for (JsonElement node : nodes) {
-                    String id = node.getAsJsonObject().get("gearPowerId").getAsString();
-
-                    String url = node.getAsJsonObject().get("image").getAsJsonObject().get("url").getAsString();
-
-                    try {
-                        UtilitaryS3S.downloadSmallImage(url, id, "abilities");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    Ability ability = new Ability(node.getAsJsonObject());
-                    abilities.add(ability);
-                    Ability.addAbility(ability);
-
-                }
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            for (JsonElement abilityElement : abilitiesArray) {
+                JsonObject abilityObject = abilityElement.getAsJsonObject();
+                Ability ability = new Ability(abilityObject);
+                abilities.add(ability);
+                Ability.addAbility(ability);
             }
-        }
 
-        file = new File("src/main/resources/splatnet/data/brands.json");
+            InputStream brandsStream = Main.class.getResourceAsStream("data/brands.json");
+            JsonArray brandsArray = new JsonParser().parse(new InputStreamReader(brandsStream))
+                    .getAsJsonObject()
+                    .getAsJsonObject("data")
+                    .getAsJsonObject("brands")
+                    .getAsJsonArray("nodes");
 
-        // file data is json type
-        if (file.exists()) {
-            try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String line;
-                String result = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                }
-                bufferedReader.close();
-                fileReader.close();
-                JsonObject obj = JsonParser.parseString(result).getAsJsonObject();
-
-                JsonArray nodes = obj.getAsJsonObject("data")
-                                     .getAsJsonObject("brands")
-                                     .getAsJsonArray("nodes");
-
-                for (JsonElement node : nodes) {
-                    String id = node.getAsJsonObject().get("id").getAsString();
-
-                    String url = node.getAsJsonObject().get("image").getAsJsonObject().get("url").getAsString();
-
-                    try {
-                        UtilitaryS3S.downloadSmallImage(url, id, "brands");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    Brand brand = new Brand(node.getAsJsonObject());
-                    brands.add(brand);
-                    Brand.addBrand(brand);
-
-                }
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            for (JsonElement brandElement : brandsArray) {
+                JsonObject brandObject = brandElement.getAsJsonObject();
+                Brand brand = new Brand(brandObject);
+                brands.add(brand);
+                Brand.addBrand(brand);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

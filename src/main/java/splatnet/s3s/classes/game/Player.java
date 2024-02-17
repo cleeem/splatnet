@@ -2,6 +2,7 @@ package splatnet.s3s.classes.game;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import splatnet.s3s.classes.misc.NamePlate;
 import splatnet.s3s.classes.misc.Stuff;
 import splatnet.s3s.classes.weapons.MainWeapon;
 
@@ -24,9 +25,7 @@ public class Player {
      */
     private String species;
 
-    private JsonObject banner;
-
-    private JsonObject namePlate;
+    private NamePlate namePlate;
 
     private int kills;
     private int death;
@@ -78,10 +77,7 @@ public class Player {
             species = jsonData.get("species").getAsString();
         }
 
-
-        banner = jsonData.getAsJsonObject("nameplate").getAsJsonObject("background");
-
-        namePlate = jsonData.get("nameplate").getAsJsonObject();
+        namePlate = new NamePlate(jsonData.get("nameplate").getAsJsonObject());
 
         JsonObject results;
         if (jsonData.has("result") && !jsonData.get("result").isJsonNull()) {
@@ -130,11 +126,7 @@ public class Player {
         return species;
     }
 
-    public JsonObject getBanner() {
-        return banner;
-    }
-
-    public JsonObject getNamePlate() {
+    public NamePlate getNamePlate() {
         return namePlate;
     }
 

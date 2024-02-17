@@ -4,6 +4,7 @@ import com.google.gson.*;
 import org.jsoup.*;
 import org.jsoup.select.Elements;
 
+import javax.net.ssl.SSLHandshakeException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

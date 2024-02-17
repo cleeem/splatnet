@@ -1,8 +1,11 @@
 package splatnet.s3s.classes.weapons;
 
 import com.google.gson.JsonObject;
+import javafx.scene.image.ImageView;
+import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 
+import java.awt.*;
 import java.io.File;
 
 public class Weapon {
@@ -11,7 +14,7 @@ public class Weapon {
 
     private String name;
 
-    private File image;
+    private ImageView image;
 
     private String type;
 
@@ -22,31 +25,30 @@ public class Weapon {
         this.id = weapon.get("id").getAsString();
         this.name = weapon.get("name").getAsString();
         this.type = type;
-        this.image = new File("src/main/resources/splatnet/assets/" + this.type + "/" + this.id + ".png");
         this.url = weapon.get("image").getAsJsonObject().get("url").getAsString();
+        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
 
-        if (!this.image.exists()) {
-            try {
-                UtilitaryS3S.downloadSmallImage(this.url, this.id, this.type);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-}
+    }
 
     public Weapon(String id, String name, String type) {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.image = new File("src/main/resources/images/"+ this.type + "/" + this.id + ".png");
 
-        if (!this.image.exists()) {
+        String path = String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png"));
+        if (path.equals("null")) {
             try {
-                UtilitaryS3S.downloadSmallImage("https://app.splatoon2.nintendo.net" + this.image, this.id + "", this.type);
+                UtilitaryS3S.downloadImage(
+                        this.url,
+                        this.id,
+                        this.type
+                );
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
 
     }
 
@@ -58,8 +60,8 @@ public class Weapon {
         return name;
     }
 
-    public File getImage() {
-        return image;
+    public ImageView getImage() {
+        return new ImageView(image.getImage());
     }
 
     public String getType() {

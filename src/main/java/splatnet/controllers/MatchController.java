@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Game;
@@ -15,6 +16,8 @@ import splatnet.s3s.classes.game.Team;
 import javafx.scene.control.Label;
 import splatnet.s3s.classes.misc.Ability;
 import splatnet.s3s.classes.misc.Stuff;
+import splatnet.s3s.classes.weapons.MainWeapon;
+import splatnet.s3s.classes.weapons.Weapon;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,11 +27,10 @@ public class MatchController extends Controller {
     private static final Font SPLATOON2_FONT = new Font("Splatoon2", 18);
 
     private static final int LARGE_IMAGE_SIZE = 100;
+    private static final int GEAR_IMAGE_SIZE = 40;
     private static final int PRIMARY_ABILITY_IMAGE_SIZE = 35;
     private static final int SUB_IMAGE_SIZE = 25;
-
     private static final int MAIN_WEAPON_IMAGE_SIZE = 80;
-
     private static final int SUB_WEAPON_IMAGE_SIZE = 40;
 
 
@@ -66,8 +68,8 @@ public class MatchController extends Controller {
     private void displayHeaderInfos(Game game) {
 
         // affichage du mode
-        File modeFile = new File("src/main/resources/splatnet/assets/modes/" + "S3_icon_" + game.getVsRule().replace(" ", "_") + ".png");
-        ImageView modeImageView = new ImageView(new Image(modeFile.toURI().toString()));
+        System.out.println("Mode: " + game.getVsRule());
+        ImageView modeImageView = new ImageView(String.valueOf(Main.class.getResource("assets/modes/" + "S3_icon_" + game.getVsRule().replace(" ", "_") + ".png")));
         modeImageView.setFitHeight(LARGE_IMAGE_SIZE);
         modeImageView.setFitWidth(LARGE_IMAGE_SIZE);
 
@@ -79,18 +81,9 @@ public class MatchController extends Controller {
         modeContainer.getChildren().add(modeLabel);
 
         // affichage de la map
-        String stageUrl = game.getVsStage().getAsJsonObject("image").get("url").getAsString();
-        String stageId = game.getVsStage().get("id").getAsString();
-        File stageFile = new File("src/main/resources/splatnet/assets/maps/" + stageId + ".png");
 
-        if (!stageFile.exists()) {
-            try {
-                UtilitaryS3S.downloadLargeImage(stageUrl, stageId, "maps");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        ImageView stageImageView = new ImageView(new Image(stageFile.toURI().toString()));
+
+        ImageView stageImageView = game.getVsStage().getImage();
         stageImageView.setFitWidth(650);
         stageImageView.setFitHeight(100);
         stageContainer.getChildren().add(stageImageView);
@@ -238,15 +231,17 @@ public class MatchController extends Controller {
 
         HBox headGearHolder = new HBox();
         headGearHolder.setAlignment(Pos.BOTTOM_CENTER);
-        File primaryAbilityFile = player.getHeadGear().getMainAbility().getImage();
-        ImageView primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        ImageView gearImageView = player.getHeadGear().getImage();
+        gearImageView.setFitHeight(GEAR_IMAGE_SIZE);
+        gearImageView.setFitWidth(GEAR_IMAGE_SIZE);
+        headGearHolder.getChildren().add(gearImageView);
+        ImageView primaryAbilityImageView = player.getHeadGear().getMainAbility().getImage();
         primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
         primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
         headGearHolder.getChildren().add(primaryAbilityImageView);
 
         for (Ability ability : player.getHeadGear().getSubAbilities()) {
-            File subAbilityFile = ability.getImage();
-            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            ImageView subAbilityImageView = ability.getImage();
             subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
             subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
             headGearHolder.getChildren().add(subAbilityImageView);
@@ -254,15 +249,17 @@ public class MatchController extends Controller {
 
         HBox clothesHolder = new HBox();
         clothesHolder.setAlignment(Pos.BOTTOM_CENTER);
-        primaryAbilityFile = player.getClothingGear().getMainAbility().getImage();
-        primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        gearImageView = player.getClothingGear().getImage();
+        gearImageView.setFitHeight(GEAR_IMAGE_SIZE);
+        gearImageView.setFitWidth(GEAR_IMAGE_SIZE);
+        clothesHolder.getChildren().add(gearImageView);
+        primaryAbilityImageView = player.getClothingGear().getMainAbility().getImage();
         primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
         primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
         clothesHolder.getChildren().add(primaryAbilityImageView);
 
         for (Ability ability : player.getClothingGear().getSubAbilities()) {
-            File subAbilityFile = ability.getImage();
-            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            ImageView subAbilityImageView = ability.getImage();
             subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
             subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
             clothesHolder.getChildren().add(subAbilityImageView);
@@ -270,15 +267,17 @@ public class MatchController extends Controller {
 
         HBox shoesHolder = new HBox();
         shoesHolder.setAlignment(Pos.BOTTOM_CENTER);
-        primaryAbilityFile = player.getShoesGear().getMainAbility().getImage();
-        primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        gearImageView = player.getShoesGear().getImage();
+        gearImageView.setFitHeight(GEAR_IMAGE_SIZE);
+        gearImageView.setFitWidth(GEAR_IMAGE_SIZE);
+        shoesHolder.getChildren().add(gearImageView);
+        primaryAbilityImageView = player.getShoesGear().getMainAbility().getImage();
         primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
         primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
         shoesHolder.getChildren().add(primaryAbilityImageView);
 
         for (Ability ability : player.getShoesGear().getSubAbilities()) {
-            File subAbilityFile = ability.getImage();
-            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            ImageView subAbilityImageView = ability.getImage();
             subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
             subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
             shoesHolder.getChildren().add(subAbilityImageView);
@@ -295,19 +294,17 @@ public class MatchController extends Controller {
 
         VBox weaponHolder = new VBox();
 
-        File mainWeaponFile = player.getWeapon().getImage();
-        File subWeaponFile = player.getWeapon().getSubWeapon().getImage();
-        File specialWeaponFile = player.getWeapon().getSpecialWeapon().getImage();
+        MainWeapon mainWeapon = player.getWeapon();
 
-        ImageView mainWeaponImageView = new ImageView(new Image(mainWeaponFile.toURI().toString()));
+        ImageView mainWeaponImageView = mainWeapon.getImage();
         mainWeaponImageView.setFitHeight(MAIN_WEAPON_IMAGE_SIZE);
         mainWeaponImageView.setFitWidth(MAIN_WEAPON_IMAGE_SIZE);
 
-        ImageView subWeaponImageView = new ImageView(new Image(subWeaponFile.toURI().toString()));
+        ImageView subWeaponImageView = mainWeapon.getSubWeapon().getImage();
         subWeaponImageView.setFitHeight(SUB_WEAPON_IMAGE_SIZE);
         subWeaponImageView.setFitWidth(SUB_WEAPON_IMAGE_SIZE);
 
-        ImageView specialWeaponImageView = new ImageView(new Image(specialWeaponFile.toURI().toString()));
+        ImageView specialWeaponImageView = mainWeapon.getSpecialWeapon().getImage();
         specialWeaponImageView.setFitHeight(SUB_WEAPON_IMAGE_SIZE);
         specialWeaponImageView.setFitWidth(SUB_WEAPON_IMAGE_SIZE);
 

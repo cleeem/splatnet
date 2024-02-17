@@ -1,8 +1,11 @@
 package splatnet.s3s;
 
 import com.google.gson.*;
+import splatnet.Main;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -247,56 +250,33 @@ public class UtilitaryS3S {
         return fGenUrl;
     }
 
-    public static void downloadSmallImage(String objectUrl, String objectName, String imageType) throws IOException {
+    public static void downloadImage(String objectUrl, String objectName, String imageType) throws IOException {
+        System.out.println("Downloading " + objectName + " image type: " + imageType + " from " + objectUrl);
+        URL url = new URL(objectUrl);
+        InputStream in = url.openStream();
+        // the output file will be saved in the assets folder
+        // the one in src
+        File file = new File("src/main/resources/splatnet/assets/" + imageType + "/" + objectName + ".png");
+        file.createNewFile();
+        OutputStream out1 = new FileOutputStream("src/main/resources/splatnet/assets/" + imageType + "/" + objectName + ".png");
 
-        objectName = objectName.replace("\\", "").replace("/", "");
+        // the one in target
+        File file2 = new File("target/classes/splatnet/assets/" + imageType + "/" + objectName + ".png");
+        file2.createNewFile();
+        OutputStream out2 = new FileOutputStream("target/classes/splatnet/assets/" + imageType + "/" + objectName + ".png");
 
-        File objectFile = new File("src/main/resources/splatnet/assets/"
-                                            + imageType + "/" + objectName + ".png");
-
-        if (objectFile.exists()) {
-            return;
-        } else {
-            System.out.println("Creating file: " + objectFile.getAbsolutePath());
-            objectFile.createNewFile();
-        }
-
-        InputStream in = new URL(objectUrl).openStream();
-        OutputStream out = new FileOutputStream(objectFile);
-
-        byte[] buffer = new byte[2048];
+        byte[] b = new byte[2048];
         int length;
 
-        while ((length = in.read(buffer)) != -1) {
-            out.write(buffer, 0, length);
+        while ((length = in.read(b)) != -1) {
+            out1.write(b, 0, length);
+            out2.write(b, 0, length);
         }
 
         in.close();
-        out.close();
+        out1.close();
+        out2.close();
+
     }
 
-    public static void downloadLargeImage(String objectUrl, String objectName, String imageType) throws IOException {
-
-        File objectFile = new File("src/main/resources/splatnet/assets/"
-                + imageType + "/" + objectName + ".png");
-
-        if (objectFile.exists()) {
-            return;
-        } else {
-            objectFile.createNewFile();
-        }
-
-        InputStream in = new URL(objectUrl).openStream();
-        OutputStream out = new FileOutputStream(objectFile);
-
-        byte[] buffer = new byte[15000];
-        int length;
-
-        while ((length = in.read(buffer)) != -1) {
-            out.write(buffer, 0, length);
-        }
-
-        in.close();
-        out.close();
-    }
 }

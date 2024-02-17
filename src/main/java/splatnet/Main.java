@@ -19,7 +19,13 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("views/fxml/welcome.fxml"));
-        Parent root = fxmlLoader.load();
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            fxmlLoader = new FXMLLoader(Main.class.getResource("views/fxml/apiError.fxml"));
+            root = fxmlLoader.load();
+        }
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         stage.setTitle("Splatnet 3");
         stage.setScene(scene);

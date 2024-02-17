@@ -12,8 +12,10 @@ import javafx.scene.text.Font;
 import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
+import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Player;
 import splatnet.s3s.classes.misc.Ability;
+import splatnet.s3s.classes.misc.NamePlate;
 import splatnet.s3s.classes.misc.Stuff;
 import splatnet.s3s.classes.weapons.MainWeapon;
 
@@ -128,18 +130,11 @@ public class HomePageController extends Controller {
 
         System.out.println("Displaying last game infos");
 
-        JsonObject bannerObject = myLastGamePlayer.getBanner();
+        NamePlate namePlate = myLastGamePlayer.getNamePlate();
 
-        String bannerID = bannerObject.get("id").getAsString();
+        String bannerID = namePlate.getBanner().getId();
 
-        File bannerFile = new File("src/main/resources/splatnet/assets/banners/" + bannerID + ".png");
-
-        if (!bannerFile.exists()) {
-            System.out.println("Banner file doesn't exist, downloading it");
-            S3SMain.downloadBanner(bannerObject);
-        }
-
-        ImageView banner = new ImageView(bannerFile.toURI().toString());
+        ImageView banner = new ImageView(String.valueOf(Main.class.getResource("assets/banners/" + bannerID + ".png")));
         banner.setFitHeight(200);
         banner.setFitWidth(668);
 
@@ -174,7 +169,7 @@ public class HomePageController extends Controller {
 
         // no repeat
         BackgroundImage test = new BackgroundImage(
-                new Image(bannerFile.toURI().toString()),
+                banner.getImage(),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -207,17 +202,17 @@ public class HomePageController extends Controller {
         headGearVBox.setAlignment(Pos.CENTER);
         HBox headGearHBox = new HBox();
         headGearHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView headGearImage = new ImageView(new Image(headGear.getImage().toURI().toString()));
+        ImageView headGearImage = headGear.getImage();
         headGearImage.setFitHeight(128);
         headGearImage.setFitWidth(128);
 
-        ImageView headGearMain = new ImageView(new Image(headGear.getMainAbility().getImage().toURI().toString()));
+        ImageView headGearMain = headGear.getMainAbility().getImage();
         headGearMain.setFitHeight(60);
         headGearMain.setFitWidth(60);
         headGearHBox.getChildren().add(headGearMain);
 
         for (Ability sub : headGear.getSubAbilities()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
+            ImageView subAbilityImage = sub.getImage();
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             headGearHBox.getChildren().add(subAbilityImage);
@@ -231,17 +226,17 @@ public class HomePageController extends Controller {
         clothesVBox.setAlignment(Pos.CENTER);
         HBox clothesHBox = new HBox();
         clothesHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView clothesImage = new ImageView(new Image(clothes.getImage().toURI().toString()));
+        ImageView clothesImage = clothes.getImage();
         clothesImage.setFitHeight(128);
         clothesImage.setFitWidth(128);
 
-        ImageView clothesGearMain = new ImageView(new Image(clothes.getMainAbility().getImage().toURI().toString()));
+        ImageView clothesGearMain = clothes.getMainAbility().getImage();
         clothesGearMain.setFitHeight(60);
         clothesGearMain.setFitWidth(60);
         clothesHBox.getChildren().add(clothesGearMain);
 
         for (Ability sub : clothes.getSubAbilities()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
+            ImageView subAbilityImage = sub.getImage();
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             clothesHBox.getChildren().add(subAbilityImage);
@@ -255,17 +250,17 @@ public class HomePageController extends Controller {
         shoesVBox.setAlignment(Pos.CENTER);
         HBox shoesHBox = new HBox();
         shoesHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView shoesImage = new ImageView(new Image(shoes.getImage().toURI().toString()));
+        ImageView shoesImage = shoes.getImage();
         shoesImage.setFitHeight(128);
         shoesImage.setFitWidth(128);
 
-        ImageView shoesGearMain = new ImageView(new Image(shoes.getMainAbility().getImage().toURI().toString()));
+        ImageView shoesGearMain = shoes.getMainAbility().getImage();
         shoesGearMain.setFitHeight(60);
         shoesGearMain.setFitWidth(60);
         shoesHBox.getChildren().add(shoesGearMain);
 
         for (Ability sub : shoes.getSubAbilities()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
+            ImageView subAbilityImage = sub.getImage();
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             shoesHBox.getChildren().add(subAbilityImage);
@@ -285,21 +280,15 @@ public class HomePageController extends Controller {
 
         MainWeapon weaponData = myLastGamePlayer.getWeapon();
 
-        File mainWeaponFile = weaponData.getImage();
-
-        File subWeaponFile = weaponData.getSubWeapon().getImage();
-
-        File specialWeaponFile = weaponData.getSpecialWeapon().getImage();
-
-        ImageView weaponImage = new ImageView(mainWeaponFile.toURI().toString());
+        ImageView weaponImage = weaponData.getImage();
         weaponImage.setFitHeight(150);
         weaponImage.setFitWidth(150);
 
-        ImageView specialWeaponImage = new ImageView(specialWeaponFile.toURI().toString());
+        ImageView specialWeaponImage = weaponData.getSpecialWeapon().getImage();
         specialWeaponImage.setFitHeight(75);
         specialWeaponImage.setFitWidth(75);
 
-        ImageView subWeaponImage = new ImageView(subWeaponFile.toURI().toString());
+        ImageView subWeaponImage = weaponData.getSubWeapon().getImage();
         subWeaponImage.setFitHeight(75);
         subWeaponImage.setFitWidth(75);
 

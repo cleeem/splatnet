@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.S3SMain;
 import splatnet.s3s.classes.game.Game;
@@ -279,8 +280,9 @@ public class HistoryController extends Controller {
             return matchDisplay;
         }
 
-        File modeIcon = new File("src/main/resources/splatnet/assets/battles/" + mode + ".png");
-        ImageView modeIconView = new ImageView(modeIcon.toURI().toString());
+        ImageView modeIconView = new ImageView(
+                String.valueOf(Main.class.getResource("assets/battles/" + mode + ".png"))
+        );
 
         modeIconView.setFitHeight(64);
         modeIconView.setFitWidth(64);
@@ -295,8 +297,7 @@ public class HistoryController extends Controller {
                 weapon = player.getWeapon();
             }
         }
-        File weaponIcon = weapon.getImage();
-        ImageView weaponIconView = new ImageView(weaponIcon.toURI().toString());
+        ImageView weaponIconView = weapon.getImage();
         weaponIconView.setFitHeight(64);
         weaponIconView.setFitWidth(64);
 
