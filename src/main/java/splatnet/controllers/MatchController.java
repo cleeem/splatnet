@@ -133,8 +133,16 @@ public class MatchController extends Controller {
                 myTeamScore = game.getMyTeam().getScore().equals("100") ? "KO" : "0";
                 ennemyTeamScore = game.getOtherTeam().get(0).getScore().equals("100") ? "KO" : "0";
             } else {
-                myTeamScore = game.getMyTeam().getScore();
-                ennemyTeamScore = game.getOtherTeam().get(0).getScore();
+                if (game.getVsRule().equals("Turf War")) {
+                    myTeamScore = Double.parseDouble(game.getMyTeam().getScore()) * 100 + "%";
+                    ennemyTeamScore = Double.parseDouble(game.getOtherTeam().get(0).getScore()) * 100 + "%";
+
+                    myTeamScore = myTeamScore.substring(0, myTeamScore.length() - 2);
+                    ennemyTeamScore = ennemyTeamScore.substring(0, ennemyTeamScore.length() - 2);
+                } else {
+                    myTeamScore = game.getMyTeam().getScore();
+                    ennemyTeamScore = game.getOtherTeam().get(0).getScore();
+                }
             }
         }
         Label scoresLabel;
