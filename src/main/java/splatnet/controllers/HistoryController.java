@@ -52,10 +52,19 @@ public class HistoryController extends Controller {
 
     private Button lastClicked;
 
+    private Label loadingLabel = new Label("Fetching latest data, please wait... (about 15 seconds)");
+
     @FXML
     public void initialize() {
         lastClicked = buttonAll;
-        System.out.println(lastClicked);
+
+        loadingLabel.setFont(Font.font("Splatoon2", 20));
+        loadingLabel.setStyle("-fx-text-fill: white;");
+
+        matchList.getChildren().add(
+                loadingLabel
+        );
+
 
         Storage storage = Storage.getInstance();
         if (storage.getTurfWarGames().isEmpty()) {
@@ -218,6 +227,18 @@ public class HistoryController extends Controller {
         loadingView.setFitHeight(100);
         loadingView.setFitWidth(100);
         matchList.getChildren().add(loadingView);
+
+        matchList.getChildren().add(
+                loadingLabel
+        );
+
+        Storage storage = Storage.getInstance();
+        storage.setLatestGames(null);
+        storage.setTurfWarGames(null);
+        storage.setAnarchyGames(null);
+        storage.setxGames(null);
+        storage.setPrivateGames(null);
+        storage.setChallengeGames(null);
 
         fetchData(lastClicked);
 

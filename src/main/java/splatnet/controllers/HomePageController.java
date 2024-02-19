@@ -69,9 +69,6 @@ public class HomePageController extends Controller {
         System.out.println("Starting fetchXPowersData thread");
         fetchXPowersData.start();
 
-        Storage storage = Storage.getInstance();
-        storage.setPlayerData(myLastGamePlayer);
-        storage.setxPowers(xPowers);
     }
     private void displayXPowers() {
 

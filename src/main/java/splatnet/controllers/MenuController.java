@@ -22,6 +22,12 @@ public class MenuController extends Controller {
     @FXML
     public void onScheduleButtonClick() {
         System.out.println("Schedule button clicked");
+
+        try {
+            loadNewFxml("schedule");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

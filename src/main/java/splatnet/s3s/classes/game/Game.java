@@ -94,6 +94,7 @@ public class Game {
 
         if (vsStage == null) {
             vsStage = new Stage(jsonData.get("vsStage").getAsJsonObject());
+            Stage.addStage(vsStage);
         }
 
         if (jsonData.has("xPower") && !jsonData.get("xPower").isJsonNull()) {

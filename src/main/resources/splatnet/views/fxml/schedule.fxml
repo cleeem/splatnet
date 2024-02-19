@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../css/schedule.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="splatnet.controllers.ScheduleController">
+   <children>
+      <fx:include source="menu.fxml" />
+      <HBox style="-fx-background-color: #292e35;" HBox.hgrow="ALWAYS">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="736.0" prefWidth="326.0" style="-fx-background-color: #292e35;" HBox.hgrow="ALWAYS">
+               <content>
+                  <VBox fx:id="turfContainer" alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #292e35;" stylesheets="@../css/schedule.css" />
+               </content>
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="736.0" prefWidth="326.0" style="-fx-background-color: #292e35;" HBox.hgrow="ALWAYS">
+               <content>
+                  <VBox fx:id="bankaraContainer" alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #292e35;" />
+               </content>
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="736.0" prefWidth="326.0" style="-fx-background-color: #292e35;" HBox.hgrow="ALWAYS">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="1000.0" style="-fx-background-color: #292e35;" fx:id="xmatchContainer" />
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+</HBox>

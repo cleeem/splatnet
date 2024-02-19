@@ -32,6 +32,7 @@ public class Stage implements Comparable<Stage> {
                 return stage;
             }
         }
+        System.out.println("Stage not found: " + id);
         return null;
     }
 
@@ -44,7 +45,16 @@ public class Stage implements Comparable<Stage> {
     public Stage(JsonObject data) {
         this.id = data.get("id").getAsString();
         this.name = data.get("name").getAsString();
-        this.imageURL = data.getAsJsonObject("image").get("url").getAsString();
+        if (data.has("image") && !data.get("image").isJsonNull()) {
+            this.imageURL = data.getAsJsonObject("image").get("url").getAsString();
+
+        } else if (data.has("originalImage") && !data.get("originalImage").isJsonNull()) {
+            this.imageURL = data.getAsJsonObject("originalImage").get("url").getAsString();
+
+        } else {
+            this.imageURL = null;
+
+        }
 
         String path = String.valueOf(Main.class.getResource("assets/maps/" + this.id + ".png"));
         if (path.equals("null")) {
@@ -77,5 +87,10 @@ public class Stage implements Comparable<Stage> {
     @Override
     public int compareTo(Stage o) {
         return getId().compareTo(o.getId());
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

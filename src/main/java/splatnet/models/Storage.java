@@ -46,10 +46,6 @@ public class Storage {
 
     private ArrayList<Friend> friendList = new ArrayList<>();
 
-    private ArrayList<Ability> abilities = new ArrayList<>();
-
-    private ArrayList<Brand> brands = new ArrayList<>();
-
     private Storage() {
 
         // load abilities.json from resources in the data folder
@@ -67,7 +63,6 @@ public class Storage {
             for (JsonElement abilityElement : abilitiesArray) {
                 JsonObject abilityObject = abilityElement.getAsJsonObject();
                 Ability ability = new Ability(abilityObject);
-                abilities.add(ability);
                 Ability.addAbility(ability);
             }
 
@@ -81,7 +76,6 @@ public class Storage {
             for (JsonElement brandElement : brandsArray) {
                 JsonObject brandObject = brandElement.getAsJsonObject();
                 Brand brand = new Brand(brandObject);
-                brands.add(brand);
                 Brand.addBrand(brand);
             }
         } catch (Exception e) {
