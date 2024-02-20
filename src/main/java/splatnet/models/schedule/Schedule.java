@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Stage;
 
 import java.io.*;
@@ -99,4 +100,37 @@ public class Schedule {
     public ArrayList<Rotation> getxRotations() {
         return xRotations;
     }
+
+//    public static void main(String[] args) {
+//        InputStream is = null;
+//        try {
+//            URL url = new URL(URL_JSON_FILE);
+//            is = url.openStream();
+//            String json = new String(is.readAllBytes());
+//
+//            JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
+//
+//            JsonObject data = jsonObject.getAsJsonObject("data");
+//            JsonObject stages = data.getAsJsonObject("vsStages");
+//            JsonArray nodes = stages.getAsJsonArray("nodes");
+//
+//            for (JsonElement node : nodes) {
+//                JsonObject stage = node.getAsJsonObject();
+//
+//                String id = stage.get("id").getAsString();
+//                String urlImage = stage.get("originalImage").getAsJsonObject().get("url").getAsString();
+//                String type = "maps";
+//                try {
+//                    UtilitaryS3S.downloadImage(urlImage, id+"Small", type);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

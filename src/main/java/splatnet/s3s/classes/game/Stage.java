@@ -20,6 +20,8 @@ public class Stage implements Comparable<Stage> {
 
     private ImageView image;
 
+    private ImageView smallImage;
+
     private static TreeSet<Stage> stages = new TreeSet<>();
 
     public static void addStage(Stage stage) {
@@ -32,7 +34,6 @@ public class Stage implements Comparable<Stage> {
                 return stage;
             }
         }
-        System.out.println("Stage not found: " + id);
         return null;
     }
 
@@ -66,6 +67,12 @@ public class Stage implements Comparable<Stage> {
         }
 
         this.image = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + ".png")));
+
+        try {
+            this.smallImage = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + "Small.png")));
+        } catch (Exception e) {
+            // If the small image doesn't exist, we'll just use the normal image
+        }
     }
 
     public String getId() {
@@ -82,6 +89,10 @@ public class Stage implements Comparable<Stage> {
 
     public ImageView getImage() {
         return new ImageView(image.getImage());
+    }
+
+    public ImageView getSmallImage() {
+        return new ImageView(smallImage.getImage());
     }
 
     @Override
