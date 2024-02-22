@@ -37,7 +37,7 @@ public class Iksm {
 //     - enter_tokens()
 
     /**
-     * Fetches the current Nintendo Switch Online app version from f API or the Apple App Store and sets it globally.
+     * Fetches the current Nintendo Switch Online app version from f API or the Apple splatnet.App Store and sets it globally.
      * @return
      */
     public static String getNsoappVersion() {
