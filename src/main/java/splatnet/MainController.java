@@ -18,7 +18,7 @@ public class MainController extends Controller {
         try {
             UtilitaryS3S.setup();
             UtilitaryS3S.checkTokens();
-            // no error so we don't need to login
+            // no error so we don't need to log in
             needToLogin = 1;
             System.out.println("No need to login");
         } catch (RuntimeException e) {

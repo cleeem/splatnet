@@ -52,7 +52,7 @@ public class HistoryController extends Controller {
 
     private Button lastClicked;
 
-    private Label loadingLabel = new Label("Fetching latest data, please wait... (about 15 seconds)");
+    private Label loadingLabel = new Label("Fetching latest data, please wait... (about 20 seconds)");
 
     @FXML
     public void initialize() {

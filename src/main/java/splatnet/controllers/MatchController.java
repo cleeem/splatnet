@@ -154,6 +154,23 @@ public class MatchController extends Controller {
         }
         scoresLabel.setFont(SPLATOON2_FONT);
         scoresLabel.setStyle("-fx-text-fill: white;");
+
+        String minutes = String.valueOf(game.getDuration() / 60);
+        String seconds = String.valueOf(game.getDuration() % 60);
+        if (seconds.length() == 1) {
+            seconds = "0" + seconds;
+        }
+
+        Label durationLabel = new Label(minutes + ":" + seconds);
+        durationLabel.setFont(SPLATOON2_FONT);
+        durationLabel.setStyle("-fx-text-fill: white;");
+
+        Label mapLabel = new Label(game.getVsStage().getName());
+        mapLabel.setFont(SPLATOON2_FONT);
+        mapLabel.setStyle("-fx-text-fill: white;");
+
+        infosContainer.getChildren().add(mapLabel);
+        infosContainer.getChildren().add(durationLabel);
         infosContainer.getChildren().add(scoresLabel);
 
     }

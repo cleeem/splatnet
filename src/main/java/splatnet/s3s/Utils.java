@@ -107,7 +107,7 @@ public class Utils {
         put("WeaponRecordsRefetchQuery", "7d7194a98cb7b0b235f15f98a622fab4945992fd268101e24443db82569dd25d");
         put("XBattleHistoriesQuery", "eb5996a12705c2e94813a62e05c0dc419aad2811b8d49d53e5732290105559cb");
         put("XBattleHistoriesRefetchQuery", "a175dc519f551c0bbeed04286194dc12b1a05e3117ab73f6743e5799e91f903a");
-        put("XRankingDetailQuery", "90932ee3357eadab30eb11e9d6b4fe52d6b35fde91b5c6fd92ba4d6159ea1cb7");
+        put("è", "90932ee3357eadab30eb11e9d6b4fe52d6b35fde91b5c6fd92ba4d6159ea1cb7");
         put("XRankingDetailRefetchQuery", "00e8e962cc65795c6480d10caddaee7e0262d5cdf81e5958ff8f3359bd2f9743");
         put("XRankingQuery", "a5331ed228dbf2e904168efe166964e2be2b00460c578eee49fc0bc58b4b899c");
         put("XRankingRefetchQuery", "5a469004feb402a1d44a10820b647def2d4eb320436f6add4431194a34d0b497");

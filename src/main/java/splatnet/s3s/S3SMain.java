@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.google.gson.*;
+import splatnet.Main;
 import splatnet.s3s.classes.misc.Friend;
 import splatnet.s3s.classes.game.Game;
 import splatnet.s3s.classes.game.Player;
+import splatnet.s3s.classes.weapons.MainWeapon;
+import splatnet.s3s.classes.weapons.Weapon;
 
 public class S3SMain {
 
@@ -235,12 +238,19 @@ public class S3SMain {
         }
         UtilitaryS3S.checkTokens();
 
-        String key = "myOutfitCommonDataEquipmentsQuery";
+        String key = "FriendListQuery";
         String data = Exploitation.customQuery(
                 UtilitaryS3S.gtoken,
                 key,
                 null,
                 null
         );
+
+
+
+        writeToFile(key, new ArrayList<String>() {{
+            add(data);
+        }});
+
     }
 }

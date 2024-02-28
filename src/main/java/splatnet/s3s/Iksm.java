@@ -22,9 +22,9 @@ public class Iksm {
     public static boolean USE_OLD_NSOAPP_VER   = false; // Change this to True if you're getting a "9403: Invalid token." error
     public static String S3S_VERSION           = "unknown";
     public static String NSOAPP_VERSION        = "unknown";
-    public static String NSOAPP_VER_FALLBACK   = "2.8.1";
+    public static String NSOAPP_VER_FALLBACK   = "2.9.0";
     public static String WEB_VIEW_VERSION      = "unknown";
-    public static String WEB_VIEW_VER_FALLBACK = "6.0.0-daea5c11"; // fallback for current splatnet 3 ver
+    public static String WEB_VIEW_VER_FALLBACK = "6.0.0-eb33aadc"; // fallback for current splatnet 3 ver
     public static String SPLATNET3_URL         = "https://api.lp1.av5ja.srv.nintendo.net";
     public static String GRAPHQL_URL           = SPLATNET3_URL + "/api/graphql";
 

@@ -26,6 +26,21 @@ public class Weapon {
         this.name = weapon.get("name").getAsString();
         this.type = type;
         this.url = weapon.get("image").getAsJsonObject().get("url").getAsString();
+
+        String path = String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png"));
+
+        if (path.equals("null")) {
+            try {
+                UtilitaryS3S.downloadImage(
+                        this.url,
+                        this.id,
+                        this.type
+                );
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
 
     }
