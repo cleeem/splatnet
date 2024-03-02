@@ -19,7 +19,7 @@ public class Banner implements Comparable<Banner> {
 
     private ImageView image;
 
-    private HashMap<String, Integer> colors;
+    private HashMap<String, Double> colors;
 
     private static TreeSet<Banner> badges = new TreeSet<>();
 
@@ -43,9 +43,9 @@ public class Banner implements Comparable<Banner> {
         this.colors = new HashMap<>();
 
         JsonObject colors = data.getAsJsonObject("textColor");
-        this.colors.put("r", colors.get("r").getAsInt());
-        this.colors.put("g", colors.get("g").getAsInt());
-        this.colors.put("b", colors.get("b").getAsInt());
+        this.colors.put("r", colors.get("r").getAsDouble());
+        this.colors.put("g", colors.get("g").getAsDouble());
+        this.colors.put("b", colors.get("b").getAsDouble());
 
         String path = String.valueOf(Main.class.getResource("assets/banners/" + this.id + ".png"));
         if (path.equals("null")) {
@@ -73,7 +73,7 @@ public class Banner implements Comparable<Banner> {
         return new ImageView(image.getImage());
     }
 
-    public HashMap<String, Integer> getColors() {
+    public HashMap<String, Double> getColors() {
         return colors;
     }
 

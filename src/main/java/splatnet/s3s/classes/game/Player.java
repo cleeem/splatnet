@@ -134,10 +134,14 @@ public class Player {
 
         bannerBuild.setBackground(new Background(backgroundImage));
 
+        int r = (int) (namePlate.getBanner().getColors().get("r") * 255);
+        int g = (int) (namePlate.getBanner().getColors().get("g") * 255);
+        int b = (int) (namePlate.getBanner().getColors().get("b") * 255);
+
         Color color = Color.rgb(
-                namePlate.getBanner().getColors().get("r"),
-                namePlate.getBanner().getColors().get("g"),
-                namePlate.getBanner().getColors().get("b")
+                r,
+                g,
+                b
         );
 
         Label nameLabel = new Label(name);
