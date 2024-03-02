@@ -324,8 +324,12 @@ public class HistoryController extends Controller {
 
         String teamScore;
         if (mode.equals("turf")) {
-            teamScore = "" + Double.parseDouble(myTeam.getScore()) * 100;
-            teamScore = teamScore.substring(0, teamScore.indexOf(".") + 2);
+            if (!myTeam.getScore().equals("DRAW")) {
+                teamScore = "" + Double.parseDouble(myTeam.getScore()) * 100;
+                teamScore = teamScore.substring(0, teamScore.indexOf(".") + 2);
+            } else {
+                teamScore = myTeam.getScore();
+            }
         } else {
             teamScore = myTeam.getScore();
         }

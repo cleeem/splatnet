@@ -68,11 +68,17 @@ public class Stage implements Comparable<Stage> {
 
         this.image = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + ".png")));
 
-        try {
-            this.smallImage = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + "Small.png")));
-        } catch (Exception e) {
-            // If the small image doesn't exist, we'll just use the normal image
+        String smallPath = String.valueOf(Main.class.getResource("assets/maps/" + this.id + "Small.png"));
+
+        if (smallPath.equals("null")) {
+            try {
+                UtilitaryS3S.downloadImage(this.imageURL, this.id + "Small", "maps");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
+
+        this.smallImage = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + "Small.png")));
     }
 
     public String getId() {

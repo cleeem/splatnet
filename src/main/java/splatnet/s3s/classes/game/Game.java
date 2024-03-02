@@ -61,12 +61,9 @@ public class Game {
         if (jsonData.has("data")) {
             jsonData = jsonData.get("data").getAsJsonObject();
         }
-        if (jsonData.has("vsHistoryDetail")) {
+        if (jsonData.has("vsHistoryDetail") && !jsonData.get("vsHistoryDetail").isJsonNull()) {
             jsonData = jsonData.get("vsHistoryDetail").getAsJsonObject();
         }
-
-//        System.out.println(jsonData);
-//        System.exit(0);
 
         id = jsonData.get("id").getAsString();
         vsRule = jsonData.get("vsRule").getAsJsonObject().get("name").getAsString();

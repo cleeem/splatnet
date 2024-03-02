@@ -1,12 +1,16 @@
 package splatnet.controllers;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import org.w3c.dom.events.Event;
 import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.UtilitaryS3S;
@@ -33,6 +37,9 @@ public class MatchController extends Controller {
     private static final int MAIN_WEAPON_IMAGE_SIZE = 80;
     private static final int SUB_WEAPON_IMAGE_SIZE = 40;
 
+    private static boolean showingPlayer = false;
+
+    private static Stage stage;
 
     @FXML
     public VBox modeContainer;
@@ -245,6 +252,17 @@ public class MatchController extends Controller {
 
         container.getChildren().add(playerBox);
 
+        container.setOnMouseEntered(mouseEvent -> container.getScene().setCursor(javafx.scene.Cursor.HAND));
+
+        container.setOnMouseClicked(mouseEvent -> {
+            try {
+                showPlayerInfos(player);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        );
+
         return container;
 
     }
@@ -344,5 +362,25 @@ public class MatchController extends Controller {
         return weaponHolder;
     }
 
+    private void showPlayerInfos(Player player) throws IOException {
+        if (showingPlayer) {
+            stage.close();
+            showingPlayer = false;
+        }
+
+        stage = new Stage();
+        Storage storage = Storage.getInstance();
+        storage.setPlayer(player);
+
+        try {
+            stage = newWindowLoad("playerInfos");
+            stage.show();
+            showingPlayer = true;
+        } catch (IOException e) {
+            showingPlayer = false;
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

@@ -46,6 +46,8 @@ public class Storage {
 
     private ArrayList<Friend> friendList = new ArrayList<>();
 
+    private Player player = null;
+
     private Storage() {
 
         // load abilities.json from resources in the data folder
@@ -130,6 +132,10 @@ public class Storage {
 
     public Game getSelectedGame() {return selectedGame;}
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
@@ -169,4 +175,8 @@ public class Storage {
     }
 
     public void setSelectedGame(Game game) {this.selectedGame = game;}
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }

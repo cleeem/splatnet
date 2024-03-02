@@ -237,16 +237,14 @@ public class S3SMain {
             }
         }
         UtilitaryS3S.checkTokens();
-
-        String key = "FriendListQuery";
+        
+        String key = "StageRecordQuery";
         String data = Exploitation.customQuery(
                 UtilitaryS3S.gtoken,
                 key,
-                null,
-                null
+                "na-country",
+                UtilitaryS3S.userCountry
         );
-
-
 
         writeToFile(key, new ArrayList<String>() {{
             add(data);

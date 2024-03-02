@@ -4,8 +4,8 @@
       "nodes": [
         {
           "stats": {
-            "lastPlayedTime": "2024-02-11T17:29:44Z",
-            "winRateAr": 0.48484848484848486,
+            "lastPlayedTime": "2024-03-01T15:34:32Z",
+            "winRateAr": 0.5,
             "winRateCl": 0.6764705882352942,
             "winRateGl": 0.6206896551724138,
             "winRateLf": 0.6521739130434783,
@@ -64,8 +64,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-26T20:19:54Z",
-            "winRateAr": 0.7297297297297297,
+            "lastPlayedTime": "2024-02-26T21:02:30Z",
+            "winRateAr": 0.75,
             "winRateCl": 0.6842105263157895,
             "winRateGl": 0.5423728813559322,
             "winRateLf": 0.7142857142857143,
@@ -84,11 +84,11 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-28T17:22:39Z",
+            "lastPlayedTime": "2024-03-01T15:44:06Z",
             "winRateAr": 0.5555555555555556,
             "winRateCl": 0.5,
             "winRateGl": 0.75,
-            "winRateLf": 0.6071428571428571,
+            "winRateLf": 0.6666666666666666,
             "winRateTw": 0.75
           },
           "id": "VnNTdGFnZS01",
@@ -124,10 +124,10 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-24T21:33:25Z",
-            "winRateAr": 0.6153846153846154,
+            "lastPlayedTime": "2024-02-28T19:44:59Z",
+            "winRateAr": 0.6,
             "winRateCl": 0.4444444444444444,
-            "winRateGl": 0.5945945945945946,
+            "winRateGl": 0.6153846153846154,
             "winRateLf": 0.64,
             "winRateTw": 0.5
           },
@@ -144,10 +144,10 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-20T20:25:47Z",
+            "lastPlayedTime": "2024-02-27T16:58:53Z",
             "winRateAr": 0.8260869565217391,
-            "winRateCl": 0.5,
-            "winRateGl": 0.7333333333333333,
+            "winRateCl": 0.4,
+            "winRateGl": 0.75,
             "winRateLf": 0.7777777777777778
           },
           "id": "VnNTdGFnZS04",
@@ -163,10 +163,10 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-20T20:32:57Z",
+            "lastPlayedTime": "2024-02-28T19:51:38Z",
             "winRateAr": 0.5909090909090909,
-            "winRateCl": 0.7,
-            "winRateGl": 0.7714285714285715,
+            "winRateCl": 0.6363636363636364,
+            "winRateGl": 0.717948717948718,
             "winRateLf": 0.7142857142857143,
             "winRateTw": 0.6428571428571429
           },
@@ -183,11 +183,11 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-26T20:27:55Z",
-            "winRateAr": 0.5333333333333333,
+            "lastPlayedTime": "2024-03-01T16:06:40Z",
+            "winRateAr": 0.5384615384615384,
             "winRateCl": 0.5,
             "winRateGl": 0.543859649122807,
-            "winRateLf": 0.6481481481481481,
+            "winRateLf": 0.6666666666666666,
             "winRateTw": 0.6363636363636364
           },
           "id": "VnNTdGFnZS0xMA\u003d\u003d",
@@ -203,8 +203,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-25T10:50:42Z",
-            "winRateAr": 0.6031746031746031,
+            "lastPlayedTime": "2024-02-27T16:43:17Z",
+            "winRateAr": 0.5970149253731343,
             "winRateCl": 0.7777777777777778,
             "winRateGl": 0.6538461538461539,
             "winRateLf": 0.6190476190476191,
@@ -223,8 +223,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-26T19:43:39Z",
-            "winRateAr": 0.6571428571428571,
+            "lastPlayedTime": "2024-02-27T16:49:29Z",
+            "winRateAr": 0.6619718309859155,
             "winRateCl": 0.5555555555555556,
             "winRateGl": 0.6101694915254238,
             "winRateLf": 0.6506024096385542,
@@ -283,8 +283,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-25T13:25:33Z",
-            "winRateAr": 0.5789473684210527,
+            "lastPlayedTime": "2024-02-28T20:39:38Z",
+            "winRateAr": 0.6065573770491803,
             "winRateCl": 0.6,
             "winRateGl": 0.5384615384615384,
             "winRateLf": 0.4861111111111111,
@@ -363,8 +363,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-26T19:41:26Z",
-            "winRateAr": 0.875,
+            "lastPlayedTime": "2024-02-28T20:23:48Z",
+            "winRateAr": 0.8421052631578947,
             "winRateCl": 0.625,
             "winRateGl": 0.7,
             "winRateLf": 0.7391304347826086,
@@ -422,10 +422,10 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-13T14:57:18Z",
+            "lastPlayedTime": "2024-02-28T19:54:41Z",
             "winRateAr": 0.45454545454545453,
             "winRateCl": 1.0,
-            "winRateGl": 1.0,
+            "winRateGl": 0.5,
             "winRateLf": 0.8888888888888888,
             "winRateTw": 0.75
           },
@@ -438,6 +438,23 @@
           },
           "image": {
             "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/low_resolution/3e468df1f38d6323cc8d9446049696d66e47831e68cd31032502349b11960500_1.png?Expires\u003d1736467200\u0026Signature\u003dWt16gynul9exWHEgTrm3jgHmyrGKLFUGFLvuSMoO4Y7E5ll9~YnESYYwQQM52HD58EmuPgb2DrWVfQTOfaRWxDIkKHxmO7gXXU~y7u0iX-BpkZD2MarZVjR87O8I0t27p1Np6rDGihk-7SEERX1eafcIhxaVjDmr66x2Z20vN6YNkusWUAWtnT14seIeg3bNfBctexOB~tBk7D4L~pTyy7YRejVDDY5gtAuryz4v2jEBEpX8bC4bS1bDGwg03jog1IhfqHSytfMudZbs1ksznw203b5pUXCGEpMdMKkqY5tsMt7ufC4-DFmaNbF62RWQyjZUqigaPkRMjeDBjt0uUw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          }
+        },
+        {
+          "stats": {
+            "lastPlayedTime": "2024-03-01T15:58:03Z",
+            "winRateAr": 0.0,
+            "winRateLf": 0.6666666666666666
+          },
+          "id": "VnNTdGFnZS0yMw\u003d\u003d",
+          "name": "Marlin Airport",
+          "stageId": 23,
+          "vsStageId": 23,
+          "originalImage": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/21ea0549b3d29de56ec20affef8866297929d0defb82a27cd199c9d8dade508c_0.png?Expires\u003d1736467200\u0026Signature\u003dLS-1tkeDtdxfHYVLgH8SYq~n4tX7OKOFmCWGNqXTwqqdxEWUfuKQcP2cS~I61fXZV~uMqjIcIrpe9z7R9Y32GLh05wyhyg4qjZbA4-NVQ3FK3jWanNnSwMsw3Nf2-tGznEFUIDxu2ygXyksVybVA3ObXpPdzgNlVS3ZuQcAhz6YrHwRXuql9BCBkzzrg5mOyy0iDrkHmq2dkby37Wy2CHPaIVmtGgW6RtgJw40dNb4e9ivv-zBTBWbQd8JQLSqzVwOiZZVBrEJb19G5JI5fUJtSHQJUOSKGgaIjNMvN8tPiy5h-R1T0fPi9wox~k8PIDGdkek5XIJRGm0CuWL2c5AA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/low_resolution/21ea0549b3d29de56ec20affef8866297929d0defb82a27cd199c9d8dade508c_1.png?Expires\u003d1736467200\u0026Signature\u003dnvDJuAXG1w~lBVF9gNYr51gQUNLsbcPeBkD5nHYWKUtSBtuTigLuht8YU4b0SGNtnDTHwx0mrjDvbpCYFbaQiX2yGwktsFJ8VugVNi4LWiVXV7bARs76vr-d-XclDM4GpkY~d6q6YsFmG3SGinzalO-ffi91KEXbcxs4KkQy~yIUtR4PjDFnhes31Rwkjmt3XD8eDuLt6p~cUNB5XhjALsYIqujRXetDpVfJpBnG7l3FIjBhW13UuT8-MaH9kkh0a2H~sqTzDdP2t2rbd~ExkOXTZI0OL5qF~e1wmT~ylwdbAtMfE68oyOxYJYoSaMHf7PZl3IrWfLoW0Q-AS1FxBQ__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
           }
         }
       ]
