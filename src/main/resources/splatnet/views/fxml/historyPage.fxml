@@ -17,7 +17,7 @@
          <children>
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="96.0" minWidth="852.0" prefHeight="96.0" prefWidth="852.0">
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="96.0" minWidth="800.0" prefHeight="96.0" prefWidth="800.0">
                      <children>
                         <Button fx:id="buttonAll" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#displayLatestMatches" prefHeight="96.0" prefWidth="96.0">
                            <graphic>
@@ -84,6 +84,11 @@
                         </Button>
                      </children>
                   </HBox>
+                  <Label fx:id="count" textFill="WHITE">
+                     <font>
+                        <Font name="Splatoon2" size="25.0" />
+                     </font>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets />

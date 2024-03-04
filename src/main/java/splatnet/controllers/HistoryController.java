@@ -50,6 +50,9 @@ public class HistoryController extends Controller {
     @FXML
     public Button buttonChallenge;
 
+    @FXML
+    public Label count;
+
     private Button lastClicked;
 
     private Label loadingLabel = new Label("Fetching latest data, please wait... (about 20 seconds)");
@@ -247,8 +250,21 @@ public class HistoryController extends Controller {
 
     private void displayGames(ArrayList<Game> games) {
         matchList.getChildren().clear();
+
+        int wins = 0;
+        int loses = 0;
+        int draws = 0;
+
         for (Game game : games) {
             HBox gameDisplay = getMatchDisplay(game);
+
+            if (game.getStatus().equals("WIN")) {
+                wins++;
+            } else if (game.getStatus().equals("LOSE")) {
+                loses++;
+            } else {
+                draws++;
+            }
 
             gameDisplay.setOnMouseClicked(event -> {
                 try {
@@ -260,6 +276,8 @@ public class HistoryController extends Controller {
 
             matchList.getChildren().add(gameDisplay);
         }
+
+        count.setText("" + wins + " - " + loses + " - " + draws);
 
     }
 
