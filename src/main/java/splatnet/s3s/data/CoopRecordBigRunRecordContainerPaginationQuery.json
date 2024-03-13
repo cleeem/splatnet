@@ -1,0 +1,82 @@
+{
+  "data": {
+    "coopRecord": {
+      "bigRunRecord": {
+        "records": {
+          "edges": [
+            {
+              "node": {
+                "startTime": "2023-09-02T00:00:00Z",
+                "endTime": "2023-09-04T00:00:00Z",
+                "trophy": "BRONZE",
+                "coopStage": {
+                  "name": "Um\u0027ami Ruins",
+                  "image": {
+                    "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/5894ed09915957be54e5b1eb58c4c52a9d5d89a99b1297e6d06eac07d47196d0_0.png?Expires\u003d1736467200\u0026Signature\u003duBenAYi0ojcYIVEwnNQIjN94EJkdhYw01sba2ht8Y1EYVt9Vch9oGR5gRgIxQBVQhU1b1bOrn9EkoDkfVUWW7hEDgXJCOzajBml4J1pZubkU0gQeJxRrELU1WSfLHltts1XGuEJozf2EdZwj9KaBxDC5sCwoFNoPaWZyXDty21fzTxp7-9AhGMlzk38KA6qghX9S1AGOV6UMwTdWlwS-qqFBTs-eqBPr2CvSLoGqIbu51rEYBCPxmaElaqPBlA2KBq~temCuQLwbb6nbOVLTnnbv33EoCVfP8~PhdPnyhG80oAXbCGmXOTEk5LN3JXjOStzyBOGoAEnARRT-43O8Og__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+                  },
+                  "id": "Q29vcFN0YWdlLTEwNA\u003d\u003d"
+                },
+                "highestGrade": {
+                  "name": "Eggsecutive VP",
+                  "id": "Q29vcEdyYWRlLTg\u003d"
+                },
+                "highestGradePoint": 60,
+                "highestJobScore": 108,
+                "__typename": "CoopBigRunRecordItem"
+              },
+              "cursor": "MQ"
+            },
+            {
+              "node": {
+                "startTime": "2023-06-10T00:00:00Z",
+                "endTime": "2023-06-12T00:00:00Z",
+                "trophy": "GOLD",
+                "coopStage": {
+                  "name": "Undertow Spillway",
+                  "image": {
+                    "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/71c7076fc2d23f1833c923747e8582e29eb275bed96d8360aa5d0ed6ae069230_0.png?Expires\u003d1736467200\u0026Signature\u003dsa-8Amjogn1mMg2SPd6D3xJgmQ6XBxNltb5vyW3XN0lkaU7m1bLAqoFHBdUP7l2eUYADxPLw-UNMLGwEdkwhuIUwVT-v20hKclc-mCSr-tLWBTFFv5DpvJ0ySf-mjGFw28YssIn6MYas8QDizcwf9HqQyogrRVX3~uznScDs6mUxkWbpvET7GAMhAGyjurkyXKoOCZYCRzd65llCM-dq14vZEHyBvafyIDIqZeUdqMvtsf4zmwuJguYXRvtz-eXcB8nB49z7ibsEWDMIgx5qvZkxz6oy1NEx3zjvEgJ6w6E9dVB3qdM2oHPgJTb~m-IrwUpJf-ol7rn5fyihXr5D-Q__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+                  },
+                  "id": "Q29vcFN0YWdlLTEwMw\u003d\u003d"
+                },
+                "highestGrade": {
+                  "name": "Eggsecutive VP",
+                  "id": "Q29vcEdyYWRlLTg\u003d"
+                },
+                "highestGradePoint": 210,
+                "highestJobScore": 153,
+                "__typename": "CoopBigRunRecordItem"
+              },
+              "cursor": "Mg"
+            },
+            {
+              "node": {
+                "startTime": "2023-03-04T00:00:00Z",
+                "endTime": "2023-03-06T00:00:00Z",
+                "trophy": "SILVER",
+                "coopStage": {
+                  "name": "Inkblot Art Academy",
+                  "image": {
+                    "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/3598b7f54248b84c47cde6b99aa45ff296a41d3d5f38eaccfe2327b2874fff0b_0.png?Expires\u003d1736467200\u0026Signature\u003dWc4pJx7ZqVpi~u4ZTCVSwh398jUIZemiqoCo0hHhe3w3yITgGyCs8hfwBnABOYswkRj-n4uZPLhAcgyjTvjsmuw4gNO0d-FJK03ZgDwfAAxG2T5oKR577gTC8JaxvYHtUg4AZNU0cp8V9ecnLa0zqALUm6spi9uCvP9ZYaCEhLDwTr1xkIGYu77ovD7hFQedcOIbcSG2td7Xpx0QdL1NucHSFwr~dUHNLus5DRxoFPjzC1zE2xfZ5uaJAnckzyCgxLz9xVKhSJNZb4Anl~DAijfaczipR1xUnF~ZrxrzvIdk3V5kcnFSy4v4glfPQF2iczS5cM9worM3-nj0J~fIDg__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+                  },
+                  "id": "Q29vcFN0YWdlLTEwMg\u003d\u003d"
+                },
+                "highestGrade": {
+                  "name": "Eggsecutive VP",
+                  "id": "Q29vcEdyYWRlLTg\u003d"
+                },
+                "highestGradePoint": 420,
+                "highestJobScore": 135,
+                "__typename": "CoopBigRunRecordItem"
+              },
+              "cursor": "Mw"
+            }
+          ],
+          "pageInfo": {
+            "endCursor": "Mw",
+            "hasNextPage": true
+          }
+        }
+      }
+    }
+  }
+}

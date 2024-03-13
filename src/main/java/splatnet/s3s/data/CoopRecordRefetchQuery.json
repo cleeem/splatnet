@@ -1,0 +1,159 @@
+{
+  "data": {
+    "coopRecord": {
+      "stageHighestRecords": [
+        {
+          "coopStage": {
+            "coopStageId": 2,
+            "name": "Sockeye Station",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/3418d2d89ef84288c78915b9acb63b4ad48df7bfcb48c27d6597920787e147ec_0.png?Expires\u003d1736467200\u0026Signature\u003dtJSrCvfKdIrp-NsDcQxZ~GP3cjf~WPI6QjS98j4N3-LnedBtxdcrzuUd-ETRqabPys0vvLH4CIBGIzi5WIH~CYJSHzCL38tpNHn3Bb4xrUA~McfPwVTPqpbEQW712dQVzpygOQDbOvFe9d0~bFgzs~1F9lyPIrlRce9bHlNP7FSRQQUPPIp8PKAoyxsh7rOfQzrBAtSzhtC8Cj2Z5ZOEvm~2aXU~NrcniQcVQnmat3I6ZVm1sqEp4qrN0v0zeKAd6ddqsH-0~EwzmSIkDzAH7jaiYgrQ9GEx61aVtKyoNgBtsxyebvHA-yyAtpOHlpGZG8Wz~qlYp~Xu6Lo1I-SHIg__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "id": "Q29vcFN0YWdlLTI\u003d"
+          },
+          "grade": {
+            "name": "Eggsecutive VP",
+            "id": "Q29vcEdyYWRlLTg\u003d"
+          },
+          "gradePoint": 120
+        },
+        {
+          "coopStage": {
+            "coopStageId": 1,
+            "name": "Spawning Grounds",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/be584c7c7f547b8cbac318617f646680541f88071bc71db73cd461eb3ea6326e_0.png?Expires\u003d1736467200\u0026Signature\u003dd96uCm14F052MFa80p~UsKR2kEIBQcpcgp62fH-Z0Kd-nsKYNRK4f9FaBEL3YlAF-~AHB4bTQ9pDaQd-UD124-E8vhSiiyJvCVMmHYx6yT3f6pLAVnedd2d-0FQV3W86ZLJjUscoqWgYPXv~Wz-DJsfhLRmKHc5VkVN6l6CwO17vaUCoxoV0Dwjx80Sv03Eq0ZeBqfHCnMjwhY6Bamf28NDwPeGjdpJZoMZo5KIed0SORGXkKQO8PjmkvnXAMWXoMLfLdeXae0JtIom1BWBIMBC1Q-Kz-8HMe3bpNUEjtIkHq2vO~GMnLNEFKov6naaa2JepvzdGJYAP5hXOWXw7CA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "id": "Q29vcFN0YWdlLTE\u003d"
+          },
+          "grade": {
+            "name": "Profreshional +1",
+            "id": "Q29vcEdyYWRlLTU\u003d"
+          },
+          "gradePoint": 70
+        },
+        {
+          "coopStage": {
+            "coopStageId": 7,
+            "name": "Gone Fission Hydroplant",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/f1e4df4cff1dc5e0acc66a9654fecf949224f7e4f6bd36305d4600ac3fa3db7b_0.png?Expires\u003d1736467200\u0026Signature\u003dELdkRzxxs7HvcI5JDkGn~cLNsel2ZxGetFsQIp9KNO8iagucQluzcJ~tYCXFcpIMB5z9badkgrBcv75CKdQLlmKff~s617ono0nTXTB2XvTRpBLqPifn3AHB8kLKGQEdI9hJuEiG9e88A6JbB4KLpP8E9XWu~7EjNPlYq--CiN~UiSIVrK~4pIL1-42ppjik2~RPbyCMITq2qsIu~LUGIOR2aor2oufClz1TEOf33qvH-C2RlUqa64nqtOi~c0k6PGjmdHb-R4hWAxv2VWjGRcrdKrAq9juqtW4fOoI9BCYQdHW4RRTlijsuCTiXeEpZX6DzwF3mRk1jExqVBv0uzw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "id": "Q29vcFN0YWdlLTc\u003d"
+          },
+          "grade": {
+            "name": "Eggsecutive VP",
+            "id": "Q29vcEdyYWRlLTg\u003d"
+          },
+          "gradePoint": 130
+        },
+        {
+          "coopStage": {
+            "coopStageId": 6,
+            "name": "Marooner\u0027s Bay",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/1a29476c1ab5fdbc813e2df99cd290ce56dfe29755b97f671a7250e5f77f4961_0.png?Expires\u003d1736467200\u0026Signature\u003dG4nJxAFk40SqQdWexWYdLqzq4lD27clnYxZa9Znhd-J3GwgEgVPOzjd6izqZLsxB~9xTz5zfQhZaxzz3bERfTIxCJTYba9Y4MNquw1K93-ju9ShzEOJnk4uUZQYmW12x2Ztn~0P7F4qYE22zUMb7L-HEQ~WgzVoMmhSricuU4px~GSZgQJGXwjHkYOgoLgg4fe6Igg3ug2N9B-nurhNUTlZ6OLUktCyc1~~7ffjktkgbuWygxmjYxU8lLVB0a8rHem6mhUjaOxn2M1Q8axtkeFJppRN6MV5r34c4TBsYAI1GN6wGuqimpaIofoxJxqr2KB0F7hs0oDhZDdKa~ViJrg__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "id": "Q29vcFN0YWdlLTY\u003d"
+          },
+          "grade": {
+            "name": "Eggsecutive VP",
+            "id": "Q29vcEdyYWRlLTg\u003d"
+          },
+          "gradePoint": 100
+        },
+        {
+          "coopStage": {
+            "coopStageId": 4,
+            "name": "Salmonid Smokeyard",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/630d89698e3e260ef12cb2a32e1cb2c4c83c0e58fc882762da1fa2cea19a5260_0.png?Expires\u003d1736467200\u0026Signature\u003dsQdV6OZXaSHAON9FAb0JFGxaJH5b3pHd0PBVyT~Dolw7JWgZybELhlCkR3FgZ118dA7FUzA~fjRqKXgfd0Ws1nQH6XUtKRPggckLF-GH7EzsOWqoZca~Bqr7Q893SY5psR-SD74DKMNgwyHV7dvenVuvcUn0NgkPOrucjsmbRS6R9s~i47fWkTx7bhY2FcEZKvhZknuf6h-aOFaPByvlRozsRaRLVUb3schtaAbG2YiaZTFR1WE0bMHSc-9P8ZoPSIz2smLbzQn1aNrMoOXjQSA98-IFRT8jK9vaDmxABJYsHwQXmllbg4x-t4y5U2o~wzJNoGx3WN5Uqm8xjDt0yA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "id": "Q29vcFN0YWdlLTQ\u003d"
+          },
+          "grade": {
+            "name": "Eggsecutive VP",
+            "id": "Q29vcEdyYWRlLTg\u003d"
+          },
+          "gradePoint": 100
+        }
+      ],
+      "bigRunRecord": {
+        "records": {
+          "edges": [
+            {
+              "node": {
+                "startTime": "2023-09-02T00:00:00Z",
+                "endTime": "2023-09-04T00:00:00Z",
+                "trophy": "BRONZE",
+                "coopStage": {
+                  "name": "Um\u0027ami Ruins",
+                  "image": {
+                    "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/5894ed09915957be54e5b1eb58c4c52a9d5d89a99b1297e6d06eac07d47196d0_0.png?Expires\u003d1736467200\u0026Signature\u003duBenAYi0ojcYIVEwnNQIjN94EJkdhYw01sba2ht8Y1EYVt9Vch9oGR5gRgIxQBVQhU1b1bOrn9EkoDkfVUWW7hEDgXJCOzajBml4J1pZubkU0gQeJxRrELU1WSfLHltts1XGuEJozf2EdZwj9KaBxDC5sCwoFNoPaWZyXDty21fzTxp7-9AhGMlzk38KA6qghX9S1AGOV6UMwTdWlwS-qqFBTs-eqBPr2CvSLoGqIbu51rEYBCPxmaElaqPBlA2KBq~temCuQLwbb6nbOVLTnnbv33EoCVfP8~PhdPnyhG80oAXbCGmXOTEk5LN3JXjOStzyBOGoAEnARRT-43O8Og__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+                  },
+                  "id": "Q29vcFN0YWdlLTEwNA\u003d\u003d"
+                },
+                "highestGrade": {
+                  "name": "Eggsecutive VP",
+                  "id": "Q29vcEdyYWRlLTg\u003d"
+                },
+                "highestGradePoint": 60,
+                "highestJobScore": 108,
+                "__typename": "CoopBigRunRecordItem"
+              },
+              "cursor": "MQ"
+            },
+            {
+              "node": {
+                "startTime": "2023-06-10T00:00:00Z",
+                "endTime": "2023-06-12T00:00:00Z",
+                "trophy": "GOLD",
+                "coopStage": {
+                  "name": "Undertow Spillway",
+                  "image": {
+                    "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/71c7076fc2d23f1833c923747e8582e29eb275bed96d8360aa5d0ed6ae069230_0.png?Expires\u003d1736467200\u0026Signature\u003dsa-8Amjogn1mMg2SPd6D3xJgmQ6XBxNltb5vyW3XN0lkaU7m1bLAqoFHBdUP7l2eUYADxPLw-UNMLGwEdkwhuIUwVT-v20hKclc-mCSr-tLWBTFFv5DpvJ0ySf-mjGFw28YssIn6MYas8QDizcwf9HqQyogrRVX3~uznScDs6mUxkWbpvET7GAMhAGyjurkyXKoOCZYCRzd65llCM-dq14vZEHyBvafyIDIqZeUdqMvtsf4zmwuJguYXRvtz-eXcB8nB49z7ibsEWDMIgx5qvZkxz6oy1NEx3zjvEgJ6w6E9dVB3qdM2oHPgJTb~m-IrwUpJf-ol7rn5fyihXr5D-Q__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+                  },
+                  "id": "Q29vcFN0YWdlLTEwMw\u003d\u003d"
+                },
+                "highestGrade": {
+                  "name": "Eggsecutive VP",
+                  "id": "Q29vcEdyYWRlLTg\u003d"
+                },
+                "highestGradePoint": 210,
+                "highestJobScore": 153,
+                "__typename": "CoopBigRunRecordItem"
+              },
+              "cursor": "Mg"
+            },
+            {
+              "node": {
+                "startTime": "2023-03-04T00:00:00Z",
+                "endTime": "2023-03-06T00:00:00Z",
+                "trophy": "SILVER",
+                "coopStage": {
+                  "name": "Inkblot Art Academy",
+                  "image": {
+                    "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/stage_img/icon/high_resolution/3598b7f54248b84c47cde6b99aa45ff296a41d3d5f38eaccfe2327b2874fff0b_0.png?Expires\u003d1736467200\u0026Signature\u003dWc4pJx7ZqVpi~u4ZTCVSwh398jUIZemiqoCo0hHhe3w3yITgGyCs8hfwBnABOYswkRj-n4uZPLhAcgyjTvjsmuw4gNO0d-FJK03ZgDwfAAxG2T5oKR577gTC8JaxvYHtUg4AZNU0cp8V9ecnLa0zqALUm6spi9uCvP9ZYaCEhLDwTr1xkIGYu77ovD7hFQedcOIbcSG2td7Xpx0QdL1NucHSFwr~dUHNLus5DRxoFPjzC1zE2xfZ5uaJAnckzyCgxLz9xVKhSJNZb4Anl~DAijfaczipR1xUnF~ZrxrzvIdk3V5kcnFSy4v4glfPQF2iczS5cM9worM3-nj0J~fIDg__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+                  },
+                  "id": "Q29vcFN0YWdlLTEwMg\u003d\u003d"
+                },
+                "highestGrade": {
+                  "name": "Eggsecutive VP",
+                  "id": "Q29vcEdyYWRlLTg\u003d"
+                },
+                "highestGradePoint": 420,
+                "highestJobScore": 135,
+                "__typename": "CoopBigRunRecordItem"
+              },
+              "cursor": "Mw"
+            }
+          ],
+          "pageInfo": {
+            "endCursor": "Mw",
+            "hasNextPage": true
+          }
+        }
+      }
+    }
+  }
+}

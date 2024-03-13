@@ -6,8 +6,11 @@ import com.google.gson.JsonObject;
 import splatnet.s3s.classes.game.Stage;
 
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 public class Rotation {
+
+    private final static TimeZone timeZone = TimeZone.getTimeZone("UTC");
 
     private String startTime;
 

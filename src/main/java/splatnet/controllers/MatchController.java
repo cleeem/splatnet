@@ -4,6 +4,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +27,7 @@ import splatnet.s3s.classes.weapons.Weapon;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MatchController extends Controller {
 
@@ -37,6 +40,7 @@ public class MatchController extends Controller {
     private static final int MAIN_WEAPON_IMAGE_SIZE = 80;
     private static final int SUB_WEAPON_IMAGE_SIZE = 40;
 
+    private ArrayList<Label> playerNameLabels = new ArrayList<>();
     private static boolean showingPlayer = false;
 
     private static Stage stage;
@@ -88,8 +92,6 @@ public class MatchController extends Controller {
         modeContainer.getChildren().add(modeLabel);
 
         // affichage de la map
-
-
         ImageView stageImageView = game.getVsStage().getImage();
         stageImageView.setFitWidth(650);
         stageImageView.setFitHeight(100);
@@ -105,7 +107,25 @@ public class MatchController extends Controller {
         dateLabel.setFont(SPLATOON2_FONT);
         dateLabel.setStyle("-fx-text-fill: white;");
 
-        stageContainer.getChildren().add(dateLabel);
+        ToggleButton hideplayers = new ToggleButton("Hide players");
+        hideplayers.setId("hideplayers");
+        hideplayers.setOnAction(event -> {
+            for (Label playerNameLabel : playerNameLabels) {
+                playerNameLabel.setVisible(!hideplayers.isSelected());
+            }
+        });
+        hideplayers.setPrefHeight(30);
+        hideplayers.setPrefWidth(200);
+        hideplayers.setFont(SPLATOON2_FONT);
+        hideplayers.setStyle("-fx-background-color: #000000; -fx-text-fill: white; -fx-background-radius: 10; -fx-border-radius: 10");
+
+        HBox bottom = new HBox();
+        bottom.setAlignment(Pos.CENTER);
+        bottom.setSpacing(35);
+        bottom.getChildren().add(dateLabel);
+        bottom.getChildren().add(hideplayers);
+
+        stageContainer.getChildren().add(bottom);
 
         // affichage des infos
 
@@ -224,6 +244,8 @@ public class MatchController extends Controller {
         playerName.setFont(SPLATOON2_FONT);
         playerName.setStyle("-fx-text-fill: white;");
 
+        playerNameLabels.add(playerName);
+
         Label paintLabel = new Label(player.getPaint() + "p");
         paintLabel.setFont(SPLATOON2_FONT);
         paintLabel.setStyle("-fx-text-fill: white;");
@@ -252,7 +274,8 @@ public class MatchController extends Controller {
 
         container.getChildren().add(playerBox);
 
-        container.setOnMouseEntered(mouseEvent -> container.getScene().setCursor(javafx.scene.Cursor.HAND));
+        playerBox.setOnMouseEntered(mouseEvent -> playerBox.getScene().setCursor(Cursor.HAND));
+        playerBox.setOnMouseExited(mouseEvent -> playerBox.getScene().setCursor(Cursor.DEFAULT));
 
         container.setOnMouseClicked(mouseEvent -> {
             try {

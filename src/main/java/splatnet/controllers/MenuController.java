@@ -2,8 +2,8 @@ package splatnet.controllers;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class MenuController extends Controller {
@@ -20,7 +20,7 @@ public class MenuController extends Controller {
     }
 
     @FXML
-    public void onScheduleButtonClick() {
+    public void onScheduleButtonClick(Event event) {
         System.out.println("Schedule button clicked");
 
         try {
@@ -31,7 +31,7 @@ public class MenuController extends Controller {
     }
 
     @FXML
-    public void onHistoryButtonClick() {
+    public void onHistoryButtonClick(Event event) {
         System.out.println("History button clicked");
 
         try {

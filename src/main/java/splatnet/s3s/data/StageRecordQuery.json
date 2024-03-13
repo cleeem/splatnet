@@ -24,11 +24,11 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-28T19:12:04Z",
+            "lastPlayedTime": "2024-03-02T19:50:37Z",
             "winRateAr": 0.5,
             "winRateCl": 0.7894736842105263,
             "winRateGl": 0.5869565217391305,
-            "winRateLf": 0.7878787878787878,
+            "winRateLf": 0.7941176470588235,
             "winRateTw": 0.875
           },
           "id": "VnNTdGFnZS0y",
@@ -44,8 +44,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-28T17:12:42Z",
-            "winRateAr": 0.703125,
+            "lastPlayedTime": "2024-03-03T13:55:10Z",
+            "winRateAr": 0.6867469879518072,
             "winRateCl": 0.75,
             "winRateGl": 0.5813953488372093,
             "winRateLf": 0.7058823529411765,
@@ -64,11 +64,11 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-26T21:02:30Z",
+            "lastPlayedTime": "2024-03-01T17:49:30Z",
             "winRateAr": 0.75,
             "winRateCl": 0.6842105263157895,
             "winRateGl": 0.5423728813559322,
-            "winRateLf": 0.7142857142857143,
+            "winRateLf": 0.7014925373134329,
             "winRateTw": 0.631578947368421
           },
           "id": "VnNTdGFnZS00",
@@ -163,10 +163,10 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-28T19:51:38Z",
+            "lastPlayedTime": "2024-03-02T17:50:49Z",
             "winRateAr": 0.5909090909090909,
             "winRateCl": 0.6363636363636364,
-            "winRateGl": 0.717948717948718,
+            "winRateGl": 0.7209302325581395,
             "winRateLf": 0.7142857142857143,
             "winRateTw": 0.6428571428571429
           },
@@ -183,8 +183,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-03-01T16:06:40Z",
-            "winRateAr": 0.5384615384615384,
+            "lastPlayedTime": "2024-03-01T17:18:34Z",
+            "winRateAr": 0.5789473684210527,
             "winRateCl": 0.5,
             "winRateGl": 0.543859649122807,
             "winRateLf": 0.6666666666666666,
@@ -203,8 +203,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-27T16:43:17Z",
-            "winRateAr": 0.5970149253731343,
+            "lastPlayedTime": "2024-03-01T22:32:10Z",
+            "winRateAr": 0.5915492957746479,
             "winRateCl": 0.7777777777777778,
             "winRateGl": 0.6538461538461539,
             "winRateLf": 0.6190476190476191,
@@ -243,8 +243,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-02T14:53:59Z",
-            "winRateAr": 0.5789473684210527,
+            "lastPlayedTime": "2024-03-03T13:51:37Z",
+            "winRateAr": 0.5595238095238095,
             "winRateCl": 0.6666666666666666,
             "winRateGl": 0.7407407407407407,
             "winRateLf": 0.6666666666666666,
@@ -263,8 +263,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-25T13:12:08Z",
-            "winRateAr": 0.6103896103896104,
+            "lastPlayedTime": "2024-03-02T15:06:57Z",
+            "winRateAr": 0.6162790697674418,
             "winRateCl": 0.8666666666666667,
             "winRateGl": 0.5833333333333334,
             "winRateLf": 0.625,
@@ -323,12 +323,12 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-24T21:07:24Z",
-            "winRateAr": 0.7407407407407407,
+            "lastPlayedTime": "2024-03-02T23:52:50Z",
+            "winRateAr": 0.7142857142857143,
             "winRateCl": 0.5,
             "winRateGl": 0.4166666666666667,
             "winRateLf": 0.6333333333333333,
-            "winRateTw": 1.0
+            "winRateTw": 0.6153846153846154
           },
           "id": "VnNTdGFnZS0xNw\u003d\u003d",
           "name": "Humpback Pump Track",
@@ -363,8 +363,8 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-02-28T20:23:48Z",
-            "winRateAr": 0.8421052631578947,
+            "lastPlayedTime": "2024-03-03T15:39:11Z",
+            "winRateAr": 0.8260869565217391,
             "winRateCl": 0.625,
             "winRateGl": 0.7,
             "winRateLf": 0.7391304347826086,
@@ -383,11 +383,11 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-01-28T18:42:51Z",
+            "lastPlayedTime": "2024-03-02T21:47:22Z",
             "winRateAr": 0.0,
             "winRateCl": 0.8,
             "winRateGl": 0.5,
-            "winRateLf": 0.25,
+            "winRateLf": 0.4,
             "winRateTw": 0.6
           },
           "id": "VnNTdGFnZS0yMA\u003d\u003d",
@@ -442,9 +442,11 @@
         },
         {
           "stats": {
-            "lastPlayedTime": "2024-03-01T15:58:03Z",
-            "winRateAr": 0.0,
-            "winRateLf": 0.6666666666666666
+            "lastPlayedTime": "2024-03-03T15:54:58Z",
+            "winRateAr": 0.5853658536585366,
+            "winRateGl": 1.0,
+            "winRateLf": 0.75,
+            "winRateTw": 0.3333333333333333
           },
           "id": "VnNTdGFnZS0yMw\u003d\u003d",
           "name": "Marlin Airport",

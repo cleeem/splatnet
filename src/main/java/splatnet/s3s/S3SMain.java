@@ -238,17 +238,39 @@ public class S3SMain {
         }
         UtilitaryS3S.checkTokens();
         
-        String key = "StageRecordQuery";
-        String data = Exploitation.customQuery(
-                UtilitaryS3S.gtoken,
-                key,
-                "na-country",
-                UtilitaryS3S.userCountry
-        );
 
-        writeToFile(key, new ArrayList<String>() {{
-            add(data);
-        }});
+        for (String key : Utils.translateRid.keySet()) {
+            System.out.println(key);
+            String data;
+            try {
+                 data = Exploitation.customQuery(
+                        UtilitaryS3S.gtoken,
+                        key,
+                        null,
+                        null
+                );
+
+            } catch (RuntimeException e) {
+                try {
+                    data = Exploitation.customQuery(
+                            UtilitaryS3S.gtoken,
+                            key,
+                            "na-country",
+                            UtilitaryS3S.userCountry
+                    );
+
+                } catch (RuntimeException e2) {
+                    data = "{error: \"no data\"}";
+                }
+                
+            }
+            String finalData = data;
+            writeToFile(key, new ArrayList<String>() {{
+                add(finalData);
+            }});
+
+        }
+
 
     }
 }

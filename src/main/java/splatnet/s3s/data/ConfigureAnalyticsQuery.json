@@ -1,0 +1,22 @@
+{
+  "data": {
+    "playHistory": {
+      "udemaeMax": "S+10",
+      "paintPointTotal": 3977213,
+      "gameStartTime": "2022-09-16T19:59:26Z",
+      "battleNumTotal": 4049,
+      "xMatchMaxAr": {
+        "rank": 40
+      },
+      "xMatchMaxCl": {
+        "rank": 322
+      },
+      "xMatchMaxGl": {
+        "rank": 381
+      },
+      "xMatchMaxLf": {
+        "rank": 259
+      }
+    }
+  }
+}
