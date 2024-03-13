@@ -8,16 +8,17 @@ Please check the [s3s API](https://github.com/frozenpandaman/s3s) check the lice
 
 
 ## Features
- ![home-page.png](..%2F..%2F..%2Fimages%2Fhome-page.png)
+![title-screen.png](readme_images%2Ftitle-screen.png)
 
-![schedule.png](..%2F..%2F..%2Fimages%2Fschedule.png)
+![home-page.png](readme_images%2Fhome-page.png)
 
-![history.png](..%2F..%2F..%2Fimages%2Fhistory.png)
+![schedule.png](readme_images%2Fschedule.png)
 
-![game.png](..%2F..%2F..%2Fimages%2Fgame.png)
+![history.png](readme_images%2Fhistory.png)
 
-![player.png](..%2F..%2F..%2Fimages%2Fplayer.png)
+![game.png](readme_images%2Fgame.png)
 
+![player.png](readme_images%2Fplayer.png)
 
 ## License & copyleft statement 🏴
 
