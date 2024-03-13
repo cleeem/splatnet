@@ -4,12 +4,10 @@ It uses the s3s API but translated from Python to Java.
 Please check the [s3s API](https://github.com/frozenpandaman/s3s) check the license below.
 (iksm.py is now Iksm.java)
 
-![title-screen.png](..%2F..%2F..%2Fimages%2Ftitle-screen.png)
+![title-screen.png](readme_images%2Ftitle-screen.png)
 
 
 ## Features
-![title-screen.png](readme_images%2Ftitle-screen.png)
-
 ![home-page.png](readme_images%2Fhome-page.png)
 
 ![schedule.png](readme_images%2Fschedule.png)
