@@ -119,28 +119,11 @@ public class Stuff implements Comparable<Stuff> {
 
         String type = this.type.equals("HeadGear") ? "head" : this.type.equals("ClothingGear") ? "clothes" : "shoes";
 
-        String path = String.valueOf(Main.class.getResource("assets/gears/" + type + "/" + this.name + ".png"));
+                String path = String.valueOf(Main.class.getResource("assets/gears/" + type + "/" + this.name + ".png"));
         if (path.equals("null")) {
             try {
                 UtilitaryS3S.downloadImage(this.imageURL, this.name, "gears/" + type);
             } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-            this.image = File.createTempFile(this.name, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, this.image.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -158,6 +141,7 @@ public class Stuff implements Comparable<Stuff> {
         } else {
             this.exp = 0;
         }
+
     }
 
     public int getId() {
