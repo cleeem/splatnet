@@ -1,6 +1,9 @@
 package splatnet.models;
 
-import com.google.gson.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Game;
@@ -10,9 +13,8 @@ import splatnet.s3s.classes.misc.Brand;
 import splatnet.s3s.classes.misc.Friend;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -46,73 +48,41 @@ public class Storage {
 
     private ArrayList<Friend> friendList = new ArrayList<>();
 
-    private ArrayList<Ability> abilities = new ArrayList<>();
-
-    private ArrayList<Brand> brands = new ArrayList<>();
+    private Player player = null;
 
     private Storage() {
 
-        // Chemin vers le fichier JSON
-        String filePath = DATA_URL + "abilities.json";
+        // load abilities.json from resources in the data folder
+        // we use getResourceAsStream to get the file as a stream
+        // then we use the JsonParser to parse the stream into a JsonArray
 
         try {
-            // Obtenez un flux d'entrée vers la ressource JSON
-            InputStream inputStream = Main.class.getResourceAsStream(filePath);
+            InputStream abilitiesStream = Main.class.getResourceAsStream("data/abilities.json");
+            JsonArray abilitiesArray = new JsonParser().parse(new InputStreamReader(abilitiesStream))
+                    .getAsJsonObject()
+                    .getAsJsonObject("data")
+                    .getAsJsonObject("gearPowers")
+                    .getAsJsonArray("nodes");
 
-            if (inputStream != null) {
-                // Lecture du contenu du fichier JSON à l'aide d'un InputStreamReader
-                InputStreamReader reader = new InputStreamReader(inputStream);
-                // Analyse de la chaîne JSON en un objet JsonObject
-                JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-
-                JsonArray nodes = jsonObject.getAsJsonObject("data")
-                                     .getAsJsonObject("gearPowers")
-                                     .getAsJsonArray("nodes");
-
-                for (JsonElement node : nodes) {
-                    Ability ability = new Ability(node.getAsJsonObject());
-                    abilities.add(ability);
-                    Ability.addAbility(ability);
-
-                }
-
-                // N'oubliez pas de fermer le flux
-                reader.close();
-            } else {
-                System.err.println("Le fichier JSON n'a pas été trouvé dans les ressources.");
+            for (JsonElement abilityElement : abilitiesArray) {
+                JsonObject abilityObject = abilityElement.getAsJsonObject();
+                Ability ability = new Ability(abilityObject);
+                Ability.addAbility(ability);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        filePath = DATA_URL + "brands.json";
+            InputStream brandsStream = Main.class.getResourceAsStream("data/brands.json");
+            JsonArray brandsArray = new JsonParser().parse(new InputStreamReader(brandsStream))
+                    .getAsJsonObject()
+                    .getAsJsonObject("data")
+                    .getAsJsonObject("brands")
+                    .getAsJsonArray("nodes");
 
-        try {
-            // Obtenez un flux d'entrée vers la ressource JSON
-            InputStream inputStream = Main.class.getResourceAsStream(filePath);
-
-            if (inputStream != null) {
-                // Lecture du contenu du fichier JSON à l'aide d'un InputStreamReader
-                InputStreamReader reader = new InputStreamReader(inputStream);
-                // Analyse de la chaîne JSON en un objet JsonObject
-                JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-
-                JsonArray nodes = jsonObject.getAsJsonObject("data")
-                                     .getAsJsonObject("brands")
-                                     .getAsJsonArray("nodes");
-
-                for (JsonElement node : nodes) {
-                    Brand brand = new Brand(node.getAsJsonObject());
-                    brands.add(brand);
-                    Brand.addBrand(brand);
-                }
-
-                // N'oubliez pas de fermer le flux
-                reader.close();
-            } else {
-                System.err.println("Le fichier JSON n'a pas été trouvé dans les ressources.");
+            for (JsonElement brandElement : brandsArray) {
+                JsonObject brandObject = brandElement.getAsJsonObject();
+                Brand brand = new Brand(brandObject);
+                Brand.addBrand(brand);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -164,6 +134,10 @@ public class Storage {
 
     public Game getSelectedGame() {return selectedGame;}
 
+    public Player getPlayer() {
+        return player;
+    }
+
     public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
@@ -203,4 +177,8 @@ public class Storage {
     }
 
     public void setSelectedGame(Game game) {this.selectedGame = game;}
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 }

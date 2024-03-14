@@ -15,6 +15,7 @@ import splatnet.s3s.S3SMain;
 import splatnet.s3s.UtilitaryS3S;
 import splatnet.s3s.classes.game.Player;
 import splatnet.s3s.classes.misc.Ability;
+import splatnet.s3s.classes.misc.NamePlate;
 import splatnet.s3s.classes.misc.Stuff;
 import splatnet.s3s.classes.weapons.MainWeapon;
 
@@ -74,9 +75,6 @@ public class HomePageController extends Controller {
         System.out.println("Starting fetchXPowersData thread");
         fetchXPowersData.start();
 
-        Storage storage = Storage.getInstance();
-        storage.setPlayerData(myLastGamePlayer);
-        storage.setxPowers(xPowers);
     }
     private void displayXPowers() {
 
@@ -135,97 +133,65 @@ public class HomePageController extends Controller {
 
         System.out.println("Displaying last game infos");
 
-        JsonObject bannerObject = myLastGamePlayer.getBanner();
-
-        String bannerID = bannerObject.get("id").getAsString();
-
-        String filePath = BANNER_URL + bannerID + ".png";
-
-        InputStream inputStream = Main.class.getResourceAsStream(filePath);
-
-        File bannerFile = null;
-        if (inputStream == null) {
-            try {
-                // Si la ressource n'est pas trouvée, téléchargez-la
-                S3SMain.downloadBanner(bannerObject);
-                inputStream = Main.class.getResourceAsStream(filePath);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-             bannerFile = File.createTempFile(bannerID, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, bannerFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        ImageView banner = new ImageView(bannerFile.toURI().toString());
-        banner.setFitHeight(200);
-        banner.setFitWidth(668);
-
-        Label quoteLabel = new Label(myLastGamePlayer.getQuote());
-        quoteLabel.setStyle("-fx-text-fill: #FFFFFF");
-
-        // place the quote in the upper left corner of the banner
-        HBox quoteHolder = new HBox();
-        quoteHolder.setAlignment(Pos.TOP_LEFT);
-        quoteHolder.setStyle("-fx-padding: 0 0 0 20");
-        quoteLabel.setFont(Font.font("Splatoon2", 20));
-
-        Label nameLabel = new Label(myLastGamePlayer.getName());
-        nameLabel.setStyle("-fx-text-fill: #FFFFFF");
-
-        // place the name in center
-        HBox nameHolder = new HBox();
-        nameHolder.setAlignment(Pos.CENTER);
-        nameLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 50));
-
-
-        Label idLabel = new Label("#" + myLastGamePlayer.getNameId());
-        idLabel.setStyle("-fx-text-fill: #FFFFFF");
-
-        // place the id in the lower left corner of the banner
-        HBox idHolder = new HBox();
-        idHolder.setAlignment(Pos.TOP_LEFT);
-        idHolder.setStyle("-fx-padding: 0 0 0 20");
-        idLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
-
         bannerHolder.getChildren().clear();
+        bannerHolder.getChildren().add(myLastGamePlayer.getBannerBuild());
 
-        // no repeat
-        BackgroundImage test = new BackgroundImage(
-                new Image(bannerFile.toURI().toString()),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                null
-//                new BackgroundSize(668, 200, false, false, false, false)
-        );
-
-        bannerHolder.setBackground(new Background(test));
-
-        quoteHolder.getChildren().add(quoteLabel);
-        nameHolder.getChildren().add(nameLabel);
-        idHolder.getChildren().add(idLabel);
-
-        bannerHolder.getChildren().add(quoteHolder);
-        bannerHolder.getChildren().add(nameHolder);
-        bannerHolder.getChildren().add(idHolder);
-
-        background.setStyle("-fx-background-color: #2c2c2c");
+//        NamePlate namePlate = myLastGamePlayer.getNamePlate();
+//
+//        ImageView banner = myLastGamePlayer.getNamePlate().getBanner().getImage();
+//        banner.setFitHeight(200);
+//        banner.setFitWidth(668);
+//
+//        Label quoteLabel = new Label(myLastGamePlayer.getQuote());
+//        quoteLabel.setStyle("-fx-text-fill: #FFFFFF");
+//
+//        // place the quote in the upper left corner of the banner
+//        HBox quoteHolder = new HBox();
+//        quoteHolder.setAlignment(Pos.TOP_LEFT);
+//        quoteHolder.setStyle("-fx-padding: 0 0 0 20");
+//        quoteLabel.setFont(Font.font("Splatoon2", 20));
+//
+//        Label nameLabel = new Label(myLastGamePlayer.getName());
+//        nameLabel.setStyle("-fx-text-fill: #FFFFFF");
+//
+//        // place the name in center
+//        HBox nameHolder = new HBox();
+//        nameHolder.setAlignment(Pos.CENTER);
+//        nameLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 50));
+//
+//
+//        Label idLabel = new Label("#" + myLastGamePlayer.getNameId());
+//        idLabel.setStyle("-fx-text-fill: #FFFFFF");
+//
+//        // place the id in the lower left corner of the banner
+//        HBox idHolder = new HBox();
+//        idHolder.setAlignment(Pos.TOP_LEFT);
+//        idHolder.setStyle("-fx-padding: 0 0 0 20");
+//        idLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
+//
+//        bannerHolder.getChildren().clear();
+//
+//        // no repeat
+//        BackgroundImage test = new BackgroundImage(
+//                banner.getImage(),
+//                BackgroundRepeat.NO_REPEAT,
+//                BackgroundRepeat.NO_REPEAT,
+//                BackgroundPosition.DEFAULT,
+//                null
+////                new BackgroundSize(668, 200, false, false, false, false)
+//        );
+//
+//        bannerHolder.setBackground(new Background(test));
+//
+//        quoteHolder.getChildren().add(quoteLabel);
+//        nameHolder.getChildren().add(nameLabel);
+//        idHolder.getChildren().add(idLabel);
+//
+//        bannerHolder.getChildren().add(quoteHolder);
+//        bannerHolder.getChildren().add(nameHolder);
+//        bannerHolder.getChildren().add(idHolder);
+//
+//        background.setStyle("-fx-background-color: #2c2c2c");
 
 
     }
@@ -240,17 +206,17 @@ public class HomePageController extends Controller {
         headGearVBox.setAlignment(Pos.CENTER);
         HBox headGearHBox = new HBox();
         headGearHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView headGearImage = new ImageView(new Image(headGear.getImage().toURI().toString()));
+        ImageView headGearImage = headGear.getImage();
         headGearImage.setFitHeight(128);
         headGearImage.setFitWidth(128);
 
-        ImageView headGearMain = new ImageView(new Image(headGear.getMainAbility().getImage().toURI().toString()));
+        ImageView headGearMain = headGear.getMainAbility().getImage();
         headGearMain.setFitHeight(60);
         headGearMain.setFitWidth(60);
         headGearHBox.getChildren().add(headGearMain);
 
         for (Ability sub : headGear.getSubAbilities()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
+            ImageView subAbilityImage = sub.getImage();
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             headGearHBox.getChildren().add(subAbilityImage);
@@ -264,17 +230,17 @@ public class HomePageController extends Controller {
         clothesVBox.setAlignment(Pos.CENTER);
         HBox clothesHBox = new HBox();
         clothesHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView clothesImage = new ImageView(new Image(clothes.getImage().toURI().toString()));
+        ImageView clothesImage = clothes.getImage();
         clothesImage.setFitHeight(128);
         clothesImage.setFitWidth(128);
 
-        ImageView clothesGearMain = new ImageView(new Image(clothes.getMainAbility().getImage().toURI().toString()));
+        ImageView clothesGearMain = clothes.getMainAbility().getImage();
         clothesGearMain.setFitHeight(60);
         clothesGearMain.setFitWidth(60);
         clothesHBox.getChildren().add(clothesGearMain);
 
         for (Ability sub : clothes.getSubAbilities()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
+            ImageView subAbilityImage = sub.getImage();
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             clothesHBox.getChildren().add(subAbilityImage);
@@ -288,17 +254,17 @@ public class HomePageController extends Controller {
         shoesVBox.setAlignment(Pos.CENTER);
         HBox shoesHBox = new HBox();
         shoesHBox.setAlignment(Pos.BASELINE_CENTER);
-        ImageView shoesImage = new ImageView(new Image(shoes.getImage().toURI().toString()));
+        ImageView shoesImage = shoes.getImage();
         shoesImage.setFitHeight(128);
         shoesImage.setFitWidth(128);
 
-        ImageView shoesGearMain = new ImageView(new Image(shoes.getMainAbility().getImage().toURI().toString()));
+        ImageView shoesGearMain = shoes.getMainAbility().getImage();
         shoesGearMain.setFitHeight(60);
         shoesGearMain.setFitWidth(60);
         shoesHBox.getChildren().add(shoesGearMain);
 
         for (Ability sub : shoes.getSubAbilities()) {
-            ImageView subAbilityImage = new ImageView(new Image(sub.getImage().toURI().toString()));
+            ImageView subAbilityImage = sub.getImage();
             subAbilityImage.setFitHeight(35);
             subAbilityImage.setFitWidth(35);
             shoesHBox.getChildren().add(subAbilityImage);
@@ -318,21 +284,15 @@ public class HomePageController extends Controller {
 
         MainWeapon weaponData = myLastGamePlayer.getWeapon();
 
-        File mainWeaponFile = weaponData.getImage();
-
-        File subWeaponFile = weaponData.getSubWeapon().getImage();
-
-        File specialWeaponFile = weaponData.getSpecialWeapon().getImage();
-
-        ImageView weaponImage = new ImageView(mainWeaponFile.toURI().toString());
+        ImageView weaponImage = weaponData.getImage();
         weaponImage.setFitHeight(150);
         weaponImage.setFitWidth(150);
 
-        ImageView specialWeaponImage = new ImageView(specialWeaponFile.toURI().toString());
+        ImageView specialWeaponImage = weaponData.getSpecialWeapon().getImage();
         specialWeaponImage.setFitHeight(75);
         specialWeaponImage.setFitWidth(75);
 
-        ImageView subWeaponImage = new ImageView(subWeaponFile.toURI().toString());
+        ImageView subWeaponImage = weaponData.getSubWeapon().getImage();
         subWeaponImage.setFitHeight(75);
         subWeaponImage.setFitWidth(75);
 

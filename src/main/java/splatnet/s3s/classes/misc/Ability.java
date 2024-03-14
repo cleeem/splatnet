@@ -1,25 +1,22 @@
 package splatnet.s3s.classes.misc;
 
 import com.google.gson.JsonObject;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
-public class Ability {
-
-    private static final String ABILITIES_URL = "assets/abilities/";
-
+public class Ability implements Comparable<Ability> {
     private String name;
     private int id;
-    private File image;
+    private ImageView image;
 
-    private static ArrayList<Ability> abilities = new ArrayList<>();
+    private static TreeSet<Ability> abilities = new TreeSet<>();
 
     public static Ability getAbilityById(int id) {
         for (Ability ability : abilities) {
@@ -36,6 +33,7 @@ public class Ability {
                 return ability;
             }
         }
+        System.out.println("Ability not found: " + name);
         return null;
     }
 
@@ -43,50 +41,37 @@ public class Ability {
         abilities.add(ability);
     }
 
-    public Ability(String name, int id, File image) {
+    public Ability(String name, int id, ImageView image) {
         this.name = name;
         this.id = id;
         this.image = image;
     }
 
     public Ability(JsonObject data) {
-        this.name = data.get("name").getAsString();
+        this.name = data.get("name").getAsString()
+                .replace("%20", " ")
+                .replace(" ", "_");
         this.id = data.get("gearPowerId").getAsInt();
 
-        // Chemin relatif à la racine du JAR
-        String imagePath = ABILITIES_URL + this.id + ".png";
-        // Obtenez un flux d'entrée vers la ressource
-        InputStream inputStream = Main.class.getResourceAsStream(imagePath);
+        String path = String.valueOf(Main.class.getResource("assets/abilities/" + this.name + ".png"));
 
-        if (inputStream == null) {
+        if (path.equals("null")) {
             try {
-                // Si la ressource n'est pas trouvée, téléchargez-la
-                UtilitaryS3S.downloadSmallImage(data.get("image").getAsJsonObject().get("url").getAsString(), this.name, "abilities");
-                inputStream = Main.class.getResourceAsStream(imagePath);
-            } catch (Exception e) {
+                UtilitaryS3S.downloadImage(
+                        data.get("image").getAsJsonObject().get("url").getAsString(),
+                        this.name,
+                        "abilities"
+                );
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-            this.image = File.createTempFile(this.name, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, this.image.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
+        this.image = new ImageView(Main.class.getResource("assets/abilities/" + this.name + ".png").toString());
+
     }
 
-    public static ArrayList<Ability> getAbilities() {
+    public static TreeSet<Ability> getAbilities() {
         return abilities;
     }
 
@@ -98,7 +83,12 @@ public class Ability {
         return name;
     }
 
-    public File getImage() {
-        return image;
+    public ImageView getImage() {
+        return new ImageView(image.getImage());
+    }
+
+    @Override
+    public int compareTo(Ability o) {
+        return getId() - o.getId();
     }
 }

@@ -1,0 +1,584 @@
+{
+  "data": {
+    "festRecords": {
+      "nodes": [
+        {
+          "id": "RmVzdC1KUDpKLTAwMDEz",
+          "state": "CLOSED",
+          "startTime": "2024-02-17T00:00:00Z",
+          "endTime": "2024-02-19T00:00:00Z",
+          "title": "どれが好き？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/j-filling/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dWYbr5DPqjXVdJW5RUBC7SOJJhRdnaH0JukDkac2dszik8ZU8melXDmhpMHSfqhe4C9H~jVwoQtnIiwPl3dVjKWpEd8CAIUmCHqUcpzYSs1ye962koXSGpbNFQ1O4Qh07UtPfWFPaYqiC94Ixt~1ip39~lwBhVJjxXfBgyOy--vejVZwtfZ-NtXW8PRwymTiD1Z1UscZh3yIjh3JXqybz3SujVXt~Z3AHWSJWVX3iTdJkDffOkkHEdf5TFMy-CPmd94P4xQsemO7vhAOBCfNhKxpYVsDcZ03UJO8UDty1GGh4ABmG790fRqaAT1nacp4-gN1dP0idmoDEDNHuoN7VJQ__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6Si0wMDAxMzpBbHBoYQ\u003d\u003d",
+              "teamName": "あんこ",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6Si0wMDAxMzpCcmF2bw\u003d\u003d",
+              "teamName": "カスタード",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6Si0wMDAxMzpDaGFybGll",
+              "teamName": "ホイップ",
+              "result": {
+                "isWinner": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDEy",
+          "state": "CLOSED",
+          "startTime": "2024-01-13T00:00:00Z",
+          "endTime": "2024-01-15T00:00:00Z",
+          "title": "休みの日は？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-stove/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dd~l07oJ5QKwotnq6p5ny0I4O7tI2S3boPxs8MY3TfSJ5BNG6egpaJQhihVTY32AAkqnkiqRCaHHMhaCQrsKcjAhPvJ5gDzr8k7yHCJDhy5P3oEKqMYOlUSJB~uCthZp25ZZkFh5~ZPRX9aSSAtf1uJA3d~3bJ6B0iVkgORn7RGLDDABPcwgna3O39RiCvuPipBvUWpEheD8o8ufg0rivU7~RCmMxZop1t2ejgOvPJNa7MCHPhlJCQwTrx2EviBIK2nOWcriXrq57TX6Is9rvKktxHK10p0GUcRM8EtqrhKblwWxz1~z1S~HBrKFs4aKWvoVqf4eprSbIcPCOpk8e5w__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "スーパー家族でほっこり派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMjpBbHBoYQ\u003d\u003d",
+              "teamName": "仲間とわいわい",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMjpCcmF2bw\u003d\u003d",
+              "teamName": "家族でほっこり",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMjpDaGFybGll",
+              "teamName": "ひとりでのんびり",
+              "result": {
+                "isWinner": true
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "家族でほっこり",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-stove/b3bb3b4aba5b1bd4a63c897dfe4d4b3676707aa6dac39222d761bfae9fb864b1_0.png?Expires\u003d1736467200\u0026Signature\u003dPikuwjpmZqsPQfG26KEgw56lYckz4sk4AqbrV7vBfKBdn6Ax3cHgnaucPKUogiIYWhP5fVIdmk1AkWQd4PELTlAnToKrSAavvzs5asQNJyEnE-r~b2bKvw-PXtnwXRuERfYTXnpVU5GoGrMkadngmz8C~LzfWtyqH-pnEQkBmvAcAsb7g8jmIAb60GZsjqIOyaXzhGpZP6x8GpUvLUW5M0YOQuQrJP8WHL-9AI-1rZ1dBB0-6XX9bFMqGPiKux7dFSbDECwP4K5cAUaQwHgJN0j~VU2IcYpP7BY711SRZlrOj5lW7JP3rn~-2jOa0T1mWLkHbw42e3X4kEDYqpYZsw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.0901999995,
+              "g": 0.517650008,
+              "r": 0.701960027
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMjpCcmF2bw\u003d\u003d"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKLTAwMDEx",
+          "state": "CLOSED",
+          "startTime": "2023-11-18T00:00:00Z",
+          "endTime": "2023-11-20T00:00:00Z",
+          "title": "コレなんて呼ぶ？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/j-naniyaki/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003daix2pdWLKMr7Oc9Bra7m0Vj8DYznkfr7Je0n-uWRBiDen7grwtknNT3jfhAMKdQGILDPGbgzDLhgtGFGgOKfPv7Jie2WmzPx-CtoeGsVKMNYxUdAvIQNZXQtGfJC5MGu96OkfubLiAYcIvjcG5ugFhT8PG0QGCWeviYO5ayzKs~uaqJ1hm62NtRriuEErAdCIQqv~CwO6DCfICn-eeLPdmZpS6U-NWSi0tI6ILdudK6o~81NiI-mSWiUQIe53zcLM8f0SQBHFy3XHf4pzDuubnLH6oKNRQ5V6BhP-9mg2sTQdV9E~Y1C3v1EQuphveBOHrRrFVjno3gDY0z-evUdvw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6Si0wMDAxMTpBbHBoYQ\u003d\u003d",
+              "teamName": "回転焼き",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6Si0wMDAxMTpCcmF2bw\u003d\u003d",
+              "teamName": "大判焼き",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6Si0wMDAxMTpDaGFybGll",
+              "teamName": "今川焼き",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDEw",
+          "state": "CLOSED",
+          "startTime": "2023-10-28T00:00:00Z",
+          "endTime": "2023-10-30T00:00:00Z",
+          "title": "友だちにするなら？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-maple/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dDBa~1-xR1TkXU1yZT99RCNj2frhAmstDGHLdW5rrrxGph9mcNvx0asSAtJvzoKs3a5tr~k21YIFjdCgual4URRtJ~198uFvGjr209nrqtmkoO2cQnYB0SUiamNB3KNxuTTnUjY0K3GOyUV-UGzcoCaR89182vIzJGic6GORxf15u~F2S0kfvOaQi~J2sKsxhq-tMXBg8iLw6OTaPMbDPjzYRRgN04DWqLUvhSr8slL-9pSNt4FMagNEZPa~~QVpONOkCyuUcEHzrKpJ3oDhRJBCYNia5QQvhSUVRfivXzpkxiK1ntmg85ThPoeH3SSgglYv04B15g5Pa8Q6tIu6fKw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMDpBbHBoYQ\u003d\u003d",
+              "teamName": "ゾンビ",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMDpCcmF2bw\u003d\u003d",
+              "teamName": "ガイコツ",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAxMDpDaGFybGll",
+              "teamName": "ゴースト",
+              "result": {
+                "isWinner": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDA5",
+          "state": "CLOSED",
+          "startTime": "2023-09-09T00:00:00Z",
+          "endTime": "2023-09-11T00:00:00Z",
+          "title": "リーダーにふさわしいのは？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-oden/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dieEllIOGMEW~a1F2SqM1Fmc3j9rf7hA~yyP7~lsyxQkPAdtYrNsF1RMXjHqYWfAhzcK92ovmdT30x3rqwqA0yHcix5wu5fClzP8HwlmzqVDO9gr6SsU0-NLlRH6gIX3tH7ATZjVb9buzr00aPWYfzPgLAmKHoltoFyl~a2bzThqpedqDAmzLJDDYagcwgtGAWGL8uGPc8a5NojPUuOKxawt4tPR-7qC5fRwfEKUQNs029d8OmgshIqa3zJjBfcVz0ikemGfRGAh2LdoouBhGO-QH9mhk36M0YU6zOmzoQphodllsxI9Z5Dnm8tafzGUwPhhGtg9woYXNf~Jkbare5g__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "スーパーマンタロー派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwOTpBbHBoYQ\u003d\u003d",
+              "teamName": "フウカ",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwOTpCcmF2bw\u003d\u003d",
+              "teamName": "ウツホ",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwOTpDaGFybGll",
+              "teamName": "マンタロー",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "マンタロー",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-oden/c0276e2a150b4a61bcc46fca84c2aaef3bd09aa8e2e78baa4158e894c1685563_0.png?Expires\u003d1736467200\u0026Signature\u003dW4mioR0uNtr4dKeIkGb3aSuBZYv-9Eo8Srn-oeNlSY2yHQbBEDEtK7hwISjuGYL7vf3kMrhbL-ZU~ja09O8KOLRk10-tLaQkFOj4vgVJkSO~gYfCHONKZ4fkmPSVVXJKFWM~Vx6LO2sAYbRJySDUqTfNnxI5Q9lyhNxA0ocKZWUr919XmQ6quCgIpGUfHpu7YU~IMQ7rK43-TsppDk5Z~D9f30vs3S5fUlZ6tT7KZlxRasa4UppCR3OOensor0WUkkVvG5485M4PcspnVbrhwPrVPQ6hN2w532YftF-~sxWozWN1VvsACYQsR6MDhx2t20tB-TdsWFVJlG4oYMzePA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.2196078,
+              "g": 0.172548994,
+              "r": 0.87843138
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwOTpDaGFybGll"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDA4",
+          "state": "CLOSED",
+          "startTime": "2023-08-12T00:00:00Z",
+          "endTime": "2023-08-14T00:00:00Z",
+          "title": "人生で大事なのは？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-life/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dGL9yDn~7j93MjFHmhheg7wBnMtQDvezjClQ~MbpVL~GjEVFo5pTPw3wCeE0ctf7KRdg5B4AlsbMawwWBJnNeLzYRDqmYMs5-deqWw7yYniRtImni-~cFE82pbz8pVD9VWffGrnxGXA~U3cJJVGlcFEzrsP1DUDZnIPUy4s3ky1y0bfwON3QZDBAQmL3Fi6Jv-Mgxgzmn7BE5i~OnplFIPgEuxdKGRGqbxivqThcrKvR4MQ0J~rKpsXVmRY8lZ415LNEMrK0IkXPA4QZJ8dnAugrTcTHwPMJRPUA~nI11s-pLg8hy0Hh7aECgZ9AUGUFCCbpVSMCUOVPlxS~6h5Rn0g__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "ふつうの愛派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwODpBbHBoYQ\u003d\u003d",
+              "teamName": "富",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwODpCcmF2bw\u003d\u003d",
+              "teamName": "名声",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwODpDaGFybGll",
+              "teamName": "愛",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "愛",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-life/c0276e2a150b4a61bcc46fca84c2aaef3bd09aa8e2e78baa4158e894c1685563_0.png?Expires\u003d1736467200\u0026Signature\u003dlyX5lsRT2wO~0xk9QcLqHY7e-UylENyxiik0jSe1jq~SThMwZpCjsx7SVRq2-Wt5eSBvP4OwSqaXE80Zp10AqtCyGK~THfPMS5leU5pcs6HZET6kH955OLQYanJwgwvDQ5v2ndupw0NGD-8wLzqUcetA9FcM~ywZ-548pijDsZbvqtnWfgFZPx87n7kBlHZU94MZwfrwWz5zajm4pzjls4TCK3NuGFYb-NY2JtN1n1kjSfB8w72XcAJ7jalsfLcsXJYYW9iKKCUfdnTeXsiHmTx1fmfMMujSBGDcU75l1qpyg8t1x4ARs-dW5leas4usudf0S6lJ1edhcMWgtCFd1Q__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.474509805,
+              "g": 0.286274493,
+              "r": 0.721568584
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwODpDaGFybGll"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDA3",
+          "state": "CLOSED",
+          "startTime": "2023-07-15T00:00:00Z",
+          "endTime": "2023-07-17T00:00:00Z",
+          "title": "アイスといえば？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-icecream/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003daq~Q3dR9H3NOTaNPEjCP4xq5vYkoVsI7QoPFK3KwSYYNkHUTyf6FHk3KZHQPP5FTpqWWfTjdxKd1mF4lQqmETLQF9UuuaUwiRI5o6BhRZsUo6MZMLGPZfwfyNskKgsnF0WaC3GLXRUZ4U-3XILgRPg2n8Ab8saRz4N-SLqjQW1GFoPLg9isEhvZKra9z-6n~Zij-w4hxnPfcDUBszjGVp3sH4hqqMAliZMWjTj8lfLMEvFIRU-eZ5odfPU0zyKFlZXaVA3a3lOssH9EgS0j8bm2TFxSqaXR56riLvapzZxM7LmuCUJe6kwgLB1J5cB47SsBay~XI86CGhUAOR8OLQA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNzpBbHBoYQ\u003d\u003d",
+              "teamName": "バニラ",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNzpCcmF2bw\u003d\u003d",
+              "teamName": "ストロベリー",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNzpDaGFybGll",
+              "teamName": "チョコミント",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDA2",
+          "state": "CLOSED",
+          "startTime": "2023-05-06T00:00:00Z",
+          "endTime": "2023-05-08T00:00:00Z",
+          "title": "汝、何を求める？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-green/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dChcIZC-PPM-l-0p3H-iDQa5UIUwIgw2qBb5-LVtFMycp~bTQMujhoMpMJ7JmPGAzmGAxch-KV~H56VmrwCWtRd6QJqSpIjbSV0ucZSZd31djHa7eWvQhoxrtiDb9fJIhdqmHI3mUbpeXMpzjV1Vtjlzv8lXbAh3FLv-7Bk36k~YfKcZBtKD7vE9i168IhG-v4MaduqCr5bI9z3CziKcEXyNaMk4GHQYvUCW1likpYYMpZ1XOjDfpeus8dWp7Dzp4Gm5r9tiGWwMIdPC8tHXjfaP8BQ6lO8l2MI~zfLqiNym7kD8ljAnFFkJVVhG1oBCvdhAgL80ze3KaXdP7HrPWWQ__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "スーパー勇気派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNjpBbHBoYQ\u003d\u003d",
+              "teamName": "力",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNjpCcmF2bw\u003d\u003d",
+              "teamName": "知恵",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNjpDaGFybGll",
+              "teamName": "勇気",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "勇気",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-green/c0276e2a150b4a61bcc46fca84c2aaef3bd09aa8e2e78baa4158e894c1685563_0.png?Expires\u003d1736467200\u0026Signature\u003dcZrRTfzxhH6VNFHGg-82z6J3SVfFw9koaHS0QaJRamqi5ivvoSiIIlHTfJohaQmfsGz2EHKTGuou~UWjwxT9Sr7JU46Wu9mU8x5JxzKFcaff29oQECPej4igTpb5V6kpySlpt7OLHwp~c06tT-Sn8iqoQyV5DiQAXLKuBoHmfAgonZ-yl4hW928JuDR7nrsXHiOdm869EVsJ0s7oQxM79J0RYvBqxPGgAIx4txqfkvcikYbTjYNACosPrfPKItAfvnO5foGXDI4zlLWLNxEvDnIOAHHOToB~mPgJxPZ3QTH6mbaahb48~ZuffjdGnf9xcIajsa5-M9ewBpnvzIWIUQ__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.329411805,
+              "g": 0.4627451,
+              "r": 0.00392156886
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNjpDaGFybGll"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDA1",
+          "state": "CLOSED",
+          "startTime": "2023-04-01T00:00:00Z",
+          "endTime": "2023-04-03T00:00:00Z",
+          "title": "実在するのは？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-cryptid/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003de8zwmtdfkAveqSFmLVc6i8SAYBLp55o3wpKWyKL4b0NpYTErqwzekSBZZrP-GwDa8q21L9rPL8kkTREm5135l1GBtlS0Sr9uW-mIcxzzQJrFni-CJ~faLvrvtXgB2yxedKi40WuYlt6NmqXoShxkl3ZXAoUAXsIK0cQ24gxs~IF60SHsPXZi2DoPIi6d~Mj00iy7kP4RvMR0VliwS~mu2KHP~ep0mFvcW0-2kEAO~iW6GMCzbKHqfIMcNq3tP1h-Iqrmx867H-x5LwFhYZJa81C76o19llXbqXn0ls3~i27B1Cj56STvpGT4XF9J67253a2UAvlU59gNlQPUFjQzbw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "えいえんのネッシー派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNTpBbHBoYQ\u003d\u003d",
+              "teamName": "ネッシー",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNTpCcmF2bw\u003d\u003d",
+              "teamName": "宇宙人",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNTpDaGFybGll",
+              "teamName": "雪男",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "ネッシー",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-cryptid/a8e4c17157cd31507a9b7f4b6267d5caa0bdee317044d55a96c5496bb42228b6_0.png?Expires\u003d1736467200\u0026Signature\u003dUY~~m7e7gH4ZAC0x8QKKdaUe2VjmWUnMCo1VO91VI3Vrm~n4uwO1-26tCvMXdMfrp1AAWOrZKrZ4wCSKbMNVjRHDEAaj0gqrzEvgnSp69C6c6EjcJwodVBHzcPtj3ntV0NkekBjExwH2yqhXxJ4luwkWhhRT8N0Ce~niL279Rd5dKBGqs1bsKvXFGVe4uwnUv~0hJj51Hn~hesE8s4uokz35mR4TGDZSCqflT3cwbeGGhM0X1~34hYKz3PV6m-xwYNfsfqHJ4AqjQtHxt2byU84XayNRGmnUU0Kaup5YxiSo2y2MTm0TgngD1rSuGJ6VJM0FIVenkGys1guyBdPVxw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.427451015,
+              "g": 0.811764717,
+              "r": 0.121568598
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNTpBbHBoYQ\u003d\u003d"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDA0",
+          "state": "CLOSED",
+          "startTime": "2023-02-11T00:00:00Z",
+          "endTime": "2023-02-13T00:00:00Z",
+          "title": "チョコレートはやっぱりコレ！",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-chocolate/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dcqpm-Yt-~3Pl0j1lT6G1-GDCn1FLPzg8gBX6me4OGRrCtyEn1oITdJtK5MR7i9DNHG78I6w1QBiPhxVNfYmCxBSvP57caAh2UzNysVYh~sPL7Bjt2XK61ncsxkjTwRv2ToSvCkYUQHYfYrcR-L14X9vUWp2su8-CXGnA466aupP304G3kBxrs82cRvYUEDtDq8xy1iKEgqwNGoymeEIh54LH4AdA8r7KOfNUvYANy0y1a~jDp-SrQop-lzX3owP6dIPs~R4tNbrmc8nhReLxvuuTX9OYxG~6YafGn9E88eT3egwxVNKkSc3yPcLlkwHnB-GISv~H42m2clILBAHrzA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNDpBbHBoYQ\u003d\u003d",
+              "teamName": "ビター",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNDpCcmF2bw\u003d\u003d",
+              "teamName": "ミルク",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwNDpDaGFybGll",
+              "teamName": "ホワイト",
+              "result": {
+                "isWinner": true
+              }
+            }
+          ]
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDAz",
+          "state": "CLOSED",
+          "startTime": "2023-01-07T00:00:00Z",
+          "endTime": "2023-01-09T00:00:00Z",
+          "title": "好みの味は？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-taste/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dEJ9m1YG9m~QtpfpFI1sf1sll6luj8Gh4UXJefXNx-FXb2z8BiHiTug5w2AOqQnOqXPasS1tkyez0DzE6d8Xa~XLcUPF0l3L6oohyZqIFBuxYZbRE6Vo40ZyNNLKXtsB1QWyHY~LnQGA3AnPujk5ZiiOyuVHVc3XPnPvMYPgAseGFGzcpdJyFYF2PwAX1X97tdASUaZMT2sDenQ0SHkSJTjB0v6rq3I6F1D0PWSsqky75p2N0NJoOE86iBI~jcCBHY3v5GfjGliQE~40b2x3tnmAdgfYTrkN0XDlFEcR~rpyZ3t8twGoEZn75XYWy2bwuGnORhpzrJndykieCyQz3tA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "カリスマ辛い派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMzpBbHBoYQ\u003d\u003d",
+              "teamName": "辛い",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMzpCcmF2bw\u003d\u003d",
+              "teamName": "甘い",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMzpDaGFybGll",
+              "teamName": "すっぱい",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "辛い",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-taste/a8e4c17157cd31507a9b7f4b6267d5caa0bdee317044d55a96c5496bb42228b6_0.png?Expires\u003d1736467200\u0026Signature\u003diuv~LS2CarBLhG1~G4H0y1w4vGX81-y1ZVLu3WdyaRdR~zN~aII75mhGTGcUBqDtF~ItqrcXIADG~Wj~rJB81P-ZgxI9I9~hhyp5RahjqgIszfKmOHWrpg1oiVvgN3ChSnUeyOusmA5aFDU70geaw0L-4kq1y9oodnkP-DaMj~~74uh-Ox~hfi8fX7piz~Q0q2WCjqmm0UO4dEOTwEfEvBENxPU0owb~xLTUOKOamT1n~ayv-TAcd~ns0d8xI0z9zsmchby5S3vSdU19nTADor1QNfBqaceMlZ39jlIzNO9q6wgWlhPWy14r6dXfT92gmDKL~XkwVkrT0DslqgwNPw__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.219610006,
+              "g": 0.329409987,
+              "r": 0.678430021
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMzpBbHBoYQ\u003d\u003d"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDAy",
+          "state": "CLOSED",
+          "startTime": "2022-11-12T00:00:00Z",
+          "endTime": "2022-11-14T00:00:00Z",
+          "title": "パートナーに選ぶならどのタイプ？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-pocket/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dRzT7ryrWAWnwnaRKpt3w7~XA9kzivrkcz1-yuAcAJ-8wv~CyMYJCnt5LlT7Hd-T7-BHLTuYkldez1jOQZOk9bnqkRd35Zcjk7pp0MqbDRwC5hGJwricXACy4hXfynN0qClC6aXguuM9ULeCanQRvPtFPEMLhSMAiXR~en3FtCFtSjvmjCTUEzNJlNd38TrWt5Nzrarc8GAAkXLhfSMrfz63ENmoymAJJyNjHI3tbKW2aVySTC5WFuAEEeWMhN3yaEkJaCwHFeg7S6~lbRu2JtDC~qwHfRjJ4c0SFJCm3B5HFbeMtzaDxoS~Wb5P9F2r2oyrPD9Mdg7Pd8zFtlvP4XA__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "ふつうのみず派"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMjpBbHBoYQ\u003d\u003d",
+              "teamName": "くさ",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMjpCcmF2bw\u003d\u003d",
+              "teamName": "ほのお",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMjpDaGFybGll",
+              "teamName": "みず",
+              "result": {
+                "isWinner": true
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "みず",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-pocket/c0276e2a150b4a61bcc46fca84c2aaef3bd09aa8e2e78baa4158e894c1685563_0.png?Expires\u003d1736467200\u0026Signature\u003dwaGBPB7Y~EuV1Zo7rMwePrV6KOkfLZIG10rPxh3-xULZYMXAJ0ByBa9pcjW8TmuxRXD-nvz2a4y-qWpGttCRp5wVrpNuRcaK8hbxwn2txkAtyofC-9MFwPYW~5C40JiybYoM3d4-9p9bJ3DsxP7sZNni9jU-hJI6EaNt61gmK~nyM1IF7ciaYvzpTDnbsM0Nd5zgI4~pBEXDyc1vAmRixyZ3AUS2RJKKqKEPD~mY9xV4W37i5kg1ZWN~IoTNGucjZLJwEpgHWHjz7C85qiJ1c10gRdDRcUKP6J0lIWNmEjPlEFX3yCPZZUWTekzReTi78xj~hd3Z6W-d5Bf9H6AvHg__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 1.0,
+              "g": 0.454899997,
+              "r": 0.18039
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMjpDaGFybGll"
+          }
+        },
+        {
+          "id": "RmVzdC1KUDpKVUVBLTAwMDAx",
+          "state": "CLOSED",
+          "startTime": "2022-09-24T00:00:00Z",
+          "endTime": "2022-09-26T00:00:00Z",
+          "title": "無人島に持っていくなら？",
+          "lang": "JPja",
+          "image": {
+            "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-mujintou/46bccd11c2905095a8cd5cb9e7457ed54856282a9d5123e74f3ca071cf17bd4e_0.png?Expires\u003d1736467200\u0026Signature\u003dGVR6rd1AiogOdtLgG6vRwIHwHE2I8fVDxm622PUGGIgN5SIQZuFrmjGVLmMy9g8231hNRzQRQlrkKCHSlydS3gI43d8L0cl9iyP6-TxLBttw9u0eSgGthoVVU2U2Hcy9wMYZvFyU8sogmb1PjnjIGFRnghxq0p7KfJOq65oWn25om2cZjgjAWob6YJhz0wu5~chdiEaoZlkKdOnvIzisUqpQPayz8R-8uRVTnsiZhfJFBj3Oz2CPRImIdPnXWuE8BqT2tCRDYRd8GsJKHIa0kpAyNMk1iJmKH10H0dNVc8mvgKGKJbgGp497lI2zNKyBrb5jd9H5kDPnKtUIMydgBg__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "playerResult": {
+            "grade": "えいえんの道具派 +2"
+          },
+          "teams": [
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMTpBbHBoYQ\u003d\u003d",
+              "teamName": "道具",
+              "result": {
+                "isWinner": true
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMTpCcmF2bw\u003d\u003d",
+              "teamName": "食料",
+              "result": {
+                "isWinner": false
+              }
+            },
+            {
+              "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMTpDaGFybGll",
+              "teamName": "ヒマつぶし",
+              "result": {
+                "isWinner": false
+              }
+            }
+          ],
+          "myTeam": {
+            "teamName": "道具",
+            "image": {
+              "url": "https://api.lp1.av5ja.srv.nintendo.net/resources/fest/v1/juea-mujintou/a8e4c17157cd31507a9b7f4b6267d5caa0bdee317044d55a96c5496bb42228b6_0.png?Expires\u003d1736467200\u0026Signature\u003dvG9hzMPuaP-3Ofv7BE0ZbL5lDY-lX2nuO-CezhsikTJbwxpWblYghe-PKY67NRUVwE1quoOZdzSaZ2br53I713DFhtdf5Yvpl-ZM7J8jgX-FMbWE~GouHSn0m-lKJV-Zsk3CU38GhGhgM5X6mC5jyzEJbWJEYE39b2TmBazMhSW09nGiyy~u-15OUz5JHHb6urNjRYyi010IS18q~9LRHgL5LjAiiC-pF3SZOxGmfx3oQ9CF7wyAynF7WZyu3r1hixtIKtYPbX160NT4bZryV6IuohYLe7xYrvCeTTUdoEhYrYP7YMkAFKelj5bWoY-oQtlH9vX1MZGiwE4yrhSb-A__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+            },
+            "color": {
+              "a": 1.0,
+              "b": 0.972549021,
+              "g": 0.0980392173,
+              "r": 0.541176498
+            },
+            "id": "RmVzdFRlYW0tSlA6SlVFQS0wMDAwMTpBbHBoYQ\u003d\u003d"
+          }
+        }
+      ]
+    },
+    "currentPlayer": {
+      "name": "hi ⊂⌒⌒⊃",
+      "userIcon": {
+        "url": "https://cdn-image-e0d67c509fb203858ebcb2fe3f88c2aa.baas.nintendo.com/1/b5cfe55480cb7cc8"
+      }
+    }
+  }
+}

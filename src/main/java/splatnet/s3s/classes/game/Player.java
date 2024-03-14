@@ -2,8 +2,19 @@ package splatnet.s3s.classes.game;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import splatnet.s3s.classes.misc.Badge;
+import splatnet.s3s.classes.misc.NamePlate;
 import splatnet.s3s.classes.misc.Stuff;
 import splatnet.s3s.classes.weapons.MainWeapon;
+
+import java.awt.*;
 
 public class Player {
 
@@ -24,9 +35,7 @@ public class Player {
      */
     private String species;
 
-    private JsonObject banner;
-
-    private JsonObject namePlate;
+    private NamePlate namePlate;
 
     private int kills;
     private int death;
@@ -47,6 +56,8 @@ public class Player {
     private Stuff clothingGear;
 
     private Stuff shoesGear;
+
+    private HBox bannerBuild;
 
 
 
@@ -78,10 +89,7 @@ public class Player {
             species = jsonData.get("species").getAsString();
         }
 
-
-        banner = jsonData.getAsJsonObject("nameplate").getAsJsonObject("background");
-
-        namePlate = jsonData.get("nameplate").getAsJsonObject();
+        namePlate = new NamePlate(jsonData.get("nameplate").getAsJsonObject());
 
         JsonObject results;
         if (jsonData.has("result") && !jsonData.get("result").isJsonNull()) {
@@ -106,6 +114,111 @@ public class Player {
         if (jsonData.has("paint") && !jsonData.get("paint").isJsonNull()) {
             paint = jsonData.get("paint").getAsInt();
         }
+
+        buildBanner();
+    }
+
+    private void buildBanner() {
+        Font font = new Font("Splatoon2", 25);
+
+        bannerBuild = new HBox();
+        bannerBuild.setAlignment(Pos.CENTER);
+
+        BackgroundImage backgroundImage = new BackgroundImage(
+                namePlate.getBanner().getImage().getImage(),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                null,
+                null
+        );
+
+        bannerBuild.setBackground(new Background(backgroundImage));
+
+        int r = (int) (namePlate.getBanner().getColors().get("r") * 255);
+        int g = (int) (namePlate.getBanner().getColors().get("g") * 255);
+        int b = (int) (namePlate.getBanner().getColors().get("b") * 255);
+
+        Color color = Color.rgb(
+                r,
+                g,
+                b
+        );
+
+        Label nameLabel = new Label(name);
+        nameLabel.setFont(new Font("Splatoon2", 45));
+        nameLabel.setTextFill(color);
+
+        Label nameIdLabel = new Label(nameId);
+        nameIdLabel.setFont(font);
+        nameIdLabel.setTextFill(color);
+
+        Label quoteLabel = new Label(quote);
+        quoteLabel.setFont(font);
+        quoteLabel.setTextFill(color);
+
+        HBox badges = new HBox();
+        badges.setAlignment(Pos.CENTER_RIGHT);
+        badges.setSpacing(5);
+
+        for (Badge badge : namePlate.getBadges()) {
+
+            if (badge != null) {
+                ImageView imageView = badge.getImage();
+                imageView.setFitHeight(40);
+                imageView.setFitWidth(40);
+                badges.getChildren().add(imageView);
+            } else {
+                Label space = new Label(" ");
+                space.setPrefSize(40, 40);
+
+                // we add a blank label to keep the spacing
+                badges.getChildren().add(space);
+            }
+        }
+
+        VBox container = new VBox();
+        container.setAlignment(Pos.CENTER);
+        container.setPadding(
+                new Insets(0, 0, 0, 10)
+        );
+
+        // set the container to the same size as the banner
+        container.setPrefSize(
+                namePlate.getBanner().getImage().getImage().getWidth(),
+                namePlate.getBanner().getImage().getImage().getHeight()
+        );
+
+        HBox quoteHbox = new HBox();
+        quoteHbox.setAlignment(Pos.CENTER_LEFT);
+        quoteHbox.getChildren().add(quoteLabel);
+
+        HBox nameHbox = new HBox();
+        nameHbox.setAlignment(Pos.CENTER);
+        nameHbox.getChildren().add(nameLabel);
+
+        // set the nameId to the very left and the badges to the very right
+        HBox bottomHbox = new HBox();
+        bottomHbox.setAlignment(Pos.CENTER);
+
+        VBox nameIdVbox = new VBox();
+        nameIdVbox.setAlignment(Pos.CENTER_LEFT);
+        nameIdVbox.getChildren().add(nameIdLabel);
+
+        HBox.setHgrow(nameIdVbox, Priority.ALWAYS);
+
+        VBox badgesVbox = new VBox();
+        badgesVbox.setAlignment(Pos.CENTER_LEFT);
+        badgesVbox.getChildren().add(badges);
+
+        HBox.setHgrow(badgesVbox, Priority.ALWAYS);
+
+        bottomHbox.setPadding(new Insets(0, 15, 0, 0));
+
+        bottomHbox.getChildren().addAll(nameIdVbox, badgesVbox);
+
+        container.getChildren().addAll(quoteHbox, nameHbox, bottomHbox);
+
+        bannerBuild.getChildren().add(container);
     }
 
     public String getId() {
@@ -130,11 +243,7 @@ public class Player {
         return species;
     }
 
-    public JsonObject getBanner() {
-        return banner;
-    }
-
-    public JsonObject getNamePlate() {
+    public NamePlate getNamePlate() {
         return namePlate;
     }
 
@@ -176,5 +285,9 @@ public class Player {
 
     public String getNameId() {
         return nameId;
+    }
+
+    public HBox getBannerBuild() {
+        return bannerBuild;
     }
 }

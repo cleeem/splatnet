@@ -4,6 +4,20 @@ It uses the s3s API but translated from Python to Java.
 Please check the [s3s API](https://github.com/frozenpandaman/s3s) check the license below.
 (iksm.py is now Iksm.java)
 
+![title-screen.png](readme_images%2Ftitle-screen.png)
+
+
+## Features
+![home-page.png](readme_images%2Fhome-page.png)
+
+![schedule.png](readme_images%2Fschedule.png)
+
+![history.png](readme_images%2Fhistory.png)
+
+![game.png](readme_images%2Fgame.png)
+
+![player.png](readme_images%2Fplayer.png)
+
 ## License & copyleft statement 🏴
 
 s3s is _free software_ licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html). This means that you have _freedom_ – to run, modify, copy, share, and redistribute this work as you see fit, as long as derivative works are also distributed under these same or equivalent terms.

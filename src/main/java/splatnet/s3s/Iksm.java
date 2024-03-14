@@ -4,6 +4,7 @@ import com.google.gson.*;
 import org.jsoup.*;
 import org.jsoup.select.Elements;
 
+import javax.net.ssl.SSLHandshakeException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -21,9 +22,9 @@ public class Iksm {
     public static boolean USE_OLD_NSOAPP_VER   = false; // Change this to True if you're getting a "9403: Invalid token." error
     public static String S3S_VERSION           = "unknown";
     public static String NSOAPP_VERSION        = "unknown";
-    public static String NSOAPP_VER_FALLBACK   = "2.8.1";
+    public static String NSOAPP_VER_FALLBACK   = "2.9.0";
     public static String WEB_VIEW_VERSION      = "unknown";
-    public static String WEB_VIEW_VER_FALLBACK = "6.0.0-daea5c11"; // fallback for current splatnet 3 ver
+    public static String WEB_VIEW_VER_FALLBACK = "6.0.0-eb33aadc"; // fallback for current splatnet 3 ver
     public static String SPLATNET3_URL         = "https://api.lp1.av5ja.srv.nintendo.net";
     public static String GRAPHQL_URL           = SPLATNET3_URL + "/api/graphql";
 
@@ -36,7 +37,7 @@ public class Iksm {
 //     - enter_tokens()
 
     /**
-     * Fetches the current Nintendo Switch Online app version from f API or the Apple App Store and sets it globally.
+     * Fetches the current Nintendo Switch Online app version from f API or the Apple splatnet.App Store and sets it globally.
      * @return
      */
     public static String getNsoappVersion() {

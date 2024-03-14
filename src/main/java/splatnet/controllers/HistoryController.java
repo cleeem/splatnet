@@ -55,12 +55,24 @@ public class HistoryController extends Controller {
     @FXML
     public Button buttonChallenge;
 
+    @FXML
+    public Label count;
+
     private Button lastClicked;
+
+    private Label loadingLabel = new Label("Fetching latest data, please wait... (about 20 seconds)");
 
     @FXML
     public void initialize() {
         lastClicked = buttonAll;
-        System.out.println(lastClicked);
+
+        loadingLabel.setFont(Font.font("Splatoon2", 20));
+        loadingLabel.setStyle("-fx-text-fill: white;");
+
+        matchList.getChildren().add(
+                loadingLabel
+        );
+
 
         Storage storage = Storage.getInstance();
         if (storage.getTurfWarGames().isEmpty()) {
@@ -247,6 +259,18 @@ public class HistoryController extends Controller {
         loadingView.setFitWidth(100);
         matchList.getChildren().add(loadingView);
 
+        matchList.getChildren().add(
+                loadingLabel
+        );
+
+        Storage storage = Storage.getInstance();
+        storage.setLatestGames(null);
+        storage.setTurfWarGames(null);
+        storage.setAnarchyGames(null);
+        storage.setxGames(null);
+        storage.setPrivateGames(null);
+        storage.setChallengeGames(null);
+
         fetchData(lastClicked);
 
     }
@@ -254,8 +278,21 @@ public class HistoryController extends Controller {
 
     private void displayGames(ArrayList<Game> games) {
         matchList.getChildren().clear();
+
+        int wins = 0;
+        int loses = 0;
+        int draws = 0;
+
         for (Game game : games) {
             HBox gameDisplay = getMatchDisplay(game);
+
+            if (game.getStatus().equals("WIN")) {
+                wins++;
+            } else if (game.getStatus().equals("LOSE")) {
+                loses++;
+            } else {
+                draws++;
+            }
 
             gameDisplay.setOnMouseClicked(event -> {
                 try {
@@ -267,6 +304,8 @@ public class HistoryController extends Controller {
 
             matchList.getChildren().add(gameDisplay);
         }
+
+        count.setText("" + wins + " - " + loses + " - " + draws);
 
     }
 
@@ -312,30 +351,9 @@ public class HistoryController extends Controller {
             return matchDisplay;
         }
 
-        String filePath = ASSETS_URL + "battles/" + mode + ".png";
-        File modeIcon = null;
-
-        InputStream inputStream = Main.class.getResourceAsStream(filePath);
-
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-            modeIcon = File.createTempFile(mode, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, modeIcon.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        ImageView modeIconView = new ImageView(modeIcon.toURI().toString());
+        ImageView modeIconView = new ImageView(
+                String.valueOf(Main.class.getResource("assets/battles/" + mode + ".png"))
+        );
 
         modeIconView.setFitHeight(64);
         modeIconView.setFitWidth(64);
@@ -350,15 +368,18 @@ public class HistoryController extends Controller {
                 weapon = player.getWeapon();
             }
         }
-        File weaponIcon = weapon.getImage();
-        ImageView weaponIconView = new ImageView(weaponIcon.toURI().toString());
+        ImageView weaponIconView = weapon.getImage();
         weaponIconView.setFitHeight(64);
         weaponIconView.setFitWidth(64);
 
         String teamScore;
         if (mode.equals("turf")) {
-            teamScore = "" + Double.parseDouble(myTeam.getScore()) * 100;
-            teamScore = teamScore.substring(0, teamScore.indexOf(".") + 2);
+            if (!myTeam.getScore().equals("DRAW")) {
+                teamScore = "" + Double.parseDouble(myTeam.getScore()) * 100;
+                teamScore = teamScore.substring(0, teamScore.indexOf(".") + 2);
+            } else {
+                teamScore = myTeam.getScore();
+            }
         } else {
             teamScore = myTeam.getScore();
         }

@@ -1,9 +1,11 @@
 package splatnet.s3s.classes.weapons;
 
 import com.google.gson.JsonObject;
+import javafx.scene.image.ImageView;
 import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +20,7 @@ public class Weapon {
 
     private String name;
 
-    private File image;
+    private ImageView image;
 
     private String type;
 
@@ -31,34 +33,21 @@ public class Weapon {
         this.type = type;
         this.url = weapon.get("image").getAsJsonObject().get("url").getAsString();
 
-        // Chemin relatif à la racine du JAR
-        String imagePath = WEAPONS_URL + this.type + "/" + this.id + ".png";
-        // Obtenez un flux d'entrée vers la ressource
-        InputStream inputStream = Main.class.getResourceAsStream(imagePath);
+        String path = String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png"));
 
-        if (inputStream == null) {
+        if (path.equals("null")) {
             try {
-                // Si la ressource n'est pas trouvée, téléchargez-la
-                UtilitaryS3S.downloadSmallImage(this.url, this.id, this.type);
+                UtilitaryS3S.downloadImage(
+                        this.url,
+                        this.id,
+                        this.type
+                );
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-            this.image = File.createTempFile(this.id, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, this.image.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
+        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
 
     }
 
@@ -66,15 +55,21 @@ public class Weapon {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.image = new File(WEAPONS_URL + this.type + "/" + this.id + ".png");
 
-        if (!this.image.exists()) {
+        String path = String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png"));
+        if (path.equals("null")) {
             try {
-                UtilitaryS3S.downloadSmallImage("https://app.splatoon2.nintendo.net" + this.image, this.id + "", this.type);
+                UtilitaryS3S.downloadImage(
+                        this.url,
+                        this.id,
+                        this.type
+                );
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
 
     }
 
@@ -86,8 +81,8 @@ public class Weapon {
         return name;
     }
 
-    public File getImage() {
-        return image;
+    public ImageView getImage() {
+        return new ImageView(image.getImage());
     }
 
     public String getType() {

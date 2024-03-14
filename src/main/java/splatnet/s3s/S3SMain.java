@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.google.gson.*;
+import splatnet.Main;
 import splatnet.s3s.classes.misc.Friend;
 import splatnet.s3s.classes.game.Game;
 import splatnet.s3s.classes.game.Player;
+import splatnet.s3s.classes.weapons.MainWeapon;
+import splatnet.s3s.classes.weapons.Weapon;
 
 public class S3SMain {
 
@@ -215,7 +218,7 @@ public class S3SMain {
         String bannerName = bannerObject.get("id").getAsString();
 
         try {
-            UtilitaryS3S.downloadSmallImage(bannerUrl, bannerName, "banners");
+            UtilitaryS3S.downloadImage(bannerUrl, bannerName, "banners");
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -234,13 +237,40 @@ public class S3SMain {
             }
         }
         UtilitaryS3S.checkTokens();
+        
 
-        String key = "myOutfitCommonDataEquipmentsQuery";
-        String data = Exploitation.customQuery(
-                UtilitaryS3S.gtoken,
-                key,
-                null,
-                null
-        );
+        for (String key : Utils.translateRid.keySet()) {
+            System.out.println(key);
+            String data;
+            try {
+                 data = Exploitation.customQuery(
+                        UtilitaryS3S.gtoken,
+                        key,
+                        null,
+                        null
+                );
+
+            } catch (RuntimeException e) {
+                try {
+                    data = Exploitation.customQuery(
+                            UtilitaryS3S.gtoken,
+                            key,
+                            "na-country",
+                            UtilitaryS3S.userCountry
+                    );
+
+                } catch (RuntimeException e2) {
+                    data = "{error: \"no data\"}";
+                }
+                
+            }
+            String finalData = data;
+            writeToFile(key, new ArrayList<String>() {{
+                add(finalData);
+            }});
+
+        }
+
+
     }
 }

@@ -1,0 +1,19 @@
+{
+  "data": {
+    "currentPlayer": {
+      "species": "OCTOLING",
+      "weapon": {
+        "specialWeapon": {
+          "maskingImage": {
+            "width": 100,
+            "height": 100,
+            "maskImageUrl": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/special_img/mask/fa8d49e8c850ee69f0231976208a913384e73dc0a39e6fb00806f6aa3da8a1ee_4.png?Expires\u003d1736467200\u0026Signature\u003dKvgobcCWmf5HGX5Dr9lBWya7hwdH3sWh-JfrwG~qdfbkiBgRaZuHXylo5tABqhCBs4AwS5Dq4s0wzA6zsCoYcAHITGSto-gPLC~vUhPGQ~f6YuR6JMcr9H0RO-AE6i6bemqDQnNFBczCvzOq-DwrhFS3YORI75h76jG-HXtD3sr~dDRGjZAxoN5JHiuCeW3z~iKhyBDP7cJDHg43gH2-1xWCWPUb62Uw3KLHV1SkEkMl3RIeKvAyX5MKesnXU7ePF7AZ~JbWN7KPP6SVKiFGG03aBOJKbDaj6EVGtT8cvpRqgxnAHN13ut2K8iwsUj-iWVRdpNJqn5Rz0IV1Us9B0w__\u0026Key-Pair-Id\u003dKNBS2THMRC385",
+            "overlayImageUrl": "https://api.lp1.av5ja.srv.nintendo.net/resources/prod/v2/special_img/overlay/fa8d49e8c850ee69f0231976208a913384e73dc0a39e6fb00806f6aa3da8a1ee_5.png?Expires\u003d1736467200\u0026Signature\u003deQ30n1uCWSam0reoda8gRzB32WpTDOIULKWwROTyufidbWLTB7ajpJAQKlQgQiTxdMjxaWYJzqM9RXXE9DlZaTSUpo9jHEbnAPnUbdA4Z1h~rtZ4Rm7icIUe9lna3gOwQj5WxjuS1Z20PrQot~ezREzxn54~nNbnGPAYhengfzKKNwmb9t8y66kHZyi3Rxmh5VS86~CtltnY9t6gwIyP~EOZIkOTfZx2rs02nnPM4-UQIB6TOBo-e8te7eW9uLEcH74LvVeW0clqBwaKEAlipCSeqBDQal-DWvwclf5xPJAU36dst5lBNooTnMTNQdQRyoO8YDhxvpAsHAcAXDWbgQ__\u0026Key-Pair-Id\u003dKNBS2THMRC385"
+          },
+          "id": "U3BlY2lhbFdlYXBvbi05"
+        },
+        "id": "V2VhcG9uLTUw"
+      }
+    }
+  }
+}

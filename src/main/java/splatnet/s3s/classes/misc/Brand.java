@@ -4,25 +4,26 @@ import com.google.gson.JsonObject;
 import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 
+import javafx.scene.image.ImageView;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
-public class Brand {
-
-    private static final String BRANDS_URL = "assets/brands/";
-
+public class Brand implements Comparable<Brand> {
     private String id;
 
     private String name;
 
-    private File image;
+    private ImageView image;
 
 
-    private static ArrayList<Brand> brands = new ArrayList<>();
+    private static TreeSet<Brand> brands = new TreeSet<>();
+
     public static Brand getBrand(String id) {
         for (Brand brand : brands) {
             if (brand.id.equals(id)) {
@@ -36,7 +37,7 @@ public class Brand {
         brands.add(brand);
     }
 
-    public Brand(String id, String name, File image) {
+    public Brand(String id, String name, ImageView image) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -46,35 +47,22 @@ public class Brand {
         this.id = data.get("id").getAsString();
         this.name = data.get("name").getAsString();
 
-        // Chemin relatif à la racine du JAR
-        String imagePath = BRANDS_URL + this.id + ".png";
-        // Obtenez un flux d'entrée vers la ressource
-        InputStream inputStream = Main.class.getResourceAsStream(imagePath);
-
-        if (inputStream == null) {
-            try {
-                // Si la ressource n'est pas trouvée, téléchargez-la
-                UtilitaryS3S.downloadSmallImage(data.get("image").getAsJsonObject().get("url").getAsString(), this.id + "", "abilities");
-                inputStream = Main.class.getResourceAsStream(imagePath);
-            } catch (Exception e) {
-                e.printStackTrace();
+        String path = String.valueOf(Main.class.getResource("assets/brands/" + this.id + ".png"));
+        if (path.equals("null")) {
+            File temp = new File(String.valueOf(Main.class.getResource("assets/brands/" + this.id + ".png")));
+            if (!temp.exists()) {
+                try {
+                    UtilitaryS3S.downloadImage(
+                            data.get("image").getAsJsonObject().get("url").getAsString(),
+                            this.id + "",
+                            "brands"
+                    );
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-            this.image = File.createTempFile("" + this.id, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, this.image.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/brands/" + this.id + ".png")));
     }
 
     public String getId() {
@@ -85,12 +73,16 @@ public class Brand {
         return name;
     }
 
-    public File getImage() {
+    public ImageView getImage() {
         return image;
     }
 
-    public static ArrayList<Brand> getBrands() {
+    public static TreeSet<Brand> getBrands() {
         return brands;
     }
 
+    @Override
+    public int compareTo(Brand o) {
+        return getId().compareTo(o.getId());
+    }
 }

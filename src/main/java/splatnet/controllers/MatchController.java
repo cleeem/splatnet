@@ -1,12 +1,18 @@
 package splatnet.controllers;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import org.w3c.dom.events.Event;
 import splatnet.Main;
 import splatnet.models.Storage;
 import splatnet.s3s.UtilitaryS3S;
@@ -16,12 +22,12 @@ import splatnet.s3s.classes.game.Team;
 import javafx.scene.control.Label;
 import splatnet.s3s.classes.misc.Ability;
 import splatnet.s3s.classes.misc.Stuff;
+import splatnet.s3s.classes.weapons.MainWeapon;
+import splatnet.s3s.classes.weapons.Weapon;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 
 public class MatchController extends Controller {
 
@@ -29,13 +35,16 @@ public class MatchController extends Controller {
     private static final Font SPLATOON2_FONT = new Font("Splatoon2", 18);
 
     private static final int LARGE_IMAGE_SIZE = 100;
+    private static final int GEAR_IMAGE_SIZE = 40;
     private static final int PRIMARY_ABILITY_IMAGE_SIZE = 35;
     private static final int SUB_IMAGE_SIZE = 25;
-
     private static final int MAIN_WEAPON_IMAGE_SIZE = 80;
-
     private static final int SUB_WEAPON_IMAGE_SIZE = 40;
 
+    private ArrayList<Label> playerNameLabels = new ArrayList<>();
+    private static boolean showingPlayer = false;
+
+    private static Stage stage;
 
     @FXML
     public VBox modeContainer;
@@ -71,8 +80,8 @@ public class MatchController extends Controller {
     private void displayHeaderInfos(Game game) {
 
         // affichage du mode
-        File modeFile = new File(ASSETS_URL + "modes/" + "S3_icon_" + game.getVsRule().replace(" ", "_") + ".png");
-        ImageView modeImageView = new ImageView(new Image(modeFile.toURI().toString()));
+        System.out.println("Mode: " + game.getVsRule());
+        ImageView modeImageView = new ImageView(String.valueOf(Main.class.getResource("assets/modes/" + "S3_icon_" + game.getVsRule().replace(" ", "_") + ".png")));
         modeImageView.setFitHeight(LARGE_IMAGE_SIZE);
         modeImageView.setFitWidth(LARGE_IMAGE_SIZE);
 
@@ -84,41 +93,7 @@ public class MatchController extends Controller {
         modeContainer.getChildren().add(modeLabel);
 
         // affichage de la map
-        String stageUrl = game.getVsStage().getAsJsonObject("image").get("url").getAsString();
-        String stageId = game.getVsStage().get("id").getAsString();
-        String filePath = ASSETS_URL + "maps/" + stageId + ".png";
-
-        File stageFile = null;
-        InputStream inputStream = Main.class.getResourceAsStream(filePath);
-        if (inputStream == null) {
-            try {
-                // Si la ressource n'est pas trouvée, téléchargez-la
-                UtilitaryS3S.downloadSmallImage(stageUrl, stageId, "maps/");
-                inputStream = Main.class.getResourceAsStream(filePath);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        // Si la ressource est trouvée, créez un fichier temporaire pour la stocker localement
-        try {
-            stageFile = File.createTempFile(stageId, ".png");
-            // Copiez les données du flux d'entrée vers le fichier temporaire
-            Files.copy(inputStream, stageFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Fermez le flux d'entrée
-            try {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        ImageView stageImageView = new ImageView(new Image(stageFile.toURI().toString()));
+        ImageView stageImageView = game.getVsStage().getImage();
         stageImageView.setFitWidth(650);
         stageImageView.setFitHeight(100);
         stageContainer.getChildren().add(stageImageView);
@@ -133,7 +108,25 @@ public class MatchController extends Controller {
         dateLabel.setFont(SPLATOON2_FONT);
         dateLabel.setStyle("-fx-text-fill: white;");
 
-        stageContainer.getChildren().add(dateLabel);
+        ToggleButton hideplayers = new ToggleButton("Hide players");
+        hideplayers.setId("hideplayers");
+        hideplayers.setOnAction(event -> {
+            for (Label playerNameLabel : playerNameLabels) {
+                playerNameLabel.setVisible(!hideplayers.isSelected());
+            }
+        });
+        hideplayers.setPrefHeight(30);
+        hideplayers.setPrefWidth(200);
+        hideplayers.setFont(SPLATOON2_FONT);
+        hideplayers.setStyle("-fx-background-color: #000000; -fx-text-fill: white; -fx-background-radius: 10; -fx-border-radius: 10");
+
+        HBox bottom = new HBox();
+        bottom.setAlignment(Pos.CENTER);
+        bottom.setSpacing(35);
+        bottom.getChildren().add(dateLabel);
+        bottom.getChildren().add(hideplayers);
+
+        stageContainer.getChildren().add(bottom);
 
         // affichage des infos
 
@@ -168,8 +161,16 @@ public class MatchController extends Controller {
                 myTeamScore = game.getMyTeam().getScore().equals("100") ? "KO" : "0";
                 ennemyTeamScore = game.getOtherTeam().get(0).getScore().equals("100") ? "KO" : "0";
             } else {
-                myTeamScore = game.getMyTeam().getScore();
-                ennemyTeamScore = game.getOtherTeam().get(0).getScore();
+                if (game.getVsRule().equals("Turf War")) {
+                    myTeamScore = Double.parseDouble(game.getMyTeam().getScore()) * 100 + "%";
+                    ennemyTeamScore = Double.parseDouble(game.getOtherTeam().get(0).getScore()) * 100 + "%";
+
+                    myTeamScore = myTeamScore.substring(0, myTeamScore.length() - 2);
+                    ennemyTeamScore = ennemyTeamScore.substring(0, ennemyTeamScore.length() - 2);
+                } else {
+                    myTeamScore = game.getMyTeam().getScore();
+                    ennemyTeamScore = game.getOtherTeam().get(0).getScore();
+                }
             }
         }
         Label scoresLabel;
@@ -181,6 +182,23 @@ public class MatchController extends Controller {
         }
         scoresLabel.setFont(SPLATOON2_FONT);
         scoresLabel.setStyle("-fx-text-fill: white;");
+
+        String minutes = String.valueOf(game.getDuration() / 60);
+        String seconds = String.valueOf(game.getDuration() % 60);
+        if (seconds.length() == 1) {
+            seconds = "0" + seconds;
+        }
+
+        Label durationLabel = new Label(minutes + ":" + seconds);
+        durationLabel.setFont(SPLATOON2_FONT);
+        durationLabel.setStyle("-fx-text-fill: white;");
+
+        Label mapLabel = new Label(game.getVsStage().getName());
+        mapLabel.setFont(SPLATOON2_FONT);
+        mapLabel.setStyle("-fx-text-fill: white;");
+
+        infosContainer.getChildren().add(mapLabel);
+        infosContainer.getChildren().add(durationLabel);
         infosContainer.getChildren().add(scoresLabel);
 
     }
@@ -227,6 +245,8 @@ public class MatchController extends Controller {
         playerName.setFont(SPLATOON2_FONT);
         playerName.setStyle("-fx-text-fill: white;");
 
+        playerNameLabels.add(playerName);
+
         Label paintLabel = new Label(player.getPaint() + "p");
         paintLabel.setFont(SPLATOON2_FONT);
         paintLabel.setStyle("-fx-text-fill: white;");
@@ -255,6 +275,18 @@ public class MatchController extends Controller {
 
         container.getChildren().add(playerBox);
 
+        playerBox.setOnMouseEntered(mouseEvent -> playerBox.getScene().setCursor(Cursor.HAND));
+        playerBox.setOnMouseExited(mouseEvent -> playerBox.getScene().setCursor(Cursor.DEFAULT));
+
+        container.setOnMouseClicked(mouseEvent -> {
+            try {
+                showPlayerInfos(player);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        );
+
         return container;
 
     }
@@ -266,15 +298,17 @@ public class MatchController extends Controller {
 
         HBox headGearHolder = new HBox();
         headGearHolder.setAlignment(Pos.BOTTOM_CENTER);
-        File primaryAbilityFile = player.getHeadGear().getMainAbility().getImage();
-        ImageView primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        ImageView gearImageView = player.getHeadGear().getImage();
+        gearImageView.setFitHeight(GEAR_IMAGE_SIZE);
+        gearImageView.setFitWidth(GEAR_IMAGE_SIZE);
+        headGearHolder.getChildren().add(gearImageView);
+        ImageView primaryAbilityImageView = player.getHeadGear().getMainAbility().getImage();
         primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
         primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
         headGearHolder.getChildren().add(primaryAbilityImageView);
 
         for (Ability ability : player.getHeadGear().getSubAbilities()) {
-            File subAbilityFile = ability.getImage();
-            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            ImageView subAbilityImageView = ability.getImage();
             subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
             subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
             headGearHolder.getChildren().add(subAbilityImageView);
@@ -282,15 +316,17 @@ public class MatchController extends Controller {
 
         HBox clothesHolder = new HBox();
         clothesHolder.setAlignment(Pos.BOTTOM_CENTER);
-        primaryAbilityFile = player.getClothingGear().getMainAbility().getImage();
-        primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        gearImageView = player.getClothingGear().getImage();
+        gearImageView.setFitHeight(GEAR_IMAGE_SIZE);
+        gearImageView.setFitWidth(GEAR_IMAGE_SIZE);
+        clothesHolder.getChildren().add(gearImageView);
+        primaryAbilityImageView = player.getClothingGear().getMainAbility().getImage();
         primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
         primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
         clothesHolder.getChildren().add(primaryAbilityImageView);
 
         for (Ability ability : player.getClothingGear().getSubAbilities()) {
-            File subAbilityFile = ability.getImage();
-            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            ImageView subAbilityImageView = ability.getImage();
             subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
             subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
             clothesHolder.getChildren().add(subAbilityImageView);
@@ -298,15 +334,17 @@ public class MatchController extends Controller {
 
         HBox shoesHolder = new HBox();
         shoesHolder.setAlignment(Pos.BOTTOM_CENTER);
-        primaryAbilityFile = player.getShoesGear().getMainAbility().getImage();
-        primaryAbilityImageView = new ImageView(new Image(primaryAbilityFile.toURI().toString()));
+        gearImageView = player.getShoesGear().getImage();
+        gearImageView.setFitHeight(GEAR_IMAGE_SIZE);
+        gearImageView.setFitWidth(GEAR_IMAGE_SIZE);
+        shoesHolder.getChildren().add(gearImageView);
+        primaryAbilityImageView = player.getShoesGear().getMainAbility().getImage();
         primaryAbilityImageView.setFitHeight(PRIMARY_ABILITY_IMAGE_SIZE);
         primaryAbilityImageView.setFitWidth(PRIMARY_ABILITY_IMAGE_SIZE);
         shoesHolder.getChildren().add(primaryAbilityImageView);
 
         for (Ability ability : player.getShoesGear().getSubAbilities()) {
-            File subAbilityFile = ability.getImage();
-            ImageView subAbilityImageView = new ImageView(new Image(subAbilityFile.toURI().toString()));
+            ImageView subAbilityImageView = ability.getImage();
             subAbilityImageView.setFitHeight(SUB_IMAGE_SIZE);
             subAbilityImageView.setFitWidth(SUB_IMAGE_SIZE);
             shoesHolder.getChildren().add(subAbilityImageView);
@@ -323,19 +361,17 @@ public class MatchController extends Controller {
 
         VBox weaponHolder = new VBox();
 
-        File mainWeaponFile = player.getWeapon().getImage();
-        File subWeaponFile = player.getWeapon().getSubWeapon().getImage();
-        File specialWeaponFile = player.getWeapon().getSpecialWeapon().getImage();
+        MainWeapon mainWeapon = player.getWeapon();
 
-        ImageView mainWeaponImageView = new ImageView(new Image(mainWeaponFile.toURI().toString()));
+        ImageView mainWeaponImageView = mainWeapon.getImage();
         mainWeaponImageView.setFitHeight(MAIN_WEAPON_IMAGE_SIZE);
         mainWeaponImageView.setFitWidth(MAIN_WEAPON_IMAGE_SIZE);
 
-        ImageView subWeaponImageView = new ImageView(new Image(subWeaponFile.toURI().toString()));
+        ImageView subWeaponImageView = mainWeapon.getSubWeapon().getImage();
         subWeaponImageView.setFitHeight(SUB_WEAPON_IMAGE_SIZE);
         subWeaponImageView.setFitWidth(SUB_WEAPON_IMAGE_SIZE);
 
-        ImageView specialWeaponImageView = new ImageView(new Image(specialWeaponFile.toURI().toString()));
+        ImageView specialWeaponImageView = mainWeapon.getSpecialWeapon().getImage();
         specialWeaponImageView.setFitHeight(SUB_WEAPON_IMAGE_SIZE);
         specialWeaponImageView.setFitWidth(SUB_WEAPON_IMAGE_SIZE);
 
@@ -350,5 +386,25 @@ public class MatchController extends Controller {
         return weaponHolder;
     }
 
+    private void showPlayerInfos(Player player) throws IOException {
+        if (showingPlayer) {
+            stage.close();
+            showingPlayer = false;
+        }
+
+        stage = new Stage();
+        Storage storage = Storage.getInstance();
+        storage.setPlayer(player);
+
+        try {
+            stage = newWindowLoad("playerInfos");
+            stage.show();
+            showingPlayer = true;
+        } catch (IOException e) {
+            showingPlayer = false;
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

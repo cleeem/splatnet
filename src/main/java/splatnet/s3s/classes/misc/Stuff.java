@@ -2,16 +2,15 @@ package splatnet.s3s.classes.misc;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import splatnet.Main;
 import splatnet.s3s.UtilitaryS3S;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.util.TreeSet;
 
-public class Stuff {
+public class Stuff implements Comparable<Stuff> {
 
     private static final String GEAR_URL = "assets/gears/";
 
@@ -23,7 +22,7 @@ public class Stuff {
 
     private String imageURL;
 
-    private File image;
+    private ImageView image;
 
     private Brand brand;
 
@@ -34,6 +33,21 @@ public class Stuff {
     private int rarity;
 
     private int exp;
+
+    private static TreeSet<Stuff> stuffs = new TreeSet<>();
+
+    public static void addStuff(Stuff stuff) {
+        stuffs.add(stuff);
+    }
+
+    public static Stuff getStuffById(int id) {
+        for (Stuff stuff : stuffs) {
+            if (stuff.getId() == id) {
+                return stuff;
+            }
+        }
+        return null;
+    }
 
     public Stuff(String type, String name, int id, String imageURL, Brand brand, Ability mainAbility, Ability[] subAbilities, int rarity, int exp) {
         this.type = type;
@@ -50,7 +64,11 @@ public class Stuff {
     public Stuff(JsonObject data) {
 
         this.type = data.get("__isGear").getAsString();
-        this.name = data.get("name").getAsString().replace("\\", "").replace("/", "");
+        this.name = data.get("name").getAsString()
+                .replace("\\", "")
+                .replace("/", "")
+                .replace("%20", "")
+                .replace(" ", "_");
 
         String idKey;
         if (this.type.equals("HeadGear")) {
@@ -69,7 +87,7 @@ public class Stuff {
 
         if (data.get("image") != null) {
             this.imageURL = data.getAsJsonObject("image").get("url").getAsString();
-        } else if (data.get("thumbnailImage") != null){
+        } else if (data.get("thumbnailImage") != null) {
             this.imageURL = data.getAsJsonObject("thumbnailImage").get("url").getAsString();
         } else {
             this.imageURL = null;
@@ -83,7 +101,7 @@ public class Stuff {
         }
 
         this.mainAbility = Ability.getAbilityByName(
-                data.getAsJsonObject("primaryGearPower").get("name").getAsString()
+                data.getAsJsonObject("primaryGearPower").get("name").getAsString().replace(" ", "_")
         );
 
         JsonArray subAbilitiesData = data.getAsJsonArray("additionalGearPowers");
@@ -91,7 +109,7 @@ public class Stuff {
 
         for (int i = 0; i < subAbilitiesData.size(); i++) {
             this.subAbilities[i] = Ability.getAbilityByName(
-                    subAbilitiesData.get(i).getAsJsonObject().get("name").getAsString()
+                    subAbilitiesData.get(i).getAsJsonObject().get("name").getAsString().replace(" ", "_")
             );
         }
 
@@ -100,16 +118,11 @@ public class Stuff {
         }
 
         String type = this.type.equals("HeadGear") ? "head" : this.type.equals("ClothingGear") ? "clothes" : "shoes";
-        // Chemin relatif à la racine du JAR
-        String imagePath = GEAR_URL + type + "/" + this.name + ".png";
-        // Obtenez un flux d'entrée vers la ressource
-        InputStream inputStream = Main.class.getResourceAsStream(imagePath);
 
-        if (inputStream == null) {
+        String path = String.valueOf(Main.class.getResource("assets/gears/" + type + "/" + this.name + ".png"));
+        if (path.equals("null")) {
             try {
-                // Si la ressource n'est pas trouvée, téléchargez-la
-                UtilitaryS3S.downloadSmallImage(this.imageURL, this.name, "gears/" + type);
-                inputStream = Main.class.getResourceAsStream(imagePath);
+                UtilitaryS3S.downloadImage(this.imageURL, this.name, "gears/" + type);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -131,6 +144,8 @@ public class Stuff {
                 e.printStackTrace();
             }
         }
+
+        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/gears/" + type + "/" + this.name + ".png")));
 
         if (data.get("rarity") != null) {
             this.rarity = data.get("rarity").getAsInt();
@@ -161,8 +176,8 @@ public class Stuff {
         return imageURL;
     }
 
-    public File getImage() {
-        return image;
+    public ImageView getImage() {
+        return new ImageView(image.getImage());
     }
 
     public Brand getBrand() {
@@ -185,4 +200,8 @@ public class Stuff {
         return exp;
     }
 
+    @Override
+    public int compareTo(Stuff o) {
+        return this.id - o.id;
+    }
 }

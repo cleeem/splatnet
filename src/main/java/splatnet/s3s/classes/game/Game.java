@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Game {
@@ -30,7 +31,7 @@ public class Game {
      */
     private String status;
 
-    private JsonObject vsStage;
+    private Stage vsStage;
 
     /**
      * only used when the game is an X game
@@ -60,7 +61,7 @@ public class Game {
         if (jsonData.has("data")) {
             jsonData = jsonData.get("data").getAsJsonObject();
         }
-        if (jsonData.has("vsHistoryDetail")) {
+        if (jsonData.has("vsHistoryDetail") && !jsonData.get("vsHistoryDetail").isJsonNull()) {
             jsonData = jsonData.get("vsHistoryDetail").getAsJsonObject();
         }
 
@@ -86,7 +87,13 @@ public class Game {
         }
 
 
-        vsStage = jsonData.get("vsStage").getAsJsonObject();
+        vsStage = Stage.findStage(jsonData.get("vsStage").getAsJsonObject().get("id").getAsString());
+
+        if (vsStage == null) {
+            vsStage = new Stage(jsonData.get("vsStage").getAsJsonObject());
+            Stage.addStage(vsStage);
+        }
+
         if (jsonData.has("xPower") && !jsonData.get("xPower").isJsonNull()) {
             xPower = jsonData.get("xMatch").getAsJsonObject().get("lastXPower").getAsString();
         }
@@ -127,7 +134,7 @@ public class Game {
         return status;
     }
 
-    public JsonObject getVsStage() {
+    public Stage getVsStage() {
         return vsStage;
     }
 
