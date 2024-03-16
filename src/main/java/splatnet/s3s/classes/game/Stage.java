@@ -18,9 +18,7 @@ public class Stage implements Comparable<Stage> {
 
     private String imageURL;
 
-    private ImageView image;
-
-    private ImageView smallImage;
+    private String imagePath;
 
     private static TreeSet<Stage> stages = new TreeSet<>();
 
@@ -65,9 +63,6 @@ public class Stage implements Comparable<Stage> {
                 throw new RuntimeException(e);
             }
         }
-
-        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + ".png")));
-
         String smallPath = String.valueOf(Main.class.getResource("assets/maps/" + this.id + "Small.png"));
 
         if (smallPath.equals("null")) {
@@ -78,7 +73,7 @@ public class Stage implements Comparable<Stage> {
             }
         }
 
-        this.smallImage = new ImageView(String.valueOf(Main.class.getResource("assets/maps/" + this.id + "Small.png")));
+        this.imagePath = path;
     }
 
     public String getId() {
@@ -94,11 +89,11 @@ public class Stage implements Comparable<Stage> {
     }
 
     public ImageView getImage() {
-        return new ImageView(image.getImage());
+        return new ImageView(imagePath);
     }
 
     public ImageView getSmallImage() {
-        return new ImageView(smallImage.getImage());
+        return new ImageView(imagePath.replace(".png", "Small.png"));
     }
 
     @Override

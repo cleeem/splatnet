@@ -17,7 +17,7 @@ public class Banner implements Comparable<Banner> {
 
     private String imageURL;
 
-    private ImageView image;
+    private String imagePath;
 
     private HashMap<String, Double> colors;
 
@@ -32,9 +32,9 @@ public class Banner implements Comparable<Banner> {
         return null;
     }
 
-    public Banner(String id, ImageView image) {
+    public Banner(String id, String path) {
         this.id = id;
-        this.image = image;
+        this.imagePath = path;
     }
 
     public Banner(JsonObject data) {
@@ -60,9 +60,7 @@ public class Banner implements Comparable<Banner> {
             }
 
         }
-
-        this.image = new ImageView(new Image(String.valueOf(Main.class.getResource("assets/banners/" + this.id + ".png"))));
-
+        this.imagePath = path;
     }
 
     public String getId() {
@@ -70,7 +68,7 @@ public class Banner implements Comparable<Banner> {
     }
 
     public ImageView getImage() {
-        return new ImageView(image.getImage());
+        return new ImageView(imagePath);
     }
 
     public HashMap<String, Double> getColors() {

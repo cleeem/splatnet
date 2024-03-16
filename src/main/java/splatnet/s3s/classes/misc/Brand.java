@@ -15,7 +15,7 @@ public class Brand implements Comparable<Brand> {
 
     private String name;
 
-    private ImageView image;
+    private String imagePath;
 
 
     private static TreeSet<Brand> brands = new TreeSet<>();
@@ -33,10 +33,10 @@ public class Brand implements Comparable<Brand> {
         brands.add(brand);
     }
 
-    public Brand(String id, String name, ImageView image) {
+    public Brand(String id, String name, String path) {
         this.id = id;
         this.name = name;
-        this.image = image;
+        this.imagePath = path;
     }
 
     public Brand(JsonObject data) {
@@ -58,7 +58,7 @@ public class Brand implements Comparable<Brand> {
                 }
             }
         }
-        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/brands/" + this.id + ".png")));
+        this.imagePath = path;
     }
 
     public String getId() {
@@ -70,7 +70,7 @@ public class Brand implements Comparable<Brand> {
     }
 
     public ImageView getImage() {
-        return image;
+        return new ImageView(imagePath);
     }
 
     public static TreeSet<Brand> getBrands() {

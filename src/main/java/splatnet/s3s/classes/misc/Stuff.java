@@ -20,7 +20,7 @@ public class Stuff implements Comparable<Stuff> {
 
     private String imageURL;
 
-    private ImageView image;
+    private String imagePath;
 
     private Brand brand;
 
@@ -125,7 +125,7 @@ public class Stuff implements Comparable<Stuff> {
             }
         }
 
-        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/gears/" + type + "/" + this.name + ".png")));
+        this.imagePath = path;
 
         if (data.get("rarity") != null) {
             this.rarity = data.get("rarity").getAsInt();
@@ -157,7 +157,7 @@ public class Stuff implements Comparable<Stuff> {
     }
 
     public ImageView getImage() {
-        return new ImageView(image.getImage());
+        return new ImageView(imagePath);
     }
 
     public Brand getBrand() {

@@ -15,7 +15,7 @@ public class Badge implements Comparable<Badge> {
 
     private String imageURL;
 
-    private ImageView image;
+    private String imagePath;
 
     private static TreeSet<Badge> badges = new TreeSet<>();
     public static void addBadge(Badge badge) {
@@ -31,9 +31,9 @@ public class Badge implements Comparable<Badge> {
         return null;
     }
 
-    public Badge(String id, ImageView image) {
+    public Badge(String id, String path) {
         this.id = id;
-        this.image = image;
+        this.imagePath = path;
     }
 
     public Badge(JsonObject data) {
@@ -48,13 +48,16 @@ public class Badge implements Comparable<Badge> {
                         this.id,
                         "badges"
                 );
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
 
             }
         }
 
-        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/badges/" + this.id + ".png")));
+        System.out.println("Path: " + path);
+        this.imagePath = path;
+
     }
 
     public String getId() {
@@ -62,7 +65,7 @@ public class Badge implements Comparable<Badge> {
     }
 
     public ImageView getImage() {
-        return new ImageView(image.getImage());
+        return new ImageView(imagePath);
     }
 
     @Override

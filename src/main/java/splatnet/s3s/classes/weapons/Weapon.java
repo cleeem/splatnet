@@ -14,7 +14,7 @@ public class Weapon {
 
     private String name;
 
-    private ImageView image;
+    private String imagePath;
 
     private String type;
 
@@ -41,8 +41,7 @@ public class Weapon {
             }
         }
 
-        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
-
+        this.imagePath = path;
     }
 
     public Weapon(String id, String name, String type) {
@@ -63,8 +62,7 @@ public class Weapon {
             }
         }
 
-        this.image = new ImageView(String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png")));
-
+        this.imagePath = path;
     }
 
     public String getId() {
@@ -76,7 +74,7 @@ public class Weapon {
     }
 
     public ImageView getImage() {
-        return new ImageView(image.getImage());
+        return new ImageView(imagePath);
     }
 
     public String getType() {

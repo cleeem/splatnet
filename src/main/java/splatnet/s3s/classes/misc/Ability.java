@@ -14,7 +14,7 @@ import java.util.TreeSet;
 public class Ability implements Comparable<Ability> {
     private String name;
     private int id;
-    private ImageView image;
+    private String imagePath;
 
     private static TreeSet<Ability> abilities = new TreeSet<>();
 
@@ -41,10 +41,10 @@ public class Ability implements Comparable<Ability> {
         abilities.add(ability);
     }
 
-    public Ability(String name, int id, ImageView image) {
+    public Ability(String name, int id, String path) {
         this.name = name;
         this.id = id;
-        this.image = image;
+        this.imagePath = path;
     }
 
     public Ability(JsonObject data) {
@@ -67,8 +67,7 @@ public class Ability implements Comparable<Ability> {
             }
         }
 
-        this.image = new ImageView(Main.class.getResource("assets/abilities/" + this.name + ".png").toString());
-
+        this.imagePath = path;
     }
 
     public static TreeSet<Ability> getAbilities() {
@@ -84,7 +83,7 @@ public class Ability implements Comparable<Ability> {
     }
 
     public ImageView getImage() {
-        return new ImageView(image.getImage());
+        return new ImageView(imagePath);
     }
 
     @Override
