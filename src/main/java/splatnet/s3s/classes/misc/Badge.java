@@ -54,10 +54,7 @@ public class Badge implements Comparable<Badge> {
 
             }
         }
-
-        System.out.println("Path: " + path);
         this.imagePath = path;
-
     }
 
     public String getId() {
@@ -65,6 +62,7 @@ public class Badge implements Comparable<Badge> {
     }
 
     public ImageView getImage() {
+        System.out.println("Path : " + imagePath);
         return new ImageView(imagePath);
     }
 

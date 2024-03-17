@@ -60,6 +60,7 @@ public class Banner implements Comparable<Banner> {
             }
 
         }
+        System.out.println("Path : " + path);
         this.imagePath = path;
     }
 

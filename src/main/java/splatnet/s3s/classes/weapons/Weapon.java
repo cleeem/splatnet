@@ -25,7 +25,14 @@ public class Weapon {
         this.id = weapon.get("id").getAsString();
         this.name = weapon.get("name").getAsString();
         this.type = type;
-        this.url = weapon.get("image").getAsJsonObject().get("url").getAsString();
+
+        String url = "";
+        if (weapon.has("image") && weapon.get("image").isJsonObject()) {
+            url = weapon.get("image").getAsJsonObject().get("url").getAsString();
+        } else if (weapon.has("image2d") && weapon.get("image2d").isJsonObject()) {
+            url = weapon.get("image2d").getAsJsonObject().get("url").getAsString();
+        }
+        this.url = url;
 
         String path = String.valueOf(Main.class.getResource("assets/" + this.type + "/" + this.id + ".png"));
 

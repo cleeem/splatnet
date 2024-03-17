@@ -43,8 +43,14 @@ public class MenuController extends Controller {
     }
 
     @FXML
-    public void onSalmonButtonClick() {
-        System.out.println("Salmon button clicked");
+    public void onRandomWeaponButtonClick() {
+        System.out.println("Random weapon button clicked");
+
+        try {
+            loadNewFxml("randomWeapon");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

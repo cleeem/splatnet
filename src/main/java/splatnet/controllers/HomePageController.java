@@ -69,6 +69,8 @@ public class HomePageController extends Controller {
         System.out.println("Starting fetchXPowersData thread");
         fetchXPowersData.start();
 
+
+
     }
     private void displayXPowers() {
 
@@ -129,64 +131,6 @@ public class HomePageController extends Controller {
 
         bannerHolder.getChildren().clear();
         bannerHolder.getChildren().add(myLastGamePlayer.getBannerBuild());
-
-//        NamePlate namePlate = myLastGamePlayer.getNamePlate();
-//
-//        ImageView banner = myLastGamePlayer.getNamePlate().getBanner().getImage();
-//        banner.setFitHeight(200);
-//        banner.setFitWidth(668);
-//
-//        Label quoteLabel = new Label(myLastGamePlayer.getQuote());
-//        quoteLabel.setStyle("-fx-text-fill: #FFFFFF");
-//
-//        // place the quote in the upper left corner of the banner
-//        HBox quoteHolder = new HBox();
-//        quoteHolder.setAlignment(Pos.TOP_LEFT);
-//        quoteHolder.setStyle("-fx-padding: 0 0 0 20");
-//        quoteLabel.setFont(Font.font("Splatoon2", 20));
-//
-//        Label nameLabel = new Label(myLastGamePlayer.getName());
-//        nameLabel.setStyle("-fx-text-fill: #FFFFFF");
-//
-//        // place the name in center
-//        HBox nameHolder = new HBox();
-//        nameHolder.setAlignment(Pos.CENTER);
-//        nameLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 50));
-//
-//
-//        Label idLabel = new Label("#" + myLastGamePlayer.getNameId());
-//        idLabel.setStyle("-fx-text-fill: #FFFFFF");
-//
-//        // place the id in the lower left corner of the banner
-//        HBox idHolder = new HBox();
-//        idHolder.setAlignment(Pos.TOP_LEFT);
-//        idHolder.setStyle("-fx-padding: 0 0 0 20");
-//        idLabel.setFont(javafx.scene.text.Font.font("Splatoon2", 20));
-//
-//        bannerHolder.getChildren().clear();
-//
-//        // no repeat
-//        BackgroundImage test = new BackgroundImage(
-//                banner.getImage(),
-//                BackgroundRepeat.NO_REPEAT,
-//                BackgroundRepeat.NO_REPEAT,
-//                BackgroundPosition.DEFAULT,
-//                null
-////                new BackgroundSize(668, 200, false, false, false, false)
-//        );
-//
-//        bannerHolder.setBackground(new Background(test));
-//
-//        quoteHolder.getChildren().add(quoteLabel);
-//        nameHolder.getChildren().add(nameLabel);
-//        idHolder.getChildren().add(idLabel);
-//
-//        bannerHolder.getChildren().add(quoteHolder);
-//        bannerHolder.getChildren().add(nameHolder);
-//        bannerHolder.getChildren().add(idHolder);
-//
-//        background.setStyle("-fx-background-color: #2c2c2c");
-
 
     }
 

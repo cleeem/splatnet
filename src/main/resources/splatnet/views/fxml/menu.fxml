@@ -77,18 +77,18 @@
       </VBox>
       <VBox fx:id="salmonButton" alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onSalmonButtonClick" prefHeight="65.0" prefWidth="65.0">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onRandomWeaponButtonClick" prefHeight="65.0" prefWidth="65.0">
                <graphic>
                   <VBox alignment="CENTER" prefHeight="65.0" prefWidth="65.0">
                      <children>
                         <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../assets/icons/sr-modified.png" />
+                              <Image url="@../../assets/icons/shuffle.png" />
                            </image>
                         </ImageView>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Salmon Run">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Random Weapon">
                            <font>
-                              <Font name="Splatoon2" size="15.0" />
+                              <Font name="Splatoon2" size="13.0" />
                            </font>
                         </Text>
                      </children>

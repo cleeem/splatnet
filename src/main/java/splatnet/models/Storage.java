@@ -11,6 +11,7 @@ import splatnet.s3s.classes.game.Player;
 import splatnet.s3s.classes.misc.Ability;
 import splatnet.s3s.classes.misc.Brand;
 import splatnet.s3s.classes.misc.Friend;
+import splatnet.s3s.classes.weapons.MainWeapon;
 
 import java.io.*;
 import java.net.URI;
@@ -36,23 +37,15 @@ public class Storage {
 
     private ArrayList<Game> privateGames = new ArrayList<>();
 
-//    private ArrayList<Game> salmonGames = new ArrayList<>();
-
     private ArrayList<Game> turfWarGames = new ArrayList<>();
 
     private ArrayList<Game> anarchyGames = new ArrayList<>();
 
     private HashMap<String, String> xPowers = new HashMap<>();
 
-    private ArrayList<Friend> friendList = new ArrayList<>();
-
     private Player player = null;
 
     private Storage() {
-
-        // load abilities.json from resources in the data folder
-        // we use getResourceAsStream to get the file as a stream
-        // then we use the JsonParser to parse the stream into a JsonArray
 
         try {
             InputStream abilitiesStream = Main.class.getResourceAsStream("data/abilities.json");
@@ -80,6 +73,20 @@ public class Storage {
                 Brand brand = new Brand(brandObject);
                 Brand.addBrand(brand);
             }
+
+            InputStream weaponStream = Main.class.getResourceAsStream("data/weapons.json");
+            JsonArray weaponsArray = new JsonParser().parse(new InputStreamReader(weaponStream))
+                    .getAsJsonObject()
+                    .getAsJsonObject("data")
+                    .getAsJsonObject("weaponRecords")
+                    .getAsJsonArray("nodes");
+
+            for (JsonElement weaponElement : weaponsArray) {
+                JsonObject weaponObject = weaponElement.getAsJsonObject();
+                MainWeapon mainWeapon = new MainWeapon(weaponObject);
+                MainWeapon.addMainWeapon(mainWeapon);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -122,10 +129,6 @@ public class Storage {
         return xPowers;
     }
 
-    public ArrayList<Friend> getFriendList() {
-        return friendList;
-    }
-
     public Player getPlayerData() {
         return playerData;
     }
@@ -164,10 +167,6 @@ public class Storage {
 
     public void setxPowers(HashMap<String, String> xPowers) {
         this.xPowers = xPowers;
-    }
-
-    public void setFriendList(ArrayList<Friend> friendList) {
-        this.friendList = friendList;
     }
 
     public void setPlayerData(Player playerData) {
