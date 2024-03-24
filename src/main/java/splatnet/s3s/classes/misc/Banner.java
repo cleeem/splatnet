@@ -60,7 +60,6 @@ public class Banner implements Comparable<Banner> {
             }
 
         }
-        System.out.println("Path : " + path);
         this.imagePath = path;
     }
 
@@ -69,6 +68,9 @@ public class Banner implements Comparable<Banner> {
     }
 
     public ImageView getImage() {
+        if (imagePath.equals("null")) {
+            imagePath = String.valueOf(Main.class.getResource("assets/banners/" + id + ".png"));
+        }
         return new ImageView(imagePath);
     }
 

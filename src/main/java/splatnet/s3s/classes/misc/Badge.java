@@ -62,7 +62,9 @@ public class Badge implements Comparable<Badge> {
     }
 
     public ImageView getImage() {
-        System.out.println("Path : " + imagePath);
+        if (imagePath.equals("null")) {
+            imagePath = String.valueOf(Main.class.getResource("assets/badges/" + id + ".png"));
+        }
         return new ImageView(imagePath);
     }
 
