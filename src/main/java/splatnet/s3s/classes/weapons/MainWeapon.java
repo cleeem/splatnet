@@ -20,6 +20,7 @@ public class MainWeapon extends Weapon implements Comparable<MainWeapon> {
                 return mainWeapon;
             }
         }
+        System.out.println("MainWeapon not found with id: " + id);
         return null;
     }
 
@@ -29,11 +30,11 @@ public class MainWeapon extends Weapon implements Comparable<MainWeapon> {
                 return mainWeapon;
             }
         }
-        System.out.println("MainWeapon not found: " + name);
         return null;
     }
 
     public static void addMainWeapon(MainWeapon mainWeapon) {
+        System.out.println("Adding main weapon: " + mainWeapon.getName() + " id: " + mainWeapon.getId());
         mainWeapons.add(mainWeapon);
     }
 
@@ -62,7 +63,6 @@ public class MainWeapon extends Weapon implements Comparable<MainWeapon> {
         } else {
             this.subWeapon = new SubWeapon(data.get(subKey).getAsJsonObject());
             SubWeapon.addSubWeapon(this.subWeapon);
-            System.out.println("SubWeapon added: " + this.subWeapon.getName());
         }
 
         String specialKey = "special";
@@ -75,7 +75,6 @@ public class MainWeapon extends Weapon implements Comparable<MainWeapon> {
         } else {
             this.specialWeapon = new SpecialWeapon(data.get(specialKey).getAsJsonObject());
             SpecialWeapon.addSpecialWeapon(this.specialWeapon);
-            System.out.println("SpecialWeapon added: " + this.specialWeapon.getName());
         }
 
 

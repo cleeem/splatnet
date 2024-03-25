@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -11,20 +12,25 @@
       <fx:include source="menu.fxml" />
       <HBox style="-fx-background-color: #292e35;" HBox.hgrow="ALWAYS">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="150.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="75.0" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="NEVER">
                      <children>
-                        <ImageView fx:id="mainWeaponHolder" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mainWeaponHolder" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                         <VBox>
                            <children>
-                              <ImageView fx:id="subWeaponHolder" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fx:id="specialWeaponHolder" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="subWeaponHolder" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="specialWeaponHolder" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" onMouseClicked="#generateWeapon" text="Random Weapon">
+                  <Label fx:id="nameLabel" textFill="WHITE">
+                     <font>
+                        <Font name="Splatoon2" size="35.0" />
+                     </font>
+                  </Label>
+                  <Button id="bouton" mnemonicParsing="false" onMouseClicked="#generateWeapon" stylesheets="@../css/randomWeapon.css" text="Random Weapon">
                      <font>
                         <Font name="Splatoon2" size="35.0" />
                      </font>

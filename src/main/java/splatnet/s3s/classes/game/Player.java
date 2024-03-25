@@ -83,7 +83,9 @@ public class Player {
             quote = jsonData.get("byname").getAsString();
         }
 
-        weapon = new MainWeapon(jsonData.get("weapon").getAsJsonObject());
+        weapon = MainWeapon.getMainWeaponById(
+                jsonData.get("weapon").getAsJsonObject().get("id").getAsString()
+        );
 
         if (jsonData.has("species") && !jsonData.get("species").isJsonNull()) {
             species = jsonData.get("species").getAsString();
