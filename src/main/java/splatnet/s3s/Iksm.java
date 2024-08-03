@@ -2,6 +2,7 @@ package splatnet.s3s;
 
 import com.google.gson.*;
 import org.jsoup.*;
+import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import javax.net.ssl.SSLHandshakeException;
@@ -22,9 +23,9 @@ public class Iksm {
     public static boolean USE_OLD_NSOAPP_VER   = false; // Change this to True if you're getting a "9403: Invalid token." error
     public static String S3S_VERSION           = "unknown";
     public static String NSOAPP_VERSION        = "unknown";
-    public static String NSOAPP_VER_FALLBACK   = "2.9.0";
-    public static String WEB_VIEW_VERSION      = "unknown";
-    public static String WEB_VIEW_VER_FALLBACK = "6.0.0-eb33aadc"; // fallback for current splatnet 3 ver
+    public static String NSOAPP_VER_FALLBACK   = "2.10.1";
+    public static String WEB_VIEW_VERSION      = "6.0.0-f734f04c";
+    public static String WEB_VIEW_VER_FALLBACK = "6.0.0-f734f04c"; // fallback for current splatnet 3 ver
     public static String SPLATNET3_URL         = "https://api.lp1.av5ja.srv.nintendo.net";
     public static String GRAPHQL_URL           = SPLATNET3_URL + "/api/graphql";
 
@@ -60,7 +61,18 @@ public class Iksm {
                 return NSOAPP_VERSION;
 
             } catch (Exception e) {
-                return NSOAPP_VER_FALLBACK;
+                try {
+                    Document page = Jsoup.connect("https://apps.apple.com/us/app/nintendo-switch-online/id1234806557").get();
+                    Elements elt = page.select("p.whats-new__latest__version");
+                    String ver = elt.text().replace("Version ", "").strip();
+
+                    NSOAPP_VERSION = ver;
+
+                    return NSOAPP_VERSION;
+
+                } catch (IOException ex) {
+                    return NSOAPP_VER_FALLBACK;
+                }
 
             }
         }
@@ -165,7 +177,8 @@ public class Iksm {
             try {
                 mainJsBody = mainJsRsp.parse().select("body");
             } catch (IOException e) {
-                System.out.println("Could not parse SplatNet 3 (2)");
+                System.out.println("Could not parse SplatNet 3 (4)");
+                System.out.println(e.getMessage());
                 return WEB_VIEW_VER_FALLBACK;
             }
             Pattern pattern = Pattern.compile("\\b(?<revision>[0-9a-fA-F]{40})\\b\\S*?void 0\\S*?\"revision_info_not_set\"\\},.*?=\\`(?<version>\\d+\\.\\d+\\.\\d+)-");
@@ -285,7 +298,7 @@ public class Iksm {
      * @return
      */
     public static String getSessionToken(String input, String authCodeVerifier) {
-        String 	nsoappVersion = getNsoappVersion();
+        String	nsoappVersion = getNsoappVersion();
 
         HashMap<String, String> appHead = new HashMap<>();
         appHead.put("User-Agent", "OnlineLounge/" + nsoappVersion + " NASDKAPI Android");
@@ -315,6 +328,9 @@ public class Iksm {
 
         try {
             rsp = Jsoup.connect(url).headers(appHead).requestBody(parameters.toString()).ignoreContentType(true).post().body().text();
+
+            System.out.println("get session token response: " + rsp);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Could not connect to Nintendo Account (2)");

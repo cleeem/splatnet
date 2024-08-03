@@ -55,7 +55,7 @@ public class HistoryController extends Controller {
 
     private Button lastClicked;
 
-    private Label loadingLabel = new Label("Fetching latest data, please wait... (about 20 seconds)");
+    private Label loadingLabel = new Label("Fetching latest data, please wait... \nIt may change based on your internet speed");
 
     @FXML
     public void initialize() {
@@ -86,6 +86,7 @@ public class HistoryController extends Controller {
                 ArrayList<Game> all = S3SMain.fetchLattestBattles();
                 storage.setLatestGames(all);
             } catch (Exception e) {
+                loadingLabel.setText("Connection to the server failed, please try again later");
                 e.printStackTrace();
             }
             if (btn.equals(buttonAll)) {
@@ -195,7 +196,7 @@ public class HistoryController extends Controller {
     @FXML
     public void displayXMatches() {
         Storage storage = Storage.getInstance();
-        ArrayList<Game> games = storage.getxGames();
+        ArrayList<Game> games = storage.getXGames();
         displayGames(games);
         lastClicked.getStyleClass().remove("selected");
         lastClicked = buttonX;

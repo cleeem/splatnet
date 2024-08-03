@@ -34,7 +34,7 @@ public class MainWeapon extends Weapon implements Comparable<MainWeapon> {
     }
 
     public static void addMainWeapon(MainWeapon mainWeapon) {
-        System.out.println("Adding main weapon: " + mainWeapon.getName() + " id: " + mainWeapon.getId());
+//        System.out.println("Adding main weapon: " + mainWeapon.getName() + " id: " + mainWeapon.getId());
         mainWeapons.add(mainWeapon);
     }
 

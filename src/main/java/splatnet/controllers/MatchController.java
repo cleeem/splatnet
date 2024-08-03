@@ -71,6 +71,7 @@ public class MatchController extends Controller {
     private void displayGame(Game game) {
         displayHeaderInfos(game);
         displayMyTeam(game.getMyTeam());
+        System.out.println(game);
         for (Team ennemy : game.getOtherTeam()) {
             displayEnnemyTeam(ennemy);
         }
@@ -137,12 +138,12 @@ public class MatchController extends Controller {
             if (game.getOtherTeam().get(0).getPlayers().size() == 4
                 || game.getOtherTeam().get(1).getPlayers().size() == 4) {
                 // ma team en attaquant
-                int myTeam = Integer.parseInt(game.getMyTeam().getScore());
-                int otherTeam = 0;
+                double myTeam = Double.parseDouble(game.getMyTeam().getScore());
+                double otherTeam = 0;
                 if (game.getOtherTeam().get(0).getPlayers().size() == 4)  {
-                    otherTeam = Integer.parseInt(game.getOtherTeam().get(1).getScore());
+                    otherTeam = Double.parseDouble(game.getOtherTeam().get(1).getScore());
                 } else {
-                    otherTeam = Integer.parseInt(game.getOtherTeam().get(0).getScore());
+                    otherTeam = Double.parseDouble(game.getOtherTeam().get(0).getScore());
                 }
 
                 myTeamScore = String.valueOf(myTeam + otherTeam);
@@ -151,8 +152,8 @@ public class MatchController extends Controller {
             } else {
                 // ma team en défense
                 myTeamScore = game.getMyTeam().getScore();
-                int score1 = Integer.parseInt(game.getOtherTeam().get(0).getScore());
-                int score2 = Integer.parseInt(game.getOtherTeam().get(1).getScore());
+                double score1 = Double.parseDouble(game.getOtherTeam().get(0).getScore());
+                double score2 = Double.parseDouble(game.getOtherTeam().get(1).getScore());
                 ennemyTeamScore = String.valueOf(score1 + score2);
             }
         } else {

@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import com.google.gson.*;
 import splatnet.Main;
+import splatnet.models.Storage;
 import splatnet.s3s.classes.misc.Friend;
 import splatnet.s3s.classes.game.Game;
 import splatnet.s3s.classes.game.Player;
@@ -212,21 +213,6 @@ public class S3SMain {
         UtilitaryS3S.init(input, authCode);
     }
 
-
-    public static void downloadBanner(JsonObject bannerObject) {
-        String bannerUrl = bannerObject.get("image").getAsJsonObject().get("url").getAsString();
-        String bannerName = bannerObject.get("id").getAsString();
-
-        try {
-            UtilitaryS3S.downloadImage(bannerUrl, bannerName, "banners");
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-    }
-
-
-
     public static void main(String[] args) {
         UtilitaryS3S.setup();
         try {
@@ -237,13 +223,81 @@ public class S3SMain {
             }
         }
         UtilitaryS3S.checkTokens();
-        
-        String key = "WeaponRecordQuery";
 
-        String data = Exploitation.customQuery(UtilitaryS3S.gtoken, key, null, null);
+        String key = "DetailTabViewXRankingArRefetchQuery";
 
-        writeToFile(key, new ArrayList<String>(){{add(data);}});
 
+        HashMap<String, Object> vars = new HashMap<>();
+//         vars.put("region", "ATLANTIC");
+        String data;
+        String cursor = null;
+        JsonObject allData;
+        JsonArray edges;
+        JsonObject xRanking;
+        JsonArray allPlayers = new JsonArray();
+
+        for (int page = 0; page < 5; page++) {
+            vars.clear();
+            vars.put("id", "WFJhbmtpbmdTZWFzb24tcDo3");
+            vars.put("region", "PACIFIC");
+            vars.put("page", page+1);
+            cursor = null;
+
+            System.out.println("Page: " + (page + 1));
+
+            for (int quarter = 0; quarter < 4; quarter++) {
+                if (cursor != null) {
+                    vars.put("cursor", cursor);
+                }
+                data = Exploitation.customQuery(UtilitaryS3S.gtoken, key, vars);
+
+                allData = JsonParser.parseString(data).getAsJsonObject().getAsJsonObject("data");
+
+                xRanking = allData.getAsJsonObject("node").getAsJsonObject("xRankingAr");
+
+                edges = xRanking.getAsJsonArray("edges");
+
+                for (JsonElement elt : edges) {
+                    allPlayers.add(elt);
+                    System.out.println(elt);
+                    System.out.println();
+                }
+
+                if (xRanking.has("pageInfo") && !xRanking.get("pageInfo").isJsonNull()
+                    && xRanking.getAsJsonObject("pageInfo").has("endCursor")
+                    && !xRanking.getAsJsonObject("pageInfo").get("endCursor").isJsonNull()) {
+                      cursor = xRanking.getAsJsonObject("pageInfo").get("endCursor").getAsString();
+                } else {
+                    cursor = null;
+                }
+
+                System.out.println("Quarter done: " + (quarter + 1));
+
+            }
+
+           String completePath = PATH_TO_DATA_FILES + key + ".json";
+
+            File file = new File(completePath);
+
+            if (!file.exists()) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                FileWriter fileWriter = new FileWriter(file);
+                fileWriter.write(allPlayers.toString());
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+//        writeToFile(key, new ArrayList<String>(){{add(data);}});
 
     }
 }

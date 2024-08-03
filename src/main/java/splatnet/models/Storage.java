@@ -109,7 +109,7 @@ public class Storage {
         return challengeGames;
     }
 
-    public ArrayList<Game> getxGames() {
+    public ArrayList<Game> getXGames() {
         return xGames;
     }
 
@@ -125,7 +125,7 @@ public class Storage {
         return anarchyGames;
     }
 
-    public HashMap<String, String> getxPowers() {
+    public HashMap<String, String> getXPowers() {
         return xPowers;
     }
 

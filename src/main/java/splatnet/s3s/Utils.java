@@ -261,11 +261,10 @@ public class Utils {
     /**
      * Generates a JSON dictionary, specifying information to retrieve, to send with GraphQL requests.
      * @param sha256hash
-     * @param varname optional
-     * @param varvalue optional
+     * @param variables optional additional variables to the query
      * @return
      */
-    public static String genGraphqlBody(String sha256hash, String varname, String varvalue) {
+    public static String genGraphqlBody(String sha256hash, HashMap<String, Object> variables) {
 
         HashMap<String, HashMap> great_passage = new HashMap<>();
 
@@ -281,10 +280,8 @@ public class Utils {
 
         great_passage.put("extensions", extensions);
 
-        HashMap<String, Object> variables = new HashMap<>();
-
-        if (varname != null && varvalue != null) {
-            variables.put(varname, varvalue);
+        if (variables == null) {
+            variables = new HashMap<>();
         }
 
         great_passage.put("variables", variables);
